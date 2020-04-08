@@ -1,11 +1,11 @@
-package edu.eci.persistence.mybatisimpl;
+package edu.eci.cvds.persistencia.mybatisimpl;
 
 import com.google.inject.Inject;
 
-import edu.eci.entities.Usuario;
-import edu.eci.persistence.DaoUsuario;
-import edu.eci.persistence.PersistenceException;
-import edu.eci.persistence.mybatisimpl.mappers.UsuarioMapper;
+import edu.eci.cvds.entidades.Usuario;
+import edu.eci.cvds.persistencia.DaoUsuario;
+import edu.eci.cvds.persistencia.PersistenceException;
+import edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper;
 import java.util.List;
 
 

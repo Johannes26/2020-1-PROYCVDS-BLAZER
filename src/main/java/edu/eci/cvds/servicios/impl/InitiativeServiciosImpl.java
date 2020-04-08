@@ -1,12 +1,13 @@
-package edu.eci.cvds.services.impl;
+package edu.eci.cvds.servicios.impl;
 
 
 import com.google.inject.Inject;
 
-import edu.eci.cvds.services.IniciativaServicios;
-import edu.eci.cvds.services.ServiciosException;
-import edu.eci.entities.Usuario;
-import edu.eci.persistence.DaoUsuario;
+import edu.eci.cvds.servicios.IniciativaServicios;
+import edu.eci.cvds.servicios.ServiciosException;
+import edu.eci.cvds.entidades.Usuario;
+import edu.eci.cvds.persistencia.DaoUsuario;
+
 
 public class InitiativeServiciosImpl implements IniciativaServicios {
 

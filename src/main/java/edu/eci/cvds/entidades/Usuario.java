@@ -1,4 +1,4 @@
-package edu.eci.entities;
+package edu.eci.cvds.entidades;
 
 import java.io.Serializable;
 

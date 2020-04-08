@@ -1,4 +1,4 @@
-package edu.eci.cvds.services;
+package edu.eci.cvds.servicios;
 
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;

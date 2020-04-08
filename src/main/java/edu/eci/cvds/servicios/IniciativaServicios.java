@@ -1,6 +1,6 @@
-package edu.eci.cvds.services;
+package edu.eci.cvds.servicios;
 
-import edu.eci.entities.Usuario;
+import edu.eci.cvds.entidades.Usuario;
 
 public interface IniciativaServicios {
 
