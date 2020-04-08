@@ -8,9 +8,12 @@ tipo_usuario varchar(30) NOT NULL
 PRIMARY KEY (id));
 
 CREATE TABLE Iniciativa(
-Num number(11)NOT NULL,
+numero number(11)NOT NULL,
 descripción varchar(100)NOT NULL,
 usuario_proponente number(11)NOT NULL,
-tipo_proponente varchar(30)NOT NULL,
 palabras_clave varchar(100) NOT NULL,
-PRIMARY KEY (Num));
+PRIMARY KEY (numero));
+KEY 'fk_INICIATIVA_USUARIO'('usuario_proponente'),
+CONSTRAINT 'fk_INICIATIVA_USUARIO' FOREIGN KEY ('usuario_proponente')
+REFERENCES 'Usuario' ('id') ON DELETE NO ACTION ON UPDATE NO ACTION
+)
