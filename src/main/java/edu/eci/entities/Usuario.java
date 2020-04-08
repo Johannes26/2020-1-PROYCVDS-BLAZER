@@ -11,6 +11,7 @@ public class Usuario implements Serializable{
 	private String email;
 	private int telefono;
 	private String tipoUsuario;
+	private String contraseña;
 	
 	public Usuario() {
 	}
@@ -75,6 +76,14 @@ public class Usuario implements Serializable{
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
 				+ ", telefono=" + telefono + ", tipoUsuario=" + tipoUsuario + "]";
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
 	}
 	
 }
