@@ -84,7 +84,14 @@
 			<artifactId>primefaces</artifactId>
 			<version>6.2</version>
 		</dependency>
-
+		
+		<!-- PostgreSQL dependencies -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.0.0</version>
+		</dependency>
+		
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
