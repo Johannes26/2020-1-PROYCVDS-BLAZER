@@ -1,6 +1,8 @@
 package edu.eci.cvds.services;
 
-public interface IniciativaServices {
+import edu.eci.entities.Usuario;
+
+public interface IniciativaServicios {
 
 	public void createUser(Usuario user) throws ServiciosException;
 

@@ -44,12 +44,12 @@ public class ServiciosFactory {
 
 	    }
 
-	    public IniciativaServices getInitiativeServices(){
-	        return injector.getInstance(IniciativaServices.class);   
+	    public IniciativaServicios getInitiativeServices(){
+	        return injector.getInstance(IniciativaServicios.class);   
 	    }
 
-	    public IniciativaServices getInitiativeServicesForTesting(){
-	        return testingInjector.getInstance(IniciativaServices.class);   
+	    public IniciativaServicios getInitiativeServicesForTesting(){
+	        return testingInjector.getInstance(IniciativaServicios.class);   
 	    }
 	    
 	    public static ServiciosFactory getInstance(){

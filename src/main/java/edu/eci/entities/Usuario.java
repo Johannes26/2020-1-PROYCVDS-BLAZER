@@ -11,7 +11,7 @@ public class Usuario implements Serializable{
 	private String email;
 	private int telefono;
 	private String tipoUsuario;
-	private String contraseña;
+	private String contrasena;
 	
 	public Usuario() {
 	}
@@ -79,11 +79,11 @@ public class Usuario implements Serializable{
 	}
 
 	public String getContraseña() {
-		return contraseña;
+		return contrasena;
 	}
 
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+		this.contrasena = contraseña;
 	}
 	
 }
