@@ -5,6 +5,7 @@ apellido varchar(10) NOT NULL,
 email varchar(20) NOT NULL,
 telefono number(10),
 tipo_usuario varchar(30) NOT NULL
+usuario varchar(30) NOT NULL
 PRIMARY KEY (id));
 
 CREATE TABLE Iniciativa(
