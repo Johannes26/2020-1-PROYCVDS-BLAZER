@@ -19,7 +19,7 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
-      <dependencies>
+  <dependencies>
         <!-- My Batis dependencies -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -31,7 +31,7 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.4.6</version>
 		</dependency>
-<!-- 		TODO Required? -->
+	<!-- 		TODO Required? -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
