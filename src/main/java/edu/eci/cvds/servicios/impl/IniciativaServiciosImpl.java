@@ -9,7 +9,7 @@ import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.persistencia.DaoUsuario;
 
 
-public class InitiativeServiciosImpl implements IniciativaServicios {
+public class IniciativaServiciosImpl implements IniciativaServicios {
 
 	@Inject
     private DaoUsuario daoUser;
@@ -18,6 +18,17 @@ public class InitiativeServiciosImpl implements IniciativaServicios {
 	@Override
 	public void createUser(Usuario user) throws ServiciosException {
 		// TODO Auto-generated method stub
+	}
+
+
+	@Override
+	public Usuario consultarUsuario(int id) throws ServiciosException {
+		try {
+			return daoUser.consultarUsuario(id);
+		}catch(Exception e) {
+			throw new ServiciosException("Error usuario");
+		}
+		
 	}
 
 }

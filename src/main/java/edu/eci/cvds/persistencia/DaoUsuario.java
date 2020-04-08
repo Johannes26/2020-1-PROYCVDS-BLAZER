@@ -7,6 +7,6 @@ import edu.eci.cvds.entidades.Usuario;
 
 public interface DaoUsuario {
 
-	public Usuario consultarCliente(int id) throws PersistenceException;
+	public Usuario consultarUsuario(int id) throws PersistenceException;
 
 }

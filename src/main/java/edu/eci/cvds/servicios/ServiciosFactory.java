@@ -5,6 +5,9 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 
 import com.google.inject.Injector;
 
+import edu.eci.cvds.persistencia.DaoUsuario;
+import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOUsuario;
+import edu.eci.cvds.servicios.impl.IniciativaServiciosImpl;
 
 import static com.google.inject.Guice.createInjector;
 
@@ -20,10 +23,12 @@ public class ServiciosFactory {
 
 	            @Override
 	            protected void initialize() {
-	                install(JdbcHelper.MySQL);
+	                install(JdbcHelper.PostgreSQL);
 	                setClassPathResource("mybatis-config.xml");
-	                
 	                //binds
+	                bind(IniciativaServicios.class).to(IniciativaServiciosImpl.class);
+	                bind(DaoUsuario.class).to(MyBatisDAOUsuario.class);
+	                
 
 	            }
 
@@ -34,9 +39,11 @@ public class ServiciosFactory {
 
 	            @Override
 	            protected void initialize() {
-	                install(JdbcHelper.MySQL);
+	                install(JdbcHelper.PostgreSQL);
 	                setClassPathResource("mybatis-config-h2.xml");
 	                //binds
+	                bind(IniciativaServicios.class).to(IniciativaServiciosImpl.class);
+	                bind(DaoUsuario.class).to(MyBatisDAOUsuario.class);
 	            }
 
 	        }

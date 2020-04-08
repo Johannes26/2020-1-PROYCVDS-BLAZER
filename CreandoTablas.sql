@@ -1,4 +1,4 @@
-CREATE TABLE Usuario(
+CREATE TABLE 'USUARIO'(
 id number(11) NOT NULL,
 nombre varchar(10) NOT NULL,
 apellido varchar(10) NOT NULL,
@@ -8,7 +8,7 @@ tipo_usuario varchar(30) NOT NULL
 contrasena varchar(30) NOT NULL
 PRIMARY KEY (id));
 
-CREATE TABLE Iniciativa(
+CREATE TABLE 'INICIATIVA'(
 numero number(11)NOT NULL,
 descripción varchar(100)NOT NULL,
 usuario_proponente number(11)NOT NULL,

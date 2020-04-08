@@ -16,7 +16,7 @@ public class MyBatisDAOUsuario implements DaoUsuario {
     private UsuarioMapper usuarioMapper;
     
     @Override
-	  public Usuario consultarCliente(int id) throws PersistenceException {
+	  public Usuario consultarUsuario(int id) throws PersistenceException {
 	  try{
 	      return usuarioMapper.consultarUsuario(id);
 	  }
