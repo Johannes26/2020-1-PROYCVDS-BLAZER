@@ -4,17 +4,17 @@ import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 
 import com.google.inject.Injector;
+import static com.google.inject.Guice.createInjector;
 
 import edu.eci.cvds.persistencia.DaoUsuario;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOUsuario;
 import edu.eci.cvds.servicios.impl.IniciativaServiciosImpl;
 
-import static com.google.inject.Guice.createInjector;
+
 
 public class ServiciosFactory {
 
 	    private static ServiciosFactory instance = new ServiciosFactory();
-
 	    private static Injector injector;
 	    private static Injector testingInjector;
 
@@ -35,7 +35,7 @@ public class ServiciosFactory {
 	        }
 	        );
 
-	        testingInjector = createInjector(new XMLMyBatisModule() {
+	        /*testingInjector = createInjector(new XMLMyBatisModule() {
 
 	            @Override
 	            protected void initialize() {
@@ -47,7 +47,7 @@ public class ServiciosFactory {
 	            }
 
 	        }
-	        );
+	        );*/
 
 	    }
 
@@ -61,6 +61,11 @@ public class ServiciosFactory {
 	    
 	    public static ServiciosFactory getInstance(){
 	        return instance;
+	    }
+	    
+	    public static void main(String a[]) throws ServiciosException {
+	        System.out.println(ServiciosFactory.getInstance().getInitiativeServices().consultarUsuario(1));
+	        System.out.println("sdasda");
 	    }
 
 	}

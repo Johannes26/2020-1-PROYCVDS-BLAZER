@@ -13,10 +13,10 @@ import java.util.List;
 public class MyBatisDAOUsuario implements DaoUsuario {
 
     @Inject
-    private UsuarioMapper usuarioMapper;
+    UsuarioMapper usuarioMapper;
     
     @Override
-	  public Usuario consultarUsuario(int id) throws PersistenceException {
+	 public Usuario consultarUsuario(int id) throws PersistenceException {
 	  try{
 	      return usuarioMapper.consultarUsuario(id);
 	  }
