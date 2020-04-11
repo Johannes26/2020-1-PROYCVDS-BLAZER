@@ -6,7 +6,7 @@ public interface IniciativaServicios {
 
 	public void createUser(Usuario user) throws ServiciosException;
 	
-	public Usuario consultarUsuario(int id) throws ServiciosException;
+	public Usuario consultarUsuario(String email) throws ServiciosException;
 
 	
 }

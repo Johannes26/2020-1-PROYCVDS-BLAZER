@@ -1,5 +1,6 @@
 package edu.eci.cvds.entidades;
 
+
 import java.io.Serializable;
 
 public class Usuario implements Serializable{
@@ -78,12 +79,12 @@ public class Usuario implements Serializable{
 				+ ", telefono=" + telefono + ", tipoUsuario=" + tipoUsuario + "]";
 	}
 
-	public String getContraseña() {
+	public String getContrasena() {
 		return contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contrasena = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	
 }
