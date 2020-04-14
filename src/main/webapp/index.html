@@ -55,15 +55,15 @@
           <img class="mb-4" src="" alt="" width="72" height="72">
           <h1 class="h3 mb-3 font-weight-normal">Por favor, inicie sesion</h1>
           <label for="inputEmail" class="sr-only">Usuario</label>
-          <input type="text" name="nombre" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus value>
+          <input type="text" id="email" class="form-control" placeholder="Usuario" required="true" type="String" binding="#{email}">
           <label for="inputPassword" class="sr-only">Contraseña</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+          <input type="password" id="contrasena" class="form-control" placeholder="Contraseña" required="true" type="String" binding="#{contrasena}">
           <div class="checkbox mb-3">
             <label>
               <input type="checkbox" value="remember-me"> Recordarme
             </label>
           </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+          <button class="btn btn-lg btn-primary btn-block" type="submit" id="boton_login" actionListener="#{PrincipalBean.iniciarSesion(email.value,contrasena.value)}">Ingresar</button>
           <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
         </form>
     
