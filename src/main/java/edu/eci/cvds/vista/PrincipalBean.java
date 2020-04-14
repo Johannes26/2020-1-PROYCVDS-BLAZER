@@ -1,23 +1,23 @@
 package edu.eci.cvds.vista;
 
-
-import java.io.IOException;
-import java.io.Serializable;
-
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.bean.SessionScoped;
 
 import com.google.inject.Inject;
+
+
+import java.io.IOException;
+
 
 import edu.eci.cvds.servicios.IniciativaServicios;
 import edu.eci.cvds.servicios.ServiciosException;
 
 
 @SuppressWarnings("deprecation")
-@ManagedBean(name = "loginBean")
+@ManagedBean(name = "principalBean")
 @SessionScoped
-public abstract class PrincipalBean implements Serializable {
+public class PrincipalBean extends BasePageBean {
 	@Inject
     private IniciativaServicios iniciativaServicios;
 
@@ -25,12 +25,14 @@ public abstract class PrincipalBean implements Serializable {
 	public void iniciarSesion(String email,String contrasena) throws ServiciosException, IOException {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		
-		if(iniciativaServicios.consultarUsuario(email).getContrasena().equals(email)) {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("index.jsp");
+		if(iniciativaServicios.consultarUsuario(email).getContrasena().equals(contrasena)) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+			
 		}else {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
         }
 	}
-		
+	
+
     
 }

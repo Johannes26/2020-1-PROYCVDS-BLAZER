@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      
   <head>
     <style>
       div.iniciarSesion {
@@ -10,11 +15,11 @@
       
     </style>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
   </head>
   <body style="background-color:#AAB7B8;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -44,7 +49,7 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" />
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
       </div>
@@ -52,19 +57,19 @@
     <body class="text-center">
       <div class="iniciarSesion">
         <form class="form-signin">
-          <img class="mb-4" src="" alt="" width="72" height="72">
+          <img class="mb-4" src="" alt="" width="72" height="72" />
           <h1 class="h3 mb-3 font-weight-normal">Por favor, inicie sesion</h1>
           <label for="inputEmail" class="sr-only">Usuario</label>
-          <input type="text" id="email" class="form-control" placeholder="Usuario" required="true" type="String" binding="#{email}">
+          <input id="email" class="form-control" placeholder="Usuario" required="true" type="String" binding="#{email}" />
           <label for="inputPassword" class="sr-only">Contraseña</label>
-          <input type="password" id="contrasena" class="form-control" placeholder="Contraseña" required="true" type="String" binding="#{contrasena}">
+          <input id="contrasena" class="form-control" placeholder="Contraseña" required="true" type="String" binding="#{contrasena}" />
           <div class="checkbox mb-3">
             <label>
-              <input type="checkbox" value="remember-me"> Recordarme
+              <input type="checkbox" value="remember-me" /> Recordarme
             </label>
           </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit" id="boton_login" actionListener="#{PrincipalBean.iniciarSesion(email.value,contrasena.value)}">Ingresar</button>
-          <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+   
         </form>
     
       </div>
