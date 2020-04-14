@@ -1,7 +1,9 @@
 package edu.eci.cvds.vista;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import javax.faces.bean.SessionScoped;
 
 import com.google.inject.Inject;
@@ -22,17 +24,19 @@ public class PrincipalBean extends BasePageBean {
     private IniciativaServicios iniciativaServicios;
 
 	
-	public void iniciarSesion(String email,String contrasena) throws ServiciosException, IOException {
+	public void iniciarSesion(String email,String contrasena) throws IOException, ServiciosException {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		
-		if(iniciativaServicios.consultarUsuario(email).getContrasena().equals(contrasena)) {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-			
-		}else {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-        }
-	}
 	
-
+		if(iniciativaServicios.validarUsuario(email, contrasena)) {
+			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+	           session.setAttribute("correo", email);
+			FacesContext.getCurrentInstance().getExternalContext().redirect("dos.xhtml");
+		}else {
+				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+		}
+		
+		
+		
+	}
     
 }

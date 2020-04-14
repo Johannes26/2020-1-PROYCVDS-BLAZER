@@ -17,12 +17,13 @@ public class Usuario implements Serializable{
 	public Usuario() {
 	}
 	
-	public Usuario(int id, String nombre, String apellido, String email, int telefono, String tipoUsuario) {
+	public Usuario(int id, String nombre, String apellido, String email, int telefono, String tipoUsuario, String contrasena) {
 		this.id=id;
 		this.apellido=apellido;
 		this.email=email;
 		this.telefono=telefono;
 		this.tipoUsuario=tipoUsuario;
+		this.contrasena=contrasena;
 	}
 	
 	public int getId() {

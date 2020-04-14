@@ -12,7 +12,6 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 	@Inject
     private UsuarioMapper usuarioMapper;
 	
- 
 
     public Usuario consultarUsuario(String email) throws PersistenceException{
         try {

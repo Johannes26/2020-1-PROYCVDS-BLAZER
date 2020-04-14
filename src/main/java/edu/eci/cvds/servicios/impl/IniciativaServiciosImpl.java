@@ -1,6 +1,7 @@
 package edu.eci.cvds.servicios.impl;
 
 
+
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -17,6 +18,7 @@ public class IniciativaServiciosImpl implements IniciativaServicios {
 	@Inject
     private UsuarioDAO usuarioDAO;
 
+	@Override
     public Usuario consultarUsuario(String email) throws ServiciosException {
         try {
             return usuarioDAO.consultarUsuario(email);
@@ -25,8 +27,14 @@ public class IniciativaServiciosImpl implements IniciativaServicios {
         }
     }
 
-	@Override
+	/*@Override
 	public void createUser(Usuario user) throws ServiciosException {
 		// TODO Auto-generated method stub
+	}*/
+	
+	@Override
+	public Boolean validarUsuario(String email, String contrasena) throws ServiciosException {
+		Usuario usuario = consultarUsuario(email);
+		 return usuario!=null && usuario.getContrasena().equals(contrasena);
 	}
 }

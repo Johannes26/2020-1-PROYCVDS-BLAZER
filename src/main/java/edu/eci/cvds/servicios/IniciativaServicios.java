@@ -4,9 +4,10 @@ import edu.eci.cvds.entidades.Usuario;
 
 public interface IniciativaServicios {
 
-	public void createUser(Usuario user) throws ServiciosException;
+	//public abstract void createUser(Usuario user) throws ServiciosException;
 	
-	public Usuario consultarUsuario(String email) throws ServiciosException;
-
+	public abstract  Usuario consultarUsuario(String email) throws ServiciosException;
+	
+	public Boolean validarUsuario(String email, String contrasena) throws ServiciosException;
 	
 }

@@ -54,27 +54,28 @@
         </form>
       </div>
     </nav>
-    <body class="text-center">
+    <h:body class="text-center">
       <div class="iniciarSesion">
-        <form class="form-signin">
+        <h:form class="form-signin">
           <img class="mb-4" src="" alt="" width="72" height="72" />
           <h1 class="h3 mb-3 font-weight-normal">Por favor, inicie sesion</h1>
           <label for="inputEmail" class="sr-only">Usuario</label>
-          <input id="email" class="form-control" placeholder="Usuario" required="true" type="String" binding="#{email}" />
+          
+          <p:inputText id="email" class="form-control" required="true" type="String" binding="#{email}" />
+          
           <label for="inputPassword" class="sr-only">Contraseña</label>
-          <input id="contrasena" class="form-control" placeholder="Contraseña" required="true" type="String" binding="#{contrasena}" />
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" /> Recordarme
-            </label>
-          </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit" id="boton_login" actionListener="#{PrincipalBean.iniciarSesion(email.value,contrasena.value)}">Ingresar</button>
+          
+          <p:password id="contrasena" class="form-control" required="true" type="String" binding="#{contrasena}" />
+         
+         
+          <p:commandButton  id="boton_login" actionListener="#{principalBean.iniciarSesion(email.value,contrasena.value)}" value="Ingresar"/>
    
-        </form>
+        </h:form>
     
       </div>
 
-    </body>
+    </h:body>
+    
       
     
 
