@@ -1,17 +1,17 @@
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\persistencia\DaoIniciativa.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\servicios\ServiciosFactory.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\guice\GuiceContextListener.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\persistencia\mybatisimpl\MyBatisDAOIniciativa.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\persistencia\mybatisimpl\mappers\UsuarioMapper.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\vista\BasePageBean.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\persistencia\mybatisimpl\mappers\IniciativaMapper.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\persistencia\PersistenceException.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\persistencia\UsuarioDAO.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\vista\PrincipalBean.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\servicios\impl\IniciativaServiciosImpl.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\servicios\cliente\MyBatisExample.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\persistencia\mybatisimpl\MyBatisUsuarioDAO.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\servicios\IniciativaServicios.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\entidades\Usuario.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\entidades\Iniciativa.java
-C:\Users\johan\Desktop\este si\2020-1-PROYCVDS-BLAZER\src\main\java\edu\eci\cvds\servicios\ServiciosException.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/servicios/IniciativaServicios.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/servicios/ServiciosFactory.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/vista/PrincipalBean.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/entidades/Usuario.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/servicios/cliente/MyBatisExample.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/servicios/ServiciosException.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/UsuarioDAO.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/mappers/UsuarioMapper.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/PersistenceException.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/MyBatisDAOIniciativa.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/MyBatisUsuarioDAO.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/guice/GuiceContextListener.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/DaoIniciativa.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/mappers/IniciativaMapper.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/entidades/Iniciativa.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/servicios/impl/IniciativaServiciosImpl.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/vista/BasePageBean.java

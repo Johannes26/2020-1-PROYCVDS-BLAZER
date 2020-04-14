@@ -2,8 +2,9 @@ package edu.eci.cvds.servicios;
 
 import com.google.inject.Injector;
 
+import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.UsuarioDAO;
-
+import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOIniciativa;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
 
 import edu.eci.cvds.servicios.impl.IniciativaServiciosImpl;
@@ -27,9 +28,9 @@ public class ServiciosFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
+                //bind(DaoIniciativa.class).to(MyBatisDAOIniciativa.class);
                 bind(IniciativaServicios.class).to(IniciativaServiciosImpl.class);
-             
-
+   
             }
         });
     }
@@ -46,7 +47,7 @@ public class ServiciosFactory {
     }
 
 
-    public IniciativaServicios getServiciosBancoProyectosTesting(){
+    public IniciativaServicios getServiciosTesting(){
         if (!optInjector.isPresent()) {
             optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
         }

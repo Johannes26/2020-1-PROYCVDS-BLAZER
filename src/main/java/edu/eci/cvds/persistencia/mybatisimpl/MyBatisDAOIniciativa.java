@@ -20,7 +20,7 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
             Iniciativa iniciativa = IniciativaMapper.consultarIniciativa(num);
             return iniciativa;
         } catch (PersistenceException e){
-            throw new PersistenceException("El usuario no existe");
+            throw new PersistenceException("Error al consultar la iniciativa");
         }
     }
 }

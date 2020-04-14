@@ -69,6 +69,7 @@ public class MyBatisExample {
 
         UsuarioMapper u=sqlss.getMapper(UsuarioMapper.class);
         Usuario usuario = u.consultarUsuario("johann.bogota@mail.escuelaing.edu.co");
+        
         System.out.println(usuario.toString());
         sqlss.commit();
 

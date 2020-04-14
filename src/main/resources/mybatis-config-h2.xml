@@ -5,7 +5,8 @@
 <configuration>
 
     <typeAliases>
-        <typeAlias type='edu.eci.cvds.samples.entities.Usuario' alias='Usuario'/>
+        <typeAlias type='edu.eci.cvds.entidades.Usuario' alias='Usuario'/>
+        <typeAlias type='edu.eci.cvds.entidades.Iniciativa' alias='Iniciativa'/>
     </typeAliases>
 
     <environments default="test">
@@ -22,6 +23,7 @@
 
     <mappers>
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
+        <!--  <mapper resource="mappers/IniciativaMapper.xml"></mapper>-->
     </mappers>
 
 </configuration>

@@ -72,6 +72,7 @@
       <scope>provided</scope>
     </dependency>
     
+    
     <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
     <dependency>
       <groupId>org.hibernate.javax.persistence</groupId>
@@ -89,6 +90,13 @@
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         <version>42.0.0</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+	<dependency>
+		<groupId>org.jacoco</groupId>
+		<artifactId>jacoco-maven-plugin</artifactId>
+		<version>0.8.2</version>
 	</dependency>
 
 	
@@ -197,7 +205,26 @@
 
                 </executions>
             </plugin>
-		
+		 <!-- Jacoco embedded plugin. -->
+		<plugin>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.2</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>prepare-agent</goal>
+					</goals>
+				</execution>
+				<execution>
+					<id>report</id>
+					<phase>prepare-package</phase>
+					<goals>
+						<goal>report</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
    </plugins>
   </build>
 </project>
