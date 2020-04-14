@@ -9,8 +9,8 @@
         select
 	        u.num,
 	        u.descripcion,
-	        u.usuarioProponente,
-	        u.palabrasClave
+	        u.usuarioproponente,
+	        u.palabrasclave
         from INICIATIVA u
         WHERE u.num=#{num};
     </select>
@@ -18,8 +18,8 @@
     <resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='num' column='num'/>
         <result property='descripcion' column='descripcion'/>
-        <result property='usuarioProponente' column='usuarioProponente'/>
-        <result property='palabrasClave' column='palabrasClave'/>
+        <result property='usuarioproponente' column='usuarioproponente'/>
+        <result property='palabrasclave' column='palabrasclave'/>
         
     </resultMap>
 

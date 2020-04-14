@@ -28,7 +28,7 @@ public class ServiciosFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
-                //bind(DaoIniciativa.class).to(MyBatisDAOIniciativa.class);
+                bind(DaoIniciativa.class).to(MyBatisDAOIniciativa.class);
                 bind(IniciativaServicios.class).to(IniciativaServiciosImpl.class);
    
             }

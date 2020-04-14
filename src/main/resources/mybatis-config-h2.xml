@@ -23,7 +23,7 @@
 
     <mappers>
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
-        <!--  <mapper resource="mappers/IniciativaMapper.xml"></mapper>-->
+        <mapper resource="mappers/IniciativaMapper.xml"></mapper>
     </mappers>
 
 </configuration>
