@@ -14,7 +14,7 @@ num int NOT NULL,
 descripcion varchar(20) NOT NULL,
 usuarioproponente int NOT NULL,
 palabrasclave varchar(20) NOT NULL,
-PRIMAREY KEY(num),
+PRIMARY KEY(num),
 FOREIGN KEY (usuarioproponente)
 REFERENCES USUARIO (id) 
 );
