@@ -8,5 +8,7 @@ import edu.eci.cvds.entidades.Iniciativa;
 public interface IniciativaMapper {
 
 	public Iniciativa consultarIniciativa(@Param("num") int identificador);
+	
+	public void registrarIniciativa(@Param("iniciativa") Iniciativa texto);
 
 }

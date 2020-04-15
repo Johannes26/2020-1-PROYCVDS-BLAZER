@@ -23,4 +23,14 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
             throw new PersistenceException("Error al consultar la iniciativa");
         }
     }
+    
+    public void registrarIniciativa(Iniciativa texto) throws PersistenceException{
+    	try {
+    		IniciativaMapper.registrarIniciativa(texto);
+        } catch (PersistenceException e){
+            throw new PersistenceException("Error al registrar la iniciativa");
+        }
+    }
+
+
 }
