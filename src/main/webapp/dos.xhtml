@@ -1,16 +1,88 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
- "http://www.w3.org/TR/html4/strict.dtd">
-
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+      
   <head>
-    <title>Título del documento</title>
+    <style>
+      div.iniciarSesion {
+        width:600px;
+        margin: auto;
+      }
+
+      
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
   </head>
-  <body>
-    <h1>Cabecera de documento</h1> <!-- Título de sección -->
-    <p id="inicial">Un párrafo en el documento.</p>
+  <body background="fondo.jpg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">BlazerApp</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pagina escuela</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opciones
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Opcion1</a>
+              <a class="dropdown-item" href="#">Opcion2</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Salir</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <p:outputLabel class="navbar-brand" value="#{principalBean.getNombre()}"></p:outputLabel>
+        </form>
+      </div>
+    </nav>
+    <h:body class="text-center" background="fondo.jpg">
+      <h1 class="font-italic" style="color: white;">Usuarios</h1>
+        <table id="usersTable" class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Rol</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ui:repeat var="user" value="#{principalBean.consultarUsuarios()}">
+            <tr>
+              <td>#{user.id}</td>
+              <td>#{user.nombre}</td>
+              <td>#{user.apellido}</td>
+              <td>#{user.tipoUsuario}</td>
+            </tr>
+            </ui:repeat>
+          </tbody>
+        </table>
+    </h:body>
+    
+      
+    
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
