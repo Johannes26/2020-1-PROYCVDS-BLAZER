@@ -12,7 +12,7 @@ import com.google.inject.Inject;
 import java.io.IOException;
 
 
-import edu.eci.cvds.servicios.IniciativaServicios;
+import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
 import edu.eci.cvds.entidades.Usuario;
 
@@ -24,17 +24,17 @@ import java.util.List;
 public class PrincipalBean extends BasePageBean {
 
 	@Inject
-    private IniciativaServicios iniciativaServicios;
+    private Servicios servicios;
     private String nombre;
 
 	
 	public void iniciarSesion(String email,String contrasena) throws IOException, ServiciosException {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 	
-		if(iniciativaServicios.validarUsuario(email, contrasena)) {
+		if(servicios.validarUsuario(email, contrasena)) {
 			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 	           session.setAttribute("correo", email);
-	           nombre = iniciativaServicios.consultarUsuario(email).getNombre();
+	           nombre = servicios.consultarUsuario(email).getNombre();
 			FacesContext.getCurrentInstance().getExternalContext().redirect("dos.xhtml");
 		}else {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
@@ -49,6 +49,10 @@ public class PrincipalBean extends BasePageBean {
     }
 
     public List <Usuario> consultarUsuarios() throws ServiciosException{
-    	return iniciativaServicios.consultarUsuarios();
+    	return servicios.consultarUsuarios();
+    }
+    
+    public void cambiarRol(int id, String rol) throws ServiciosException{
+    	servicios.cambiarRol(id, rol);
     }
 }

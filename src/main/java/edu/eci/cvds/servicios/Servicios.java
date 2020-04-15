@@ -6,7 +6,7 @@ import java.util.List;
 
 import edu.eci.cvds.entidades.Iniciativa;
 
-public interface IniciativaServicios {
+public interface Servicios {
 
 	//public abstract void createUser(Usuario user) throws ServiciosException;
 	
@@ -19,5 +19,7 @@ public interface IniciativaServicios {
 	public abstract Boolean validarUsuario(String email, String contrasena) throws ServiciosException;
 	
 	public abstract List<Usuario> consultarUsuarios() throws ServiciosException;
+	
+	public abstract void cambiarRol(int id, String rol) throws ServiciosException;
 	
 }

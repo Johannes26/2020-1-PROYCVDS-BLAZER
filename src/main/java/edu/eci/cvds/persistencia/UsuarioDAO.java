@@ -18,4 +18,7 @@ public interface UsuarioDAO {
     public Usuario consultarUsuario(String email) throws PersistenceException;
     
     public List<Usuario> consultarUsuarios() throws PersistenceException;
+    
+    public void cambiarRol(int id, String rol) throws PersistenceException;
+    
 }	

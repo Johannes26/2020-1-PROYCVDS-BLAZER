@@ -13,4 +13,6 @@ public interface UsuarioMapper {
     public Usuario consultarUsuario(@Param("email") String correo);
     
     public List<Usuario> consultarUsuarios();
+    
+    public void cambiarRol(@Param("id") int id,@Param("rol") String rol);
 }

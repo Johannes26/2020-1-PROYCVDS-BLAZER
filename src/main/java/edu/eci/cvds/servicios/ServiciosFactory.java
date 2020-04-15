@@ -7,7 +7,8 @@ import edu.eci.cvds.persistencia.UsuarioDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOIniciativa;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
 
-import edu.eci.cvds.servicios.impl.IniciativaServiciosImpl;
+
+import edu.eci.cvds.servicios.impl.ServiciosImpl;
 
 import org.mybatis.guice.XMLMyBatisModule;
 
@@ -29,7 +30,7 @@ public class ServiciosFactory {
                 setClassPathResource(pathResource);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(DaoIniciativa.class).to(MyBatisDAOIniciativa.class);
-                bind(IniciativaServicios.class).to(IniciativaServiciosImpl.class);
+                bind(Servicios.class).to(ServiciosImpl.class);
    
             }
         });
@@ -38,21 +39,21 @@ public class ServiciosFactory {
         optInjector = Optional.empty();
     }
 
-    public IniciativaServicios getServiciosBancoProyectos(){
+    public Servicios getServicios(){
         if (!optInjector.isPresent()) {
             optInjector = Optional.of(myBatisInjector("development","mybatis-config.xml"));
         }
 
-        return optInjector.get().getInstance(IniciativaServicios.class);
+        return optInjector.get().getInstance(Servicios.class);
     }
 
 
-    public IniciativaServicios getServiciosTesting(){
+    public Servicios getServiciosTesting(){
         if (!optInjector.isPresent()) {
             optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
         }
 
-        return optInjector.get().getInstance(IniciativaServicios.class);
+        return optInjector.get().getInstance(Servicios.class);
     }
 
 

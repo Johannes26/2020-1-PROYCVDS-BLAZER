@@ -10,8 +10,8 @@ import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
 import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOIniciativa;
 
-import edu.eci.cvds.servicios.IniciativaServicios;
-import edu.eci.cvds.servicios.impl.IniciativaServiciosImpl;
+import edu.eci.cvds.servicios.Servicios;
+import edu.eci.cvds.servicios.impl.ServiciosImpl;
 import edu.eci.cvds.vista.*;
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
@@ -37,7 +37,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(DaoIniciativa.class).to(MyBatisDAOIniciativa.class);
                 bind(BasePageBean.class).to(PrincipalBean.class);
-                bind(IniciativaServicios.class).to(IniciativaServiciosImpl.class);
+                bind(Servicios.class).to(ServiciosImpl.class);
 
             }
         });

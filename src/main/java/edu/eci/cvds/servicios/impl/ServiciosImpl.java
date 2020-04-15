@@ -7,7 +7,7 @@ import java.util.List;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import edu.eci.cvds.servicios.IniciativaServicios;
+import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
 import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.Usuario;
@@ -17,7 +17,7 @@ import edu.eci.cvds.persistencia.PersistenceException;
 
 
 @Singleton
-public class IniciativaServiciosImpl implements IniciativaServicios {
+public class ServiciosImpl implements Servicios {
 
 	@Inject
     private UsuarioDAO usuarioDAO;
@@ -67,6 +67,15 @@ public class IniciativaServiciosImpl implements IniciativaServicios {
             return usuarioDAO.consultarUsuarios();
         } catch (PersistenceException e){
             throw new ServiciosException("Error al consultar usuarios");
+        }
+	}
+	
+	@Override
+	public void cambiarRol(int id, String rol) throws ServiciosException {
+		try {
+            usuarioDAO.cambiarRol(id, rol);
+        } catch (PersistenceException e){
+            throw new ServiciosException("Error al cambiar el rol de usuario");
         }
 	}
 }

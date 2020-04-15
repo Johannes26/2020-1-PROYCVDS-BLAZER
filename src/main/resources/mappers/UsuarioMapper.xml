@@ -26,6 +26,12 @@
 	        u.tipoUsuario
         from USUARIO u
     </select>
+    
+    <update id="cambiarRol" parameterType="map">
+    	update USUARIO
+    	set tipoUsuario= #{rol}
+    	where id=#{id};
+    </update>
 
     <resultMap type='Usuario' id='UsuarioResult'>
         <id property='id' column='id'/>

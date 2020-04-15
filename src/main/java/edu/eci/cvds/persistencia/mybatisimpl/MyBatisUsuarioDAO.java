@@ -31,4 +31,12 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
             throw new PersistenceException("No se pudo consultar los usuarios");
         }
     }
+    
+    public void cambiarRol(int id, String rol) throws PersistenceException{
+    	try {
+    		usuarioMapper.cambiarRol(id, rol);
+    	}catch(PersistenceException e) {
+            throw new PersistenceException("No se pudo actualizar el rol");
+    	}
+    }
 }
