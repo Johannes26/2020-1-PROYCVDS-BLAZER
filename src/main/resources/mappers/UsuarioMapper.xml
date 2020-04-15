@@ -17,6 +17,15 @@
         from USUARIO u
         WHERE u.email=#{email};
     </select>
+    
+   <select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
+        select
+	        u.id,
+	        u.nombre,
+	        u.apellido,
+	        u.tipoUsuario
+        from USUARIO u
+    </select>
 
     <resultMap type='Usuario' id='UsuarioResult'>
         <id property='id' column='id'/>

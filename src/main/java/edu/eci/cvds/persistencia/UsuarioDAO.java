@@ -1,5 +1,7 @@
 package edu.eci.cvds.persistencia;
 
+import java.util.List;
+
 import edu.eci.cvds.entidades.Usuario;
 
 
@@ -8,11 +10,12 @@ public interface UsuarioDAO {
 	
 	
 	/**
-	 * Valida si la contraseña y el usuario coinciden
+	 * Valida si la contraseï¿½a y el usuario coinciden
 	 * @param email email de un ususario
-	 * @param contrasena contraseña del ususario
+	 * @param contrasena contraseï¿½a del ususario
 	 * @return boleeano que indica si el usuario esta registrado
 	 */
     public Usuario consultarUsuario(String email) throws PersistenceException;
     
+    public List<Usuario> consultarUsuarios() throws PersistenceException;
 }	

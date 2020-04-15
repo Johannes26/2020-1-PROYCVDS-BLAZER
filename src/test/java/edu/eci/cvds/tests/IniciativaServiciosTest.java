@@ -4,7 +4,12 @@ package edu.eci.cvds.tests;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
+
+import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.servicios.*;
 import org.junit.Test;
 import com.google.inject.Inject;
@@ -25,20 +30,26 @@ public class IniciativaServiciosTest {
     }
 
     @Test
-
     public void deberiaIniciarSesion() {
-
     	try {
     		Boolean a=iniciativaServicios.validarUsuario("johann.bogota@mail.escuelaing.edu.co", "1234");
     		assertTrue(a);
 
-    	}catch(Exception e) {
-
-    		System.out.println(e.getMessage());
-    		fail();
-
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
     	}
-
     }
+    
+    @Test
+    public void deberiaConsultarUsuarios() {
+    	try {
+    		List<Usuario> a= iniciativaServicios.consultarUsuarios();
+    		assertTrue(a.size()==2);
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
+    
+    
 
 }

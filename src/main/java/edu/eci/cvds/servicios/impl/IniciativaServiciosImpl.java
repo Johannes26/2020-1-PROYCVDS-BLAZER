@@ -2,6 +2,8 @@ package edu.eci.cvds.servicios.impl;
 
 
 
+import java.util.List;
+
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -56,6 +58,15 @@ public class IniciativaServiciosImpl implements IniciativaServicios {
             iniciativaDAO.registrarIniciativa(i);
         } catch (PersistenceException e){
             throw new ServiciosException("La iniciativa no existe");
+        }
+	}
+	
+	@Override
+	public List<Usuario> consultarUsuarios() throws ServiciosException {
+		try {
+            return usuarioDAO.consultarUsuarios();
+        } catch (PersistenceException e){
+            throw new ServiciosException("Error al consultar usuarios");
         }
 	}
 }

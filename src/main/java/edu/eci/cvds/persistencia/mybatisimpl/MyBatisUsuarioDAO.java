@@ -6,6 +6,8 @@ import edu.eci.cvds.entidades.Usuario;
 
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper;
 
+import java.util.List;
+
 import javax.persistence.PersistenceException;
 
 public class MyBatisUsuarioDAO implements UsuarioDAO {
@@ -19,6 +21,14 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
             return usuario;
         } catch (PersistenceException e){
             throw new PersistenceException("El usuario no existe");
+        }
+    }
+    
+    public List<Usuario> consultarUsuarios() throws PersistenceException{
+    	try {
+    		return usuarioMapper.consultarUsuarios();
+    	}catch (PersistenceException e){
+            throw new PersistenceException("No se pudo consultar los usuarios");
         }
     }
 }
