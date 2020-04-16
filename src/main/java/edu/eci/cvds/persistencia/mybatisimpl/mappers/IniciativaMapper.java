@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.entidades.Iniciativa;
-import edu.eci.cvds.entidades.Usuario;
+
 
 
 public interface IniciativaMapper {
