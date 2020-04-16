@@ -51,7 +51,7 @@ public class IniciativaServiciosTest {
     	}
     }
 
-    @Test
+    /*@Test
     public void deberiaConsultarIniciativas() {
         try {
             List<Iniciativa> a= servicios.consultarIniciativas();
@@ -59,7 +59,7 @@ public class IniciativaServiciosTest {
         }catch(ServiciosException e) {
             fail("error"+e.getMessage());
         }
-    }
+    }*/
     
     @Test
     public void deberiaCambiarRolUsuario() {
