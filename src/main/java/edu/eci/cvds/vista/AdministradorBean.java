@@ -3,6 +3,7 @@ package edu.eci.cvds.vista;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.google.inject.Inject;
 
@@ -11,9 +12,11 @@ import com.google.inject.Inject;
 
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
+import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.Usuario;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
@@ -25,26 +28,57 @@ public class AdministradorBean extends BasePageBean {
     private Servicios servicios;
 	private Usuario usuariobuscado = null;
 	private String rolNuevo;
+	private Iniciativa iniciativabuscada;
+	private String estadoNuevo;
 	
 	public List <Usuario> consultarUsuarios() throws ServiciosException{
     	return servicios.consultarUsuarios();
     }
 
-    public void cambiarRol(int id, String rol) throws ServiciosException{
+    public void cambiarRol(int id, String rol) throws ServiciosException, IOException{
     	servicios.cambiarRol(id, rol);
     	usuariobuscado = null;
     	rolNuevo = "";
+    	FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador.xhtml");
     }
 
     
-	public Usuario consultarUsuario(String email){
+	public void consultarUsuario(String email){
 		try{
 			usuariobuscado = servicios.consultarUsuario(email);
+			
 		}catch(ServiciosException e){
 			usuariobuscado = null;
 		}
-		return usuariobuscado;
 	}
+	
+	public void cambiarEstadoIniciativa(int num, String estado) throws IOException {
+		try {
+			servicios.cambiarEstadoIniciativa(num, estado);
+			iniciativabuscada=null;
+			setEstadoNuevo("");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("CambiarIniciativa.xhtml");
+		}catch(ServiciosException e) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("CambiarIniciativa.xhtml");
+		}
+	}
+	
+	public List<Iniciativa> consultarIniciativas() throws IOException {
+		try {
+			return servicios.consultarIniciativas();
+		}catch(ServiciosException e) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador.xhtml");
+			return null;
+		}
+	}
+	
+	public void consultarIniciativa(int num){
+		try{
+			iniciativabuscada = servicios.consultarIniciativa(num);
+		}catch(ServiciosException e){
+			iniciativabuscada = null;
+		}
+	} 
 
 	
 	public Usuario getusuariobuscado() {
@@ -55,6 +89,14 @@ public class AdministradorBean extends BasePageBean {
 		this.usuariobuscado=usuariobuscado;
 	}
 	
+	public Iniciativa getiniciativabuscada() {
+		return iniciativabuscada;
+	}
+	
+	public void setiniciativabuscada(Iniciativa iniciativabuscada) {
+		this.iniciativabuscada=iniciativabuscada;
+	}
+	
 	
 	public String getrolNuevo() {
 		return rolNuevo;
@@ -62,6 +104,14 @@ public class AdministradorBean extends BasePageBean {
 	
 	public void setrolNuevo(String rolNuevo) {
 		this.rolNuevo = rolNuevo;
+	}
+
+	public String getEstadoNuevo() {
+		return estadoNuevo;
+	}
+
+	public void setEstadoNuevo(String estadoNuevo) {
+		this.estadoNuevo = estadoNuevo;
 	}
 	
 }

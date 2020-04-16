@@ -81,27 +81,27 @@
              </table>
 
 
-    <p:panel class="text-center" id="panelRol" header="Cambiar Rol Usuario" style="margin-bottom:20px">
-        <h:outputLabel placeholder="Correo Electronico" value="Buscar:"/>
-        <p:inputText required="true" type="String" binding="#{email}" />
+    <p:panel class="text-center" id="panelRol" header="Cambiar Rol Usuario" style="background-color: #464646;">
+        <h:outputLabel style="color:#FFFFFF" placeholder="Correo Electronico" value="Buscar:"/>
+        <p:inputText type="String" binding="#{email}" />
 
-        <h:panelGrid  class="text-center" columns="4" layout="flex" rendered="#{adminiBean.usuariobuscado!=null}" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" contentStyleClass="p-align-baseline ui-fluid">
-            <h:outputLabel for="@next"  value="Id:"/>
+        <h:panelGrid  style="color:#FFFFFF" class="text-center" columns="4" layout="flex" rendered="#{adminiBean.usuariobuscado!=null}" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" contentStyleClass="p-align-baseline ui-fluid">
+            <h:outputLabel style="color:#2A1313" for="@next"  value="Id:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.id}"/>
 
-            <h:outputLabel for="@next" value="Nombre:"/>
+            <h:outputLabel style="color:#2A1313" for="@next" value="Nombre:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.nombre}" />
 
-            <h:outputLabel for="@next" value="Apellido:"/>
+            <h:outputLabel style="color:#2A1313" for="@next" value="Apellido:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.apellido}" />
 
-            <h:outputLabel for="@next" value="Email:"/>
+            <h:outputLabel style="color:#2A1313" for="@next" value="Email:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.email}" />
 
-            <h:outputLabel for="@next" value="Telefono:"/>
+            <h:outputLabel style="color:#2A1313" for="@next" value="Telefono:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.telefono}"/>
 
-            <h:outputLabel for="@next" value="Tipo de Usuario:"/>
+            <h:outputLabel style="color:#2A1313" for="@next" value="Tipo de Usuario:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.tipoUsuario}" />
 
         </h:panelGrid>
@@ -110,17 +110,13 @@
             <p:autoUpdate />
         </p:messages>
         <h:panelGrid rendered="#{adminiBean.usuariobuscado!=null}" columns="2" style="margin-top:2%" cellpadding="5">
-            <p:outputLabel for="@next" value="Roles a asignar:" style="font-family: Quicksand;font-size: 20px;" />
-            <p:selectOneMenu id="console" value="#{adminiBean.rolNuevo}" style="width:125px">
+            <p:outputLabel style="color:#2A1313" for="@next" value="Roles a asignar:"  />
+            <p:selectOneMenu id="roles" value="#{adminiBean.rolNuevo}" style="width:125px">
                 <f:selectItem itemLabel="" itemValue="" />
                 <f:selectItem itemLabel="Administrador" itemValue="Administrador" />
                 <f:selectItem itemLabel="Proponente" itemValue="Proponente" />
                 <f:selectItem itemLabel="PMO" itemValue="PMO" />
                 <f:selectItem itemLabel="Publico" itemValue="Publico" />
-                <f:facet name="footer">
-                    <p:separator />
-                    <h:outputText value="3 consoles" style="font-weight:bold;"/>
-                </f:facet>
             </p:selectOneMenu>
         </h:panelGrid>
 
@@ -129,6 +125,8 @@
         <p:commandButton value="Cambiar" update="AdmiVista" rendered="#{adminiBean.usuariobuscado!=null}" actionListener="#{adminiBean.cambiarRol(adminiBean.usuariobuscado.id,adminiBean.rolNuevo)}" />
     </p:panel>
     <p:commandButton value="Buscar" update="panelRol" actionListener="#{adminiBean.consultarUsuario(email.value)}" />
+
+    <p:commandButton id="iniciativas" value="Consultar Iniciativas" action="CambiarIniciativa.xhtml?faces-redirect=true"/>
     </h:form>
       <br></br>
       <br></br><br></br>

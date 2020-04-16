@@ -4,15 +4,15 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-      
-  <head>
+
+  <h:head>
     <style>
       div.iniciarSesion {
         width:600px;
         margin: auto;
       }
 
-      
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -20,7 +20,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-  </head>
+  </h:head>
   <body background="fondo.jpg">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">BlazerApp</a>
@@ -53,31 +53,53 @@
         </form>
       </div>
     </nav>
-    <h:body class="text-center" background="fondo.jpg">
+    <h:form class="text-center">
       <h1 class="font-italic" style="color: white;">Iniciativas</h1>
         <table id="usersTable" class="table table-striped table-dark">
           <thead>
             <tr>
               <th>Id</th>
               <th>Descripcion</th>
-              <th>Proponente</th>
+              <th>Fecha Registro</th>
+              <th>Estado</th>
             </tr>
           </thead>
           <tbody>
-            <ui:repeat var="ini" value="#{principalBean.consultarIniciativas()}">
+            <ui:repeat var="ini" value="#{adminiBean.consultarIniciativas()}">
             <tr>
+              <td>#{ini.num}</td>
+              <td>#{ini.descripcion}</td>
+              <td>#{ini.fechaRegistro}</td>
+              <td>#{ini.estado}</td>
             </tr>
             </ui:repeat>
           </tbody>
         </table>
-    </h:body>
-    
-      
-    
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+
+
+    <p:panel class="text-center" id="panelEstado" header="Actualizar Estado" style="background-color: #464646;">
+              <h:outputLabel style="color:#FFFFFF" placeholder="Numero" value="Id Iniciativa:"/>
+              <p:inputText required="true" type="int" binding="#{num}" />
+              <p:messages>
+                  <p:autoUpdate />
+              </p:messages>
+              <h:panelGrid rendered="#{adminiBean.iniciativabuscada!=null}" columns="2" style="margin-top:2%" cellpadding="5">
+                  <p:outputLabel style="color:#2A1313" for="@next" value="Estado a asignar:"  />
+                  <p:selectOneMenu id="estados" value="#{adminiBean.estadoNuevo}" style="width:125px">
+                      <f:selectItem itemLabel="" itemValue="" />
+                      <f:selectItem itemLabel="En espera de revisión" itemValue="En espera de revisión" />
+                      <f:selectItem itemLabel="En revisión" itemValue="En revisión" />
+                      <f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
+                      <f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
+                  </p:selectOneMenu>
+              </h:panelGrid>
+              <p:commandButton value="Cambiar" rendered="#{adminiBean.iniciativabuscada!=null}" actionListener="#{adminiBean.cambiarEstadoIniciativa(num.value,adminiBean.estadoNuevo)}" />
+    </p:panel>
+    <p:commandButton value="Buscar" update="panelEstado" actionListener="#{adminiBean.consultarIniciativa(num.value)}" />
+
+</h:form>
+
   </body>
 </html>

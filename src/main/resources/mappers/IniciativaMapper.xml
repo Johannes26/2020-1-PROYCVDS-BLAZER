@@ -9,7 +9,6 @@
         select
 	        i.num,
 	        i.descripcion,
-	        i.usuarioproponente,
 	        i.palabrasclave,
 	        i.fechaRegistro,
 	        i.estado,
@@ -30,12 +29,11 @@
         select
             i.num,
 	        i.descripcion,
-	        i.usuarioproponente,
 	        i.palabrasclave,
 	        i.fechaRegistro,
 	        i.estado,
 	        i.areaProponente,
-            u.id,
+          u.id,
 	        u.nombre,
 	        u.apellido,
 	        u.email,
@@ -45,16 +43,16 @@
         from INICIATIVA i, USUARIO u
         WHERE  i.usuarioproponente=u.id;
     </select>
-    
+
     <insert id="insertarIniciativa" parameterType="map">
         INSERT INTO INICIATIVA (num , descripcion , usuarioproponente , palabrasclave, fechaRegistro, estado, areaProponente) VALUES ( #{iniciativa.num}, #{iniciativa.descripcion} , #{iniciativa.usuarioproponente} , #{iniciativa.palabrasclave}, #{iniciativa.fechaRegistro}, #{iniciativa.estado}, #{iniciativa.areaProponente});
     </insert>
 
-    
+
     <update id="cambiarEstadoIniciativa" parameterType="map">
     	UPDATE INICIATIVA
         SET estado = #{estado}
-        WHERE num =  #{INICIATIVA.num};
+        WHERE num =  #{num};
     </update>
 
     <resultMap type='Iniciativa' id='IniciativaResult'>

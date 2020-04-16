@@ -46,12 +46,13 @@ public class PrincipalBean extends BasePageBean {
 				session.setAttribute("name", usuario.getNombre());
 				session.setAttribute("type", usuario.getTipoUsuario());
 		        
-				FacesContext.getCurrentInstance().getExternalContext().redirect("dos.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador.xhtml");
 			}else {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 			}
 			
 		}catch(ServiciosException e) {
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuario o clave invalido","Error"));
 			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 		}
 	}

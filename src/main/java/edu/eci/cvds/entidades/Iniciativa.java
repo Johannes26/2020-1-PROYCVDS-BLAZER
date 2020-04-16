@@ -13,22 +13,22 @@ public class Iniciativa implements Serializable {
 	private Date fechaRegistro;
 	private String estado;
 	private String areaProponente;
-	
-		
+
+
 	public Iniciativa() {
 	}
-	
-	public Iniciativa(int num, String descripcion, Usuario usuarioProponente,String palabrasClave,Date fechaRegistro,String estado,String areaProponente) {
+
+	public Iniciativa(int num, String descripcion, Usuario usuarioproponente,String palabrasClave,Date fechaRegistro,String estado,String areaProponente) {
 		this.num=num;
 		this.descripcion=descripcion;
-		this.usuarioproponente=usuarioProponente;
+		this.usuarioproponente=usuarioproponente;
 		this.palabrasclave=palabrasClave;
 		this.fechaRegistro=fechaRegistro;
 		this.estado=estado;
 		this.areaProponente=areaProponente;
 	}
-	
-	
+
+
 	public int getNum() {
 		return num;
 	}
@@ -61,7 +61,7 @@ public class Iniciativa implements Serializable {
 	public void setPalabrasClave(String palabrasClave) {
 		this.palabrasclave = palabrasClave;
 	}
-	
+
 	public Date getfechaRegistro() {
 		return fechaRegistro;
 	}
@@ -69,7 +69,7 @@ public class Iniciativa implements Serializable {
 	public void setfechaRegistro(Date fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
-	
+
 	public String getestado() {
 		return estado;
 	}
@@ -77,7 +77,7 @@ public class Iniciativa implements Serializable {
 	public void setestado(String estado) {
 		this.estado = estado;
 	}
-	
+
 	public String getareaProponente() {
 		return areaProponente;
 	}
@@ -85,7 +85,7 @@ public class Iniciativa implements Serializable {
 	public void setareaProponente(String areaProponente) {
 		this.areaProponente = areaProponente;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Iniciativa [num=" + num + ", descripcion=" + descripcion + ", usuarioProponente=" + usuarioproponente
