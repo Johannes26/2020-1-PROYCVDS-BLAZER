@@ -2,9 +2,13 @@ package edu.eci.cvds.vista;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import javax.faces.bean.SessionScoped;
+
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
+
 
 import com.google.inject.Inject;
 
@@ -25,34 +29,43 @@ public class PrincipalBean extends BasePageBean {
 
 	@Inject
     private Servicios servicios;
-    private String nombre;
+    private Usuario usuario;
 
-	
-	public void iniciarSesion(String email,String contrasena) throws IOException, ServiciosException {
+
+	public void iniciarSesion(String email,String contrasena) throws IOException {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-	
-		if(servicios.validarUsuario(email, contrasena)) {
-			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
-	           session.setAttribute("correo", email);
-	           nombre = servicios.consultarUsuario(email).getNombre();
-			FacesContext.getCurrentInstance().getExternalContext().redirect("dos.xhtml");
-		}else {
+		
+		try {
+			
+			if(servicios.validarUsuario(email, contrasena)) {
+				usuario = servicios.consultarUsuario(email);
+				
+				HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+				session.setAttribute("id", usuario.getId());
+				session.setAttribute("name", usuario.getNombre());
+				session.setAttribute("type", usuario.getTipoUsuario());
+		        
+				FacesContext.getCurrentInstance().getExternalContext().redirect("dos.xhtml");
+			}else {
 				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+			}
+			
+		}catch(ServiciosException e) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
 		}
-		
-		
-		
 	}
-    
-    public String getNombre(){
-    	return nombre;
+	
+	public void logOut() throws IOException{
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+		session.removeAttribute("id");
+		facesContext.getExternalContext().redirect("index.xhtml");
+	}
+
+	
+    public String getNombre() {
+    	return usuario.getNombre();
     }
 
-    public List <Usuario> consultarUsuarios() throws ServiciosException{
-    	return servicios.consultarUsuarios();
-    }
-    
-    public void cambiarRol(int id, String rol) throws ServiciosException{
-    	servicios.cambiarRol(id, rol);
-    }
+
 }

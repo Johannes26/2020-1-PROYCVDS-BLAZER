@@ -9,6 +9,8 @@ import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
 
 
 import edu.eci.cvds.servicios.impl.ServiciosImpl;
+import edu.eci.cvds.vista.AdministradorBean;
+import edu.eci.cvds.vista.BasePageBean;
 
 import org.mybatis.guice.XMLMyBatisModule;
 
@@ -31,6 +33,7 @@ public class ServiciosFactory {
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(DaoIniciativa.class).to(MyBatisDAOIniciativa.class);
                 bind(Servicios.class).to(ServiciosImpl.class);
+                bind(BasePageBean.class).to(AdministradorBean.class);
    
             }
         });

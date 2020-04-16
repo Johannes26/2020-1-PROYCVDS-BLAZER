@@ -14,7 +14,7 @@ public interface Servicios {
 	
 	public abstract Iniciativa consultarIniciativa(int num) throws ServiciosException;
 	
-	public abstract void registrarInisiativa(Iniciativa i) throws ServiciosException;
+	public abstract void registrarIniciativa(Iniciativa i) throws ServiciosException;
 	
 	public abstract Boolean validarUsuario(String email, String contrasena) throws ServiciosException;
 	

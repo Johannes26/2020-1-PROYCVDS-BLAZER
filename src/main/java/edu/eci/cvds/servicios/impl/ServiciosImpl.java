@@ -53,7 +53,7 @@ public class ServiciosImpl implements Servicios {
 	}
 
 	@Override
-	public void registrarInisiativa(Iniciativa i) throws ServiciosException {
+	public void registrarIniciativa(Iniciativa i) throws ServiciosException {
 		try {
             iniciativaDAO.registrarIniciativa(i);
         } catch (PersistenceException e){
