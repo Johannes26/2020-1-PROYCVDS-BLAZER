@@ -22,3 +22,5 @@ REFERENCES USUARIO (id)
 
 insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2158130,'Johann','Bogota','johann.bogota@mail.escuelaing.edu.co',123444,'administrador','1234');
 insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2157826,'Johan','Guerrero','johan.Guerrero@mail.escuelaing.edu.co',314021111,'usuario de consulta','0000');
+
+insert into INICIATIVA (num,descripcion,usuarioproponente,palabrasclave) values (0001,'descripcion iniciati',2157826,'palabras clave ini')	

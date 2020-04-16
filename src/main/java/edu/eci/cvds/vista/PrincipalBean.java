@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
+import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.Usuario;
 
 import java.util.List;
@@ -52,6 +53,9 @@ public class PrincipalBean extends BasePageBean {
     	return servicios.consultarUsuarios();
     }
     
+    public List <Iniciativa> consultarIniciativas() throws ServiciosException{
+    	return servicios.consultarIniciativas();
+    }
     public void cambiarRol(int id, String rol) throws ServiciosException{
     	servicios.cambiarRol(id, rol);
     }

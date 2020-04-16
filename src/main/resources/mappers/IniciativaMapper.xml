@@ -14,6 +14,14 @@
         from INICIATIVA u
         WHERE u.num=#{num};
     </select>
+
+    <select parameterType="map" id="consultarIniciativas" resultMap="IniciativaResult">
+        select
+            u.num,
+            u.descripcion,
+            u.usuarioproponente,
+        from INICIATIVA u
+    </select>
     
     <insert id="insertarIniciativa" parameterType="map">
         INSERT INTO iniciativa (num , descripcion , usuarioproponente , palabrasclave) VALUES ( #{iniciativa.num}, #{iniciativa.descripcion} , #{iniciativa.usuarioproponente} , #{iniciativa.palabrasclave});
