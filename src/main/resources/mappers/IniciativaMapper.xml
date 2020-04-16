@@ -12,7 +12,8 @@
 	        u.usuarioproponente,
 	        u.palabrasclave,
 	        u.fechaRegistro,
-	        u.estado
+	        u.estado,
+	        u.areaProponente
         from INICIATIVA u
         WHERE u.num=#{num};
     </select>
@@ -26,7 +27,7 @@
     </select>
     
     <insert id="insertarIniciativa" parameterType="map">
-        INSERT INTO iniciativa (num , descripcion , usuarioproponente , palabrasclave, fechaRegistro, estado) VALUES ( #{iniciativa.num}, #{iniciativa.descripcion} , #{iniciativa.usuarioproponente} , #{iniciativa.palabrasclave}, #{iniciativa.fechaRegistro}, #{iniciativa.estado});
+        INSERT INTO iniciativa (num , descripcion , usuarioproponente , palabrasclave, fechaRegistro, estado, areaProponente) VALUES ( #{iniciativa.num}, #{iniciativa.descripcion} , #{iniciativa.usuarioproponente} , #{iniciativa.palabrasclave}, #{iniciativa.fechaRegistro}, #{iniciativa.estado}, #{iniciativa.areaProponente});
     </insert>
 
     <resultMap type='Iniciativa' id='IniciativaResult'>
@@ -36,6 +37,7 @@
         <result property='palabrasclave' column='palabrasclave'/>
         <result property='fechaRegistro' column='fechaRegistro'/>
         <result property='estado' column='estado'/>
+        <result property='areaProponente' column='areaProponente'/>
         
     </resultMap>
 
