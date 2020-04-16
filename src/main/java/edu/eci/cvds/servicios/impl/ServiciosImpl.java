@@ -88,4 +88,13 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error al cambiar el rol de usuario");
         }
 	}
+	
+	@Override
+	public void cambiarEstadoIniciativa(int num, String estado) throws ServiciosException {
+		try {
+			iniciativaDAO.cambiarEstadoIniciativa(num, estado);
+        } catch (PersistenceException e){
+            throw new ServiciosException("Error al cambiar el estado de la iniciativa");
+        }
+	}
 }

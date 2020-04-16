@@ -47,9 +47,18 @@
     </select>
     
     <insert id="insertarIniciativa" parameterType="map">
-        INSERT INTO iniciativa (num , descripcion , usuarioproponente , palabrasclave, fechaRegistro, estado, areaProponente) VALUES ( #{iniciativa.num}, #{iniciativa.descripcion} , #{iniciativa.usuarioproponente} , #{iniciativa.palabrasclave}, #{iniciativa.fechaRegistro}, #{iniciativa.estado}, #{iniciativa.areaProponente});
+        INSERT INTO INICIATIVA (num , descripcion , usuarioproponente , palabrasclave, fechaRegistro, estado, areaProponente) VALUES ( #{iniciativa.num}, #{iniciativa.descripcion} , #{iniciativa.usuarioproponente} , #{iniciativa.palabrasclave}, #{iniciativa.fechaRegistro}, #{iniciativa.estado}, #{iniciativa.areaProponente});
     </insert>
+<<<<<<< HEAD
 	
+=======
+    
+    <update id="cambiarEstadoIniciativa" parameterType="map">
+    	UPDATE INICIATIVA
+        SET estado = #{estado}
+        WHERE num =  #{INICIATIVA.num};
+    </update>
+>>>>>>> 582938f5fe2e52b95a048adfb99c7e3368c05084
 
     <resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='num' column='num'/>

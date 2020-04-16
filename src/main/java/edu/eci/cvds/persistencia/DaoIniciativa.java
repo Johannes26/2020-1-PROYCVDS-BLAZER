@@ -13,4 +13,6 @@ public interface DaoIniciativa {
     public List<Iniciativa> consultarIniciativas() throws PersistenceException;
 	
 	public void registrarIniciativa(Iniciativa texto) throws PersistenceException;
+	
+	public void cambiarEstadoIniciativa(int num, String estado) throws PersistenceException;
 }
