@@ -69,6 +69,15 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error al consultar usuarios");
         }
 	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativas() throws ServiciosException {
+		try {
+            return iniciativaDAO.consultarIniciativas();
+        } catch (PersistenceException e){
+            throw new ServiciosException("Error al consultar iniciativas");
+        }
+	}
 	
 	@Override
 	public void cambiarRol(int id, String rol) throws ServiciosException {

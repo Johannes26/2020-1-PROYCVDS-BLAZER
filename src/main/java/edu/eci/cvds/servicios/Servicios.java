@@ -20,6 +20,8 @@ public interface Servicios {
 	
 	public abstract List<Usuario> consultarUsuarios() throws ServiciosException;
 	
+	public abstract List<Iniciativa> consultarIniciativas() throws ServiciosException;
+	
 	public abstract void cambiarRol(int id, String rol) throws ServiciosException;
 	
 }

@@ -18,6 +18,7 @@ import java.io.IOException;
 
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
+import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.Usuario;
 
 import java.util.List;
@@ -62,9 +63,21 @@ public class PrincipalBean extends BasePageBean {
 		facesContext.getExternalContext().redirect("index.xhtml");
 	}
 
+<<<<<<< HEAD
 	
     public String getNombre() {
     	return usuario.getNombre();
+=======
+    public List <Usuario> consultarUsuarios() throws ServiciosException{
+    	return servicios.consultarUsuarios();
+    }
+    
+    public List <Iniciativa> consultarIniciativas() throws ServiciosException{
+    	return servicios.consultarIniciativas();
+    }
+    public void cambiarRol(int id, String rol) throws ServiciosException{
+    	servicios.cambiarRol(id, rol);
+>>>>>>> 617f6f9da0394f2c70e9aa7c029b5b32915fde19
     }
 
 

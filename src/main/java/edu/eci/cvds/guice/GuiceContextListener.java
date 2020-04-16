@@ -4,12 +4,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import edu.eci.cvds.persistencia.UsuarioDAO;
-import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
-
 import edu.eci.cvds.persistencia.DaoIniciativa;
+import edu.eci.cvds.persistencia.UsuarioDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOIniciativa;
-
+import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.impl.ServiciosImpl;
 import edu.eci.cvds.vista.*;

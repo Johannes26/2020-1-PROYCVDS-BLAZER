@@ -11,6 +11,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import edu.eci.cvds.entidades.Usuario;
+import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.servicios.*;
 import org.junit.Test;
 import com.google.inject.Inject;
@@ -48,6 +49,16 @@ public class IniciativaServiciosTest {
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
+    }
+
+    @Test
+    public void deberiaConsultarIniciativas() {
+        try {
+            List<Iniciativa> a= servicios.consultarIniciativas();
+            assertTrue(a.size()==1);
+        }catch(ServiciosException e) {
+            fail("error"+e.getMessage());
+        }
     }
     
     @Test
