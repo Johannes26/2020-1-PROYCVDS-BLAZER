@@ -14,6 +14,8 @@ num int NOT NULL,
 descripcion varchar(20) NOT NULL,
 usuarioproponente int NOT NULL,
 palabrasclave varchar(20) NOT NULL,
+fechaRegistro DATE NOT NULL,
+estado varchar(30) NOT NULL,
 PRIMARY KEY(num),
 FOREIGN KEY (usuarioproponente)
 REFERENCES USUARIO (id) 
