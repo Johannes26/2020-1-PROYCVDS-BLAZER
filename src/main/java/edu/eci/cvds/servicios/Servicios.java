@@ -24,4 +24,6 @@ public interface Servicios {
 	
 	public abstract void cambiarRol(int id, String rol) throws ServiciosException;
 	
+	public abstract void cambiarEstadoIniciativa(int num, String estado) throws ServiciosException;
+	
 }

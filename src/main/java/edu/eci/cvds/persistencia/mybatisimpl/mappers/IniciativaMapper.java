@@ -15,5 +15,7 @@ public interface IniciativaMapper {
 	public List<Iniciativa> consultarIniciativas();
 	
 	public void registrarIniciativa(@Param("iniciativa") Iniciativa texto);
+	
+	public void cambiarEstadoIniciativa(@Param("num") int identificador, @Param("estado") String estado);
 
 }

@@ -4,7 +4,6 @@ package edu.eci.cvds.persistencia.mybatisimpl;
 import com.google.inject.Inject;
 import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.entidades.Iniciativa;
-import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaMapper;
 
 import java.util.List;
@@ -41,6 +40,16 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
             throw new PersistenceException("Error al registrar la iniciativa");
         }
     }
+
+	@Override
+	public void cambiarEstadoIniciativa(int num, String estado) throws edu.eci.cvds.persistencia.PersistenceException {
+		try {
+    		IniciativaMapper.cambiarEstadoIniciativa(num,estado);
+        } catch (PersistenceException e){
+            throw new PersistenceException("Error al cambiar el estado de la iniciativa");
+        }
+		
+	}
 
 
 }
