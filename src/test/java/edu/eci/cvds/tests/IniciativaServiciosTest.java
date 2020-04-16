@@ -6,13 +6,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+
 import java.util.List;
+
 
 import org.apache.ibatis.session.SqlSession;
 
 import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.servicios.*;
+
+import org.junit.Assert;
 import org.junit.Test;
 import com.google.inject.Inject;
 
@@ -50,8 +54,18 @@ public class IniciativaServiciosTest {
     		fail("error"+e.getMessage());
     	}
     }
+    
+    @Test
+    public void deberiaConsultarIniciativa() {
+    	try {
+    		Iniciativa ini = servicios.consultarIniciativa(0001);
+    		assertEquals(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getId(),ini.getusuarioProponente().getId());
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
 
-    /*@Test
+    @Test
     public void deberiaConsultarIniciativas() {
         try {
             List<Iniciativa> a= servicios.consultarIniciativas();
@@ -59,7 +73,7 @@ public class IniciativaServiciosTest {
         }catch(ServiciosException e) {
             fail("error"+e.getMessage());
         }
-    }*/
+    }
     
     @Test
     public void deberiaCambiarRolUsuario() {

@@ -23,8 +23,9 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-
+import edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaMapper;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper;
+import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.Usuario;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -69,7 +70,9 @@ public class MyBatisExample {
 
         UsuarioMapper u=sqlss.getMapper(UsuarioMapper.class);
         Usuario usuario = u.consultarUsuario("johann.bogota@mail.escuelaing.edu.co");
-        
+        IniciativaMapper e=sqlss.getMapper(IniciativaMapper.class);
+        Iniciativa ini = e.consultarIniciativa(1);
+        System.out.println(ini.toString());
         System.out.println(usuario.toString());
         sqlss.commit();
 

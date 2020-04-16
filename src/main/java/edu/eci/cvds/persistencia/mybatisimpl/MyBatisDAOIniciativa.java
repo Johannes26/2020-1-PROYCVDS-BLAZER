@@ -16,6 +16,7 @@ import javax.persistence.PersistenceException;
 public class MyBatisDAOIniciativa implements DaoIniciativa {
 	@Inject
     private IniciativaMapper IniciativaMapper;
+	
     
     public Iniciativa consultarIniciativa(int num) throws PersistenceException{
     	try {

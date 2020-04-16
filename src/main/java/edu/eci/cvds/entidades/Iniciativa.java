@@ -8,8 +8,8 @@ public class Iniciativa implements Serializable {
 
 	private int num;
 	private String descripcion;
-	private Usuario usuarioProponente;
-	private String palabrasClave;
+	private Usuario usuarioproponente;
+	private String palabrasclave;
 	private Date fechaRegistro;
 	private String estado;
 	private String areaProponente;
@@ -18,11 +18,11 @@ public class Iniciativa implements Serializable {
 	public Iniciativa() {
 	}
 	
-	public Iniciativa(int num, String descripcion, Usuario usuarioProponente, String tipoProponente,String palabrasClave,Date fechaRegistro,String estado,String areaProponente) {
+	public Iniciativa(int num, String descripcion, Usuario usuarioProponente,String palabrasClave,Date fechaRegistro,String estado,String areaProponente) {
 		this.num=num;
 		this.descripcion=descripcion;
-		this.usuarioProponente=usuarioProponente;
-		this.palabrasClave=palabrasClave;
+		this.usuarioproponente=usuarioProponente;
+		this.palabrasclave=palabrasClave;
 		this.fechaRegistro=fechaRegistro;
 		this.estado=estado;
 		this.areaProponente=areaProponente;
@@ -45,21 +45,21 @@ public class Iniciativa implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Usuario getUsuarioProponente() {
-		return usuarioProponente;
+	public Usuario getusuarioProponente() {
+		return usuarioproponente;
 	}
 
-	public void setUsuarioProponente(Usuario usuarioProponente) {
-		this.usuarioProponente = usuarioProponente;
+	public void setusuarioProponente(Usuario usuarioProponente) {
+		this.usuarioproponente = usuarioProponente;
 	}
 
 
 	public String getPalabrasClave() {
-		return palabrasClave;
+		return palabrasclave;
 	}
 
 	public void setPalabrasClave(String palabrasClave) {
-		this.palabrasClave = palabrasClave;
+		this.palabrasclave = palabrasClave;
 	}
 	
 	public Date getfechaRegistro() {
@@ -88,7 +88,7 @@ public class Iniciativa implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Iniciativa [num=" + num + ", descripcion=" + descripcion + ", usuarioProponente=" + usuarioProponente
-				+ ", palabrasClave=" + palabrasClave + ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + ", areaProponente"+ areaProponente + "]";
+		return "Iniciativa [num=" + num + ", descripcion=" + descripcion + ", usuarioProponente=" + usuarioproponente
+				+ ", palabrasClave=" + palabrasclave + ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + ", areaProponente"+ areaProponente + "]";
 	}
 }

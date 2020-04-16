@@ -7,38 +7,58 @@
 
     <select parameterType="map" id="consultarIniciativa" resultMap="IniciativaResult">
         select
-	        u.num,
-	        u.descripcion,
-	        u.usuarioproponente,
-	        u.palabrasclave,
-	        u.fechaRegistro,
-	        u.estado,
-	        u.areaProponente
-        from INICIATIVA u
-        WHERE u.num=#{num};
+	        i.num,
+	        i.descripcion,
+	        i.usuarioproponente,
+	        i.palabrasclave,
+	        i.fechaRegistro,
+	        i.estado,
+	        i.areaProponente,
+	        u.id,
+	        u.nombre,
+	        u.apellido,
+	        u.email,
+	        u.telefono,
+	        u.tipoUsuario,
+	        u.contrasena
+        from INICIATIVA i, USUARIO u
+        WHERE i.num=#{num}
+        and i.usuarioproponente=u.id;
     </select>
 
-    <select parameterType="map" id="consultarIniciativas" resultMap="IniciativaResult">
+    <select  id="consultarIniciativas" resultMap="IniciativaResult">
         select
-            u.num,
-            u.descripcion,
-            u.usuarioproponente,
-        from INICIATIVA u
+            i.num,
+	        i.descripcion,
+	        i.usuarioproponente,
+	        i.palabrasclave,
+	        i.fechaRegistro,
+	        i.estado,
+	        i.areaProponente,
+            u.id,
+	        u.nombre,
+	        u.apellido,
+	        u.email,
+	        u.telefono,
+	        u.tipoUsuario,
+	        u.contrasena
+        from INICIATIVA i, USUARIO u
+        WHERE  i.usuarioproponente=u.id;
     </select>
     
     <insert id="insertarIniciativa" parameterType="map">
         INSERT INTO iniciativa (num , descripcion , usuarioproponente , palabrasclave, fechaRegistro, estado, areaProponente) VALUES ( #{iniciativa.num}, #{iniciativa.descripcion} , #{iniciativa.usuarioproponente} , #{iniciativa.palabrasclave}, #{iniciativa.fechaRegistro}, #{iniciativa.estado}, #{iniciativa.areaProponente});
     </insert>
+	
 
     <resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='num' column='num'/>
         <result property='descripcion' column='descripcion'/>
-        <result property='usuarioproponente' column='usuarioproponente'/>
         <result property='palabrasclave' column='palabrasclave'/>
         <result property='fechaRegistro' column='fechaRegistro'/>
         <result property='estado' column='estado'/>
         <result property='areaProponente' column='areaProponente'/>
-        
+        <association property='usuarioproponente' javaType='Usuario' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
     </resultMap>
 
 

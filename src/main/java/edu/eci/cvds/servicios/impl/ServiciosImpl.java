@@ -21,6 +21,7 @@ public class ServiciosImpl implements Servicios {
 
 	@Inject
     private UsuarioDAO usuarioDAO;
+	@Inject
 	private DaoIniciativa iniciativaDAO;
 
 	@Override
