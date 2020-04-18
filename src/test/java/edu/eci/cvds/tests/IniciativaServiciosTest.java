@@ -96,7 +96,5 @@ public class IniciativaServiciosTest {
     		fail("error"+e.getMessage());
     	}
     }
-    
-    
 
 }

@@ -32,7 +32,12 @@ public class PrincipalBean extends BasePageBean {
     private Servicios servicios;
     private Usuario usuario;
 
-
+   /**
+    * metodo que inicia sesion en la pagina
+    * @param email email del usuario
+    * @param contrasena contraseña del usuario
+    * @throws IOException
+    */
 	public void iniciarSesion(String email,String contrasena) throws IOException {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		
@@ -57,6 +62,10 @@ public class PrincipalBean extends BasePageBean {
 		}
 	}
 	
+	/**
+	 * metodo que termina sesion del usuario
+	 * @throws IOException
+	 */
 	public void logOut() throws IOException{
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
