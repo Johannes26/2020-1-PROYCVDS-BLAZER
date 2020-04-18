@@ -97,4 +97,13 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error al cambiar el estado de la iniciativa");
         }
 	}
+	
+	@Override
+	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws ServiciosException {
+		try {
+            return iniciativaDAO.consultarIniciativaXPalabraClave(PalabrasClave);
+        } catch (PersistenceException e){
+            throw new ServiciosException("Error al consultar iniciativa por palabra clave");
+        }
+	}
 }

@@ -15,4 +15,6 @@ public interface DaoIniciativa {
 	public void registrarIniciativa(Iniciativa texto) throws PersistenceException;
 	
 	public void cambiarEstadoIniciativa(int num, String estado) throws PersistenceException;
+	
+	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws PersistenceException;
 }

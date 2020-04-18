@@ -54,6 +54,19 @@
         SET estado = #{estado}
         WHERE num =  #{num};
     </update>
+    
+    <select parameterType="map" id="consultarIniciativaXPalabraClave" resultMap="IniciativaResult">
+	    SELECT
+            u.num,
+            u.descripcion,
+            u.usuarioProponente,
+            u.palabrasClave,
+            u.fecha_registro,
+            u.estado,
+            u.areaProponente
+        FROM INICIATIVA u
+        WHERE u.palabrasClave=#{palabrasClave};
+    </select>
 
     <resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='num' column='num'/>

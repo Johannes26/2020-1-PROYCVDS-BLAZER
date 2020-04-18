@@ -26,4 +26,6 @@ public interface Servicios {
 	
 	public abstract void cambiarEstadoIniciativa(int num, String estado) throws ServiciosException;
 	
+	public abstract List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws ServiciosException;
+	
 }

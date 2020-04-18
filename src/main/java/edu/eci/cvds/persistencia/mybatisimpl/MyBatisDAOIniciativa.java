@@ -51,6 +51,14 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
         }
 		
 	}
+	
+	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws PersistenceException{
+    	try {
+    		return IniciativaMapper.consultarIniciativaXPalabraClave(PalabrasClave);
+    	}catch (PersistenceException e){
+            throw new PersistenceException("No se pudo consultar las iniciativas por su palabra clave");
+        }
+    }
 
 
 }
