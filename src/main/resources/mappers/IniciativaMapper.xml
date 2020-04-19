@@ -27,7 +27,7 @@
 
     <select  id="consultarIniciativas" resultMap="IniciativaResult">
         select
-            i.num,
+          i.num,
 	        i.descripcion,
 	        i.palabrasclave,
 	        i.fechaRegistro,
@@ -54,7 +54,7 @@
         SET estado = #{estado}
         WHERE num =  #{num};
     </update>
-    
+
     <select parameterType="map" id="consultarIniciativaXPalabraClave" resultMap="IniciativaResult">
 	    SELECT
             u.num,

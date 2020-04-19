@@ -23,7 +23,10 @@
 	        u.id,
 	        u.nombre,
 	        u.apellido,
-	        u.tipoUsuario
+	        u.email,
+	        u.telefono,
+	        u.tipoUsuario,
+	        u.contrasena
         from USUARIO u
     </select>
     

@@ -13,6 +13,17 @@
       }
 
 
+      .contenedor1 {
+              display: table-cell;
+              vertical-align: middle;
+              text-align: center; /* requerido para alineación horizontal */
+      }
+      .contenido1 {
+              display: inline-block;
+              text-align: middle; /* requerido para volver a alinear texto izquierda */
+      }
+
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -51,7 +62,7 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <p:outputLabel class="navbar-brand" value="wer"></p:outputLabel>
+            <p:outputLabel class="navbar-brand" value="#{principalBean.getNombre()}"></p:outputLabel>
           </form>
         </div>
       </nav>
@@ -59,49 +70,50 @@
 
       <h:form id="AdmiVista" class="text-center" background="fondo.jpg">
            <h1 class="font-italic" style="color: white;">Usuarios</h1>
-             <table id="usersTable" class="table table-striped table-dark">
-               <thead>
-                 <tr>
-                   <th>Id</th>
-                   <th>Nombre</th>
-                   <th>Apellido</th>
-                   <th>Rol</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <ui:repeat var="user" value="#{adminiBean.consultarUsuarios()}">
-                 <tr>
-                   <td>#{user.id}</td>
-                   <td>#{user.nombre}</td>
-                   <td>#{user.apellido}</td>
-                   <td>#{user.tipoUsuario}</td>
-                 </tr>
-                 </ui:repeat>
-               </tbody>
-             </table>
 
+           <p:dataTable id="singleDT" class="dataTable dataTable-striped table-dark" var="car" value="#{adminiBean.consultarUsuarios()}" selectionMode="single" selection="#{adminiBean.usuariobuscado}" rowKey="#{car.id}">
+                <f:facet name="header">
+                    Usuarios
+                </f:facet>
+                <p:column headerText="Id">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{car.nombre}" />
+                </p:column>
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{car.apellido}" />
+                </p:column>
+                <p:column headerText="Rol">
+                    <h:outputText value="#{car.tipoUsuario}" />
+                </p:column>
+                <f:facet name="footer">
+                      <p:commandButton process="singleDT" update=":AdmiVista" icon="pi pi-search" value="BUSCAR" />
+                </f:facet>
 
-    <p:panel class="text-center" id="panelRol" header="Cambiar Rol Usuario" style="background-color: #464646;">
-        <h:outputLabel style="color:#FFFFFF" placeholder="Correo Electronico" value="Buscar:"/>
-        <p:inputText type="String" binding="#{email}" />
+            </p:dataTable>
+            <br></br>
+            <br></br>
 
-        <h:panelGrid  style="color:#FFFFFF" class="text-center" columns="4" layout="flex" rendered="#{adminiBean.usuariobuscado!=null}" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" contentStyleClass="p-align-baseline ui-fluid">
-            <h:outputLabel style="color:#2A1313" for="@next"  value="Id:"/>
+    <p:panel id="panelRol" header="Cambiar Rol Usuario" style="background-color: #464646;" rendered="#{adminiBean.usuariobuscado!=null}" >
+
+        <h:panelGrid   class="contenido1"  style="color:#FFFFFF"  columns="4" layout="flex"  columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"  contentStyleClass="ui-fluid">
+            <h:outputLabel style="color:#2A1313" value="Id:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.id}"/>
 
-            <h:outputLabel style="color:#2A1313" for="@next" value="Nombre:"/>
+            <h:outputLabel style="color:#2A1313" value="Nombre:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.nombre}" />
 
-            <h:outputLabel style="color:#2A1313" for="@next" value="Apellido:"/>
+            <h:outputLabel style="color:#2A1313"  value="Apellido:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.apellido}" />
 
-            <h:outputLabel style="color:#2A1313" for="@next" value="Email:"/>
+            <h:outputLabel style="color:#2A1313"  value="Email:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.email}" />
 
-            <h:outputLabel style="color:#2A1313" for="@next" value="Telefono:"/>
+            <h:outputLabel style="color:#2A1313" value="Telefono:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.telefono}"/>
 
-            <h:outputLabel style="color:#2A1313" for="@next" value="Tipo de Usuario:"/>
+            <h:outputLabel style="color:#2A1313" value="Tipo de Usuario:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.tipoUsuario}" />
 
         </h:panelGrid>
@@ -109,7 +121,7 @@
         <p:messages>
             <p:autoUpdate />
         </p:messages>
-        <h:panelGrid rendered="#{adminiBean.usuariobuscado!=null}" columns="2" style="margin-top:2%" cellpadding="5">
+        <h:panelGrid   class="contenido1" columns="2" style="margin-top:2%" cellpadding="5">
             <p:outputLabel style="color:#2A1313" for="@next" value="Roles a asignar:"  />
             <p:selectOneMenu id="roles" value="#{adminiBean.rolNuevo}" style="width:125px">
                 <f:selectItem itemLabel="" itemValue="" />
@@ -122,15 +134,15 @@
 
          <br></br>
          <br></br>
-        <p:commandButton value="Cambiar" update="AdmiVista" rendered="#{adminiBean.usuariobuscado!=null}" actionListener="#{adminiBean.cambiarRol(adminiBean.usuariobuscado.id,adminiBean.rolNuevo)}" />
+        <p:commandButton value="Cambiar" update="AdmiVista" actionListener="#{adminiBean.cambiarRol(adminiBean.usuariobuscado.id,adminiBean.rolNuevo)}" />
     </p:panel>
-    <p:commandButton value="Buscar" update="panelRol" actionListener="#{adminiBean.consultarUsuario(email.value)}" />
-
+    <br></br>
+    <br></br>
     <p:commandButton id="iniciativas" value="Consultar Iniciativas" action="CambiarIniciativa.xhtml?faces-redirect=true"/>
     </h:form>
-      <br></br>
-      <br></br><br></br>
-      <br></br>
+
+    <br></br>
+    <br></br>
 
 
   </body>

@@ -12,6 +12,15 @@
         margin: auto;
       }
 
+      .contenedor1 {
+              display: table-cell;
+              vertical-align: middle;
+              text-align: center; /* requerido para alineación horizontal */
+      }
+      .contenido1 {
+              display: inline-block;
+              text-align: middle; /* requerido para volver a alinear texto izquierda */
+      }
 
     </style>
     <!-- Required meta tags -->
@@ -53,53 +62,75 @@
         </form>
       </div>
     </nav>
-    <h:form class="text-center">
-      <h1 class="font-italic" style="color: white;">Iniciativas</h1>
-        <table id="usersTable" class="table table-striped table-dark">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Descripcion</th>
-              <th>Fecha Registro</th>
-              <th>Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ui:repeat var="ini" value="#{adminiBean.consultarIniciativas()}">
-            <tr>
-              <td>#{ini.num}</td>
-              <td>#{ini.descripcion}</td>
-              <td>#{ini.fechaRegistro}</td>
-              <td>#{ini.estado}</td>
-            </tr>
-            </ui:repeat>
-          </tbody>
-        </table>
 
 
 
+    <h:form id="AdmiVista" class="text-center" background="fondo.jpg">
+         <h1 class="font-italic" style="color: white;">Usuarios</h1>
 
-    <p:panel class="text-center" id="panelEstado" header="Actualizar Estado" style="background-color: #464646;">
-              <h:outputLabel style="color:#FFFFFF" placeholder="Numero" value="Id Iniciativa:"/>
-              <p:inputText required="true" type="int" binding="#{num}" />
-              <p:messages>
-                  <p:autoUpdate />
-              </p:messages>
-              <h:panelGrid rendered="#{adminiBean.iniciativabuscada!=null}" columns="2" style="margin-top:2%" cellpadding="5">
-                  <p:outputLabel style="color:#2A1313" for="@next" value="Estado a asignar:"  />
-                  <p:selectOneMenu id="estados" value="#{adminiBean.estadoNuevo}" style="width:125px">
-                      <f:selectItem itemLabel="" itemValue="" />
-                      <f:selectItem itemLabel="En espera de revisión" itemValue="En espera de revisión" />
-                      <f:selectItem itemLabel="En revisión" itemValue="En revisión" />
-                      <f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
-                      <f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
-                  </p:selectOneMenu>
-              </h:panelGrid>
-              <p:commandButton value="Cambiar" rendered="#{adminiBean.iniciativabuscada!=null}" actionListener="#{adminiBean.cambiarEstadoIniciativa(num.value,adminiBean.estadoNuevo)}" />
-    </p:panel>
-    <p:commandButton value="Buscar" update="panelEstado" actionListener="#{adminiBean.consultarIniciativa(num.value)}" />
+         <p:dataTable id="singleDT" class="dataTable dataTable-striped table-dark" var="iniciativa" value="#{adminiBean.consultarIniciativas()}" selectionMode="single" selection="#{adminiBean.iniciativabuscada}" rowKey="#{iniciativa.num}">
+              <f:facet name="header">
+                  Usuarios
+              </f:facet>
+              <p:column headerText="Numero">
+                  <h:outputText value="#{iniciativa.num}" />
+              </p:column>
+              <p:column headerText="Fecha de Registro">
+                  <h:outputText value="#{iniciativa.fechaRegistro}" />
+              </p:column>
+              <p:column headerText="Estado">
+                  <h:outputText value="#{iniciativa.estado}" />
+              </p:column>
+              <f:facet name="footer">
+                    <p:commandButton process="singleDT" update=":AdmiVista" icon="pi pi-search" value="BUSCAR" />
+              </f:facet>
 
-</h:form>
+          </p:dataTable>
+          <br></br>
+          <br></br>
+
+  <p:panel id="panelEstado" header="Actualizar Estado" style="background-color: #464646;" rendered="#{adminiBean.iniciativabuscada!=null}" >
+
+      <h:panelGrid   class="contenido1"  style="color:#FFFFFF"  columns="4" layout="flex"  columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"  contentStyleClass="ui-fluid">
+          <h:outputLabel style="color:#2A1313" value="Numero:"/>
+          <h:outputLabel value="#{adminiBean.iniciativabuscada.num}"/>
+
+          <h:outputLabel style="color:#2A1313" value="Descripcion:"/>
+          <h:outputLabel value="#{adminiBean.iniciativabuscada.descripcion}" />
+
+          <h:outputLabel style="color:#2A1313"  value="Fecha de Registro:"/>
+          <h:outputLabel value="#{adminiBean.iniciativabuscada.fechaRegistro}" />
+
+          <h:outputLabel style="color:#2A1313" value="Estado:"/>
+          <h:outputLabel value="#{adminiBean.iniciativabuscada.estado}"/>
+
+
+      </h:panelGrid>
+
+      <p:messages>
+          <p:autoUpdate />
+      </p:messages>
+      <h:panelGrid class="contenido1" columns="2" style="margin-top:2%" cellpadding="5">
+          <p:outputLabel style="color:#2A1313" for="@next" value="Estado a asignar:"  />
+          <p:selectOneMenu id="estados" value="#{adminiBean.estadoNuevo}" style="width:125px">
+              <f:selectItem itemLabel="" itemValue="" />
+              <f:selectItem itemLabel="En espera de revisión" itemValue="En espera de revisión" />
+              <f:selectItem itemLabel="En revisión" itemValue="En revisión" />
+              <f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
+              <f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
+          </p:selectOneMenu>
+      </h:panelGrid>
+
+       <br></br>
+       <br></br>
+      <p:commandButton value="Cambiar" update="AdmiVista" actionListener="#{adminiBean.cambiarEstadoIniciativa(adminiBean.iniciativabuscada.num,adminiBean.estadoNuevo)}" />
+  </p:panel>
+  <br></br>
+  <br></br>
+  </h:form>
+
+  <br></br>
+  <br></br>
 
   </body>
 </html>
