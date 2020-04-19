@@ -1,3 +1,4 @@
+  
 package edu.eci.cvds.vista;
 
 import javax.faces.application.FacesMessage;
@@ -30,54 +31,72 @@ public class PrincipalBean extends BasePageBean {
 
 	@Inject
     private Servicios servicios;
-    private Usuario usuario;
+	
+	private Usuario usuario;;
+ 
 
-   /**
+   public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+/**
     * metodo que inicia sesion en la pagina
     * @param email email del usuario
     * @param contrasena contraseña del usuario
     * @throws IOException
     */
-	public void iniciarSesion(String email,String contrasena) throws IOException {
+	public String iniciarSesion(String email,String contrasena) throws IOException {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
+		String redirec = null;
+		
 		
 		try {
-			
 			if(servicios.validarUsuario(email, contrasena)) {
 				usuario = servicios.consultarUsuario(email);
-				
-				HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
-				session.setAttribute("id", usuario.getId());
-				session.setAttribute("name", usuario.getNombre());
-				session.setAttribute("type", usuario.getTipoUsuario());
+				redirec = "Administrador.xhtml?faces-redirect=true";
+				//almacenar Sesion
+				facesContext.getExternalContext().getSessionMap().put("usuario", usuario);
 		        
-				FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador.xhtml");
 			}else {
-				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+				facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso","Datos incorrectos"));
 			}
 			
 		}catch(ServiciosException e) {
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuario o clave invalido","Error"));
-			FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso","Error"));
 		}
+		return redirec;
 	}
 	
 	/**
 	 * metodo que termina sesion del usuario
 	 * @throws IOException
 	 */
-	public void logOut() throws IOException{
+	public String cerrarSesion() throws IOException{
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
-		session.removeAttribute("id");
-		facesContext.getExternalContext().redirect("index.xhtml");
+		facesContext.getExternalContext().invalidateSession();
+        return "index.xhtml?faces-redirect=true";
 	}
 
-
-	
-    public String getNombre() {
-    	return usuario.getNombre();
-    }
+	/**
+	 * metodo que verifica si hay una sesion activa
+	 */
+	public void verificarSesion() {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		
+		try {
+			Usuario u = (Usuario) facesContext.getExternalContext().getSessionMap().get("usuario");
+			
+			if (u == null) {
+				facesContext.getExternalContext().redirect("index.xhtml");
+			}
+		}catch(Exception e) {
+			//
+		}
+	}
 
 
 }

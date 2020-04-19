@@ -31,6 +31,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Evento seguridad -->
+    <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
   </h:head>
 
   <body background="fondo.jpg">
@@ -61,16 +63,16 @@
               </div>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <p:outputLabel class="navbar-brand" value="#{principalBean.getNombre()}"></p:outputLabel>
-          </form>
+          <h:form class="form-inline my-2 my-lg-0">
+            <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
+            <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+          </h:form>
         </div>
       </nav>
 
 
       <h:form id="AdmiVista" class="text-center" background="fondo.jpg">
            <h1 class="font-italic" style="color: white;">Usuarios</h1>
-
            <p:dataTable id="singleDT" class="dataTable dataTable-striped table-dark" var="car" value="#{adminiBean.consultarUsuarios()}" selectionMode="single" selection="#{adminiBean.usuariobuscado}" rowKey="#{car.id}">
                 <f:facet name="header">
                     Usuarios

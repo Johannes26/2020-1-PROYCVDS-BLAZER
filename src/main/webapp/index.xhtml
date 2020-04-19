@@ -4,15 +4,15 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-      
-  <head>
+
+  <h:head>
     <style>
       div.iniciarSesion {
         width:600px;
         margin: auto;
       }
 
-      
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -20,7 +20,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-  </head>
+  </h:head>
+
   <body background="fondo.jpg">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">BlazerApp</a>
@@ -50,30 +51,33 @@
         </ul>
       </div>
     </nav>
-    <h:body class="text-center" >
-      <div class="iniciarSesion">
+
+
+      <div class="iniciarSesion text-center">
         <h:form class="form-signin">
-          <img class="mb-4" src="" alt="" width="72" height="72" />
-          <h1 class="h3 mb-3 font-weight-normal" style="color:white;">Por favor, inicie sesion</h1>
-          <label for="inputEmail" class="sr-only">Usuario</label>
-          
-          <p:inputText id="email" class="form-control" placeholder="Email" required="true" type="String" binding="#{email}" />
-          
-          <label for="inputPassword" class="sr-only">Contraseña</label>
-          
-          <p:password id="contrasena" class="form-control" placeholder="Contraseña" required="true" type="String" binding="#{contrasena}" />
-         
-         
-          <p:commandButton  id="boton_login" actionListener="#{principalBean.iniciarSesion(email.value,contrasena.value)}" value="Ingresar"/>
-   
-        </h:form>
-    
+            <img class="mb-4" src="" alt="" width="72" height="72" />
+            <h1 class="h3 mb-3 font-weight-normal" style="color:white;">Por favor, inicie sesion</h1>
+
+            <p:messages autoUpdate="true" showDetail="true"/>
+            <label for="inputEmail" class="sr-only">Usuario</label>
+
+            <p:inputText id="email" class="form-control" placeholder="Email" required="true" type="String" binding="#{email}" />
+
+            <label for="inputPassword" class="sr-only">Contraseña</label>
+
+            <p:password id="contrasena" class="form-control" placeholder="Contraseña" required="true" type="String" binding="#{contrasena}" />
+
+
+            <p:commandButton  id="boton_login" action="#{principalBean.iniciarSesion(email.value,contrasena.value)}" value="Ingresar"/>
+
+          </h:form>
+
       </div>
 
-    </h:body>
-    
-      
-    
+
+
+
+
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>

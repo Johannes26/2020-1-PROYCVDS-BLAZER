@@ -36,10 +36,15 @@ public class IniciativaServiciosTest {
     }
 
     @Test
-    public void deberiaIniciarSesion() {
+    public void deberiaValidarUsuario() {
+    	Boolean a;
     	try {
-    		Boolean a=servicios.validarUsuario("johann.bogota@mail.escuelaing.edu.co", "1234");
+    		a = servicios.validarUsuario("johann.bogota@mail.escuelaing.edu.co", "1234");
     		assertTrue(a);
+    		a = servicios.validarUsuario("otro@gmail.com", "111");
+    		assertTrue(!a);
+    		a = servicios.validarUsuario("johann.bogota@mail.escuelaing.edu.co", "0000");
+    		assertTrue(!a);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}

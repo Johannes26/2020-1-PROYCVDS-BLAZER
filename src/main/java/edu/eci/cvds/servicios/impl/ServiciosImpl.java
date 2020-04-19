@@ -40,8 +40,12 @@ public class ServiciosImpl implements Servicios {
 	
 	@Override
 	public Boolean validarUsuario(String email, String contrasena) throws ServiciosException {
+		boolean esvalido=false;
 		Usuario usuario = consultarUsuario(email);
-		 return usuario!=null && usuario.getContrasena().equals(contrasena);
+		if(usuario!=null) {
+			esvalido = usuario.getContrasena().equals(contrasena);
+		}
+		return esvalido;
 	}
 
 	@Override
