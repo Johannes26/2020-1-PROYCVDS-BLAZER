@@ -27,9 +27,14 @@ public class ServiciosImpl implements Servicios {
 	@Override
     public Usuario consultarUsuario(String email) throws ServiciosException {
         try {
-            return usuarioDAO.consultarUsuario(email);
+        	Usuario u = usuarioDAO.consultarUsuario(email);
+        	if(u!=null) {
+        		return usuarioDAO.consultarUsuario(email);
+        	}else {
+        		throw new ServiciosException("El usuario no existe");
+        	}
         } catch (PersistenceException e){
-            throw new ServiciosException("El usuario no existe");
+            throw new ServiciosException("Error en usuario");
         }
     }
 
@@ -40,10 +45,12 @@ public class ServiciosImpl implements Servicios {
 	
 	@Override
 	public Boolean validarUsuario(String email, String contrasena) throws ServiciosException {
-		boolean esvalido=false;
-		Usuario usuario = consultarUsuario(email);
-		if(usuario!=null) {
+		boolean esvalido;
+		try {
+			Usuario usuario = consultarUsuario(email);
 			esvalido = usuario.getContrasena().equals(contrasena);
+		}catch(ServiciosException e) {
+			esvalido=false;
 		}
 		return esvalido;
 	}

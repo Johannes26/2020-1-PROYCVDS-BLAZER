@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <style>
+      div.iniciarSesion {
+        width:600px;
+        margin: auto;
+      }
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Evento seguridad -->
+    <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
+  </h:head>
+
+  <body background="fondo.jpg">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">BlazerApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pagina escuela</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Opciones
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Opcion1</a>
+                <a class="dropdown-item" href="#">Opcion2</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Salir</a>
+              </div>
+            </li>
+          </ul>
+          <h:form class="form-inline my-2 my-lg-0">
+            <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
+            <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+          </h:form>
+        </div>
+      </nav>
+
+
+      <h:form id="RegistroIniciativa" >
+           <h1 class="font-italic text-center" style="color: white;">Registrar Iniciativa</h1>
+           <p:panel id="panelRol" header="Cambiar Rol Usuario" style="background-color: #464646;">
+                <p:messages autoUpdate="true" showDetail="true"/>
+                <h:panelGrid columns="2" id="Nuevainiciativa">
+
+                <p:outputLabel for="emailProponente" value="Proponente" placeholder="Email" style="color:#FFFFFF" />
+                <p:inputText id="emailProponente" required="true" type="String" binding="#{emailProponente}"/>
+
+                <p:outputLabel for="areaProponente" value="Descripcion" style="color:#FFFFFF"  />
+                <p:inputText id="areaProponente" required="true" type="String" binding="#{areaProponente}"/>
+
+                <p:outputLabel for="descripcion" value="Descripcion" style="color:#FFFFFF" />
+                <p:panel id="descripcion" style="color:#FFFFFF">
+                  <p:textEditor widgetVar="editor1" id="descripcion2" required="true" type="String" binding="#{descripcion}" height="300" style="margin-bottom:10px st"/>
+                </p:panel>
+
+                <p:outputLabel for="palabrasclave" value="Palabras Clave" style="color:#FFFFFF"  />
+                <p:inputText id="palabrasclave" required="true" type="String" binding="#{palabrasclave}"/>
+
+
+              </h:panelGrid>
+              <p:commandButton icon="ui-icon-check" id="btonNuevaIniciativa" value="Crear Iniciativa"
+                action="#{iniciativaBean.registrarIniciativa(descripcion.value,emailProponente.value,palabrasclave.value,areaProponente.value)}"/>
+          </p:panel>
+            <br></br>
+            <br></br>
+
+    </h:form>
+
+    <br></br>
+    <br></br>
+
+
+  </body>
+</html>

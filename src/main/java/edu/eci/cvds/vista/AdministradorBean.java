@@ -1,6 +1,6 @@
 package edu.eci.cvds.vista;
 
-import javax.enterprise.context.RequestScoped;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -59,7 +59,6 @@ public class AdministradorBean extends BasePageBean {
 	public void consultarUsuario(String email){
 		try{
 			usuariobuscado = servicios.consultarUsuario(email);
-			
 		}catch(ServiciosException e){
 			usuariobuscado = null;
 		}

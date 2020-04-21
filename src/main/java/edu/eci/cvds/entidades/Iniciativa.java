@@ -15,8 +15,8 @@ public class Iniciativa implements Serializable {
 	private String areaProponente;
 
 
-	public Iniciativa() {
-	}
+	public Iniciativa(){
+	};
 
 	public Iniciativa(int num, String descripcion, Usuario usuarioproponente,String palabrasClave,Date fechaRegistro,String estado,String areaProponente) {
 		this.num=num;
@@ -25,6 +25,13 @@ public class Iniciativa implements Serializable {
 		this.palabrasclave=palabrasClave;
 		this.fechaRegistro=fechaRegistro;
 		this.estado=estado;
+		this.areaProponente=areaProponente;
+	}
+	
+	public Iniciativa(String descripcion, Usuario usuarioproponente ,String palabrasclave, String areaProponente) {
+		this.descripcion=descripcion;
+		this.usuarioproponente=usuarioproponente;
+		this.palabrasclave=palabrasclave;
 		this.areaProponente=areaProponente;
 	}
 
@@ -89,6 +96,6 @@ public class Iniciativa implements Serializable {
 	@Override
 	public String toString() {
 		return "Iniciativa [num=" + num + ", descripcion=" + descripcion + ", usuarioProponente=" + usuarioproponente
-				+ ", palabrasClave=" + palabrasclave + ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + ", areaProponente"+ areaProponente + "]";
+				+ ", palabrasClave=" + palabrasclave + ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + ", areaProponente="+ areaProponente + "]";
 	}
 }

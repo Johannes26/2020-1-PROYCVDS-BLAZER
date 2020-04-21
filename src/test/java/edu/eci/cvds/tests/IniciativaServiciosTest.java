@@ -49,6 +49,19 @@ public class IniciativaServiciosTest {
     		fail("error"+e.getMessage());
     	}
     }
+    
+   @Test
+    public void deberiaCrearIniciativa() {
+    	Usuario u;
+		try {
+			u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
+	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"ss","Administrador");
+	    	servicios.registrarIniciativa(ini);
+	    	
+		} catch (ServiciosException e) {
+			fail("error"+e.getMessage());
+		}
+    }
 
     
     @Test
@@ -61,11 +74,13 @@ public class IniciativaServiciosTest {
     	}
     }
     
+    
     @Test
     public void deberiaConsultarIniciativa() {
     	try {
     		Iniciativa ini = servicios.consultarIniciativa(0001);
     		assertEquals(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getId(),ini.getusuarioProponente().getId());
+    		
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}

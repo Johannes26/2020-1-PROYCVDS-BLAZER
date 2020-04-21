@@ -57,7 +57,13 @@ public class PrincipalBean extends BasePageBean {
 		try {
 			if(servicios.validarUsuario(email, contrasena)) {
 				usuario = servicios.consultarUsuario(email);
-				redirec = "Administrador.xhtml?faces-redirect=true";
+				String tipo = usuario.getTipoUsuario();
+				if (tipo.equals("Administrador")) {
+					redirec = "Administrador.xhtml?faces-redirect=true";
+				}else if (tipo.equals("Proponente")) {
+					redirec = "UsuarioProponente.xhtml?faces-redirect=true";
+				}
+				
 				//almacenar Sesion
 				facesContext.getExternalContext().getSessionMap().put("usuario", usuario);
 		        

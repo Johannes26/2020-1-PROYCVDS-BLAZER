@@ -2,6 +2,7 @@ package edu.eci.cvds.entidades;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Usuario implements Serializable{
 	
@@ -13,7 +14,9 @@ public class Usuario implements Serializable{
 	private int telefono;
 	private String tipoUsuario;
 	private String contrasena;
+	private List<Iniciativa> iniciativas;
 	
+
 	public Usuario() {
 	}
 	
@@ -87,6 +90,14 @@ public class Usuario implements Serializable{
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+	
+	public List<Iniciativa> getIniciativas() {
+		return iniciativas;
+	}
+
+	public void setIniciativas(List<Iniciativa> iniciativas) {
+		this.iniciativas = iniciativas;
 	}
 	
 }

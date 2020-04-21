@@ -33,7 +33,7 @@
 	        i.fechaRegistro,
 	        i.estado,
 	        i.areaProponente,
-          u.id,
+            u.id,
 	        u.nombre,
 	        u.apellido,
 	        u.email,
@@ -44,8 +44,8 @@
         WHERE  i.usuarioproponente=u.id;
     </select>
 
-    <insert id="insertarIniciativa" parameterType="map">
-        INSERT INTO INICIATIVA (num , descripcion , usuarioproponente , palabrasclave, fechaRegistro, estado, areaProponente) VALUES ( #{iniciativa.num}, #{iniciativa.descripcion} , #{iniciativa.usuarioproponente} , #{iniciativa.palabrasclave}, #{iniciativa.fechaRegistro}, #{iniciativa.estado}, #{iniciativa.areaProponente});
+    <insert id="registrarIniciativa" parameterType="map">
+        INSERT INTO INICIATIVA (descripcion , usuarioproponente , palabrasclave, areaProponente) VALUES (#{iniciativa.descripcion} , #{iniciativa.usuarioproponente.id} , #{iniciativa.palabrasclave},#{iniciativa.areaProponente});
     </insert>
 
 
