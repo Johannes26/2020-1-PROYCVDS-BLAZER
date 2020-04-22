@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaMapper;
+import edu.eci.cvds.persistencia.mybatisimpl.mappers.PalabrasClaveMapper;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper;
 import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.Usuario;
@@ -73,7 +74,9 @@ public class MyBatisExample {
         IniciativaMapper e=sqlss.getMapper(IniciativaMapper.class);
         Iniciativa ini = e.consultarIniciativa(1);
         System.out.println(ini.toString());
+        PalabrasClaveMapper a=sqlss.getMapper(PalabrasClaveMapper.class);
         System.out.println(usuario.toString());
+        System.out.println(a.consultarPalabrasClave());
         sqlss.commit();
 
 

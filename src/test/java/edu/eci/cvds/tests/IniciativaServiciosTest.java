@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,9 +14,11 @@ import org.apache.ibatis.session.SqlSession;
 
 import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.entidades.Iniciativa;
+import edu.eci.cvds.entidades.PalabrasClave;
 import edu.eci.cvds.servicios.*;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import com.google.inject.Inject;
 
@@ -34,6 +36,12 @@ public class IniciativaServiciosTest {
     servicios=ServiciosFactory.getInstance().getServiciosTesting();
 
     }
+    
+    @Before
+    public void setUp(){
+    	
+    }
+    
 
     @Test
     public void deberiaValidarUsuario() {
@@ -55,8 +63,11 @@ public class IniciativaServiciosTest {
     	Usuario u;
 		try {
 			u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
-	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"ss","Administrador");
-	    	servicios.registrarIniciativa(ini);
+			List<PalabrasClave> palabras= new ArrayList<PalabrasClave>();
+			palabras.add(new PalabrasClave("Segun"));
+	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"Administrador");
+	    	servicios.registrarIniciativa(ini,palabras);
+	    	assertTrue(servicios.consultarIniciativas().size()==2);
 	    	
 		} catch (ServiciosException e) {
 			fail("error"+e.getMessage());
@@ -110,9 +121,22 @@ public class IniciativaServiciosTest {
     @Test
     public void deberiaCambiarEstadoIniciativa() {
     	try {
-    		servicios.cambiarEstadoIniciativa(1,"En revisión");
+    		servicios.cambiarEstadoIniciativa(1,"En revision");
     		Iniciativa a=servicios.consultarIniciativa(1);
-    		assertEquals(a.getestado(),"En revisión");
+    		assertEquals(a.getestado(),"En revision");
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
+    
+    @Test
+    public void deberiaInsertarPalabraClave(){
+    	try {
+    		List<PalabrasClave> a=new ArrayList<PalabrasClave>();
+    		a.add(new PalabrasClave("aaa"));
+    		System.out.print(servicios.consultarPalabrasClave());
+    		servicios.registrarPalabras(a);
+    		assertEquals(servicios.consultarPalabraClave("aaa").getId(),1);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}

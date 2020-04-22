@@ -10,9 +10,12 @@ import com.google.inject.Singleton;
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
 import edu.eci.cvds.entidades.Iniciativa;
+import edu.eci.cvds.entidades.PalabrasClave;
 import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.persistencia.UsuarioDAO;
 import edu.eci.cvds.persistencia.DaoIniciativa;
+import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
+import edu.eci.cvds.persistencia.PalabrasClaveDao;
 import edu.eci.cvds.persistencia.PersistenceException;
 
 
@@ -23,6 +26,10 @@ public class ServiciosImpl implements Servicios {
     private UsuarioDAO usuarioDAO;
 	@Inject
 	private DaoIniciativa iniciativaDAO;
+	@Inject
+	private PalabrasClaveDao palabrasClaveDao;
+	@Inject
+	private IniciativaPalabraDAO iniciativaPalabraDao;
 
 	@Override
     public Usuario consultarUsuario(String email) throws ServiciosException {
@@ -65,13 +72,22 @@ public class ServiciosImpl implements Servicios {
 	}
 
 	@Override
-	public void registrarIniciativa(Iniciativa i) throws ServiciosException {
+	public void registrarIniciativa(Iniciativa i, List<PalabrasClave> palabras) throws ServiciosException {
 		try {
             iniciativaDAO.registrarIniciativa(i);
+            registrarPalabras(palabras);
+            List<Iniciativa> a=iniciativaDAO.consultarIniciativas();
+            int idIniciativa=a.get(a.size()-1).getNum();
+            for(PalabrasClave p: palabras) {
+            	int idPalabra=palabrasClaveDao.consultarPalabraClave(p.getDescripcion()).getId();
+            	iniciativaPalabraDao.insertarIniciativaPalabra(idIniciativa, idPalabra);
+            }
+            
         } catch (PersistenceException e){
             throw new ServiciosException("La iniciativa no existe");
         }
 	}
+	
 	
 	@Override
 	public List<Usuario> consultarUsuarios() throws ServiciosException {
@@ -117,4 +133,39 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error al consultar iniciativa por palabra clave");
         }
 	}
+	
+	@Override
+	public void registrarPalabras(List<PalabrasClave> palabras) throws ServiciosException{
+		try {
+			for(PalabrasClave p: palabras) {
+				PalabrasClave a=consultarPalabraClave(p.getDescripcion());
+				if(a==null) {
+					palabrasClaveDao.insertarPalabraClave(p.getDescripcion());
+				}
+			}
+		}catch(PersistenceException e) {
+            throw new ServiciosException("Error al consultar palabra clave");
+		}
+	}
+	
+	@Override
+	public PalabrasClave consultarPalabraClave(String descripcion) throws ServiciosException{
+		try {
+			return palabrasClaveDao.consultarPalabraClave(descripcion);
+		}catch(PersistenceException e) {
+            throw new ServiciosException("Error al consultar palabras");
+		}
+	
+	}
+	
+	@Override
+	public List<PalabrasClave> consultarPalabrasClave() throws ServiciosException{
+		try {
+			return palabrasClaveDao.consultarPalabrasClave();
+		}catch(PersistenceException e) {
+            throw new ServiciosException("Error al consultar palabras");
+		}
+	
+	}
+	
 }

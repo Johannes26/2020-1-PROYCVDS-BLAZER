@@ -46,7 +46,7 @@ public class PrincipalBean extends BasePageBean {
 /**
     * metodo que inicia sesion en la pagina
     * @param email email del usuario
-    * @param contrasena contraseña del usuario
+    * @param contrasena contraseï¿½a del usuario
     * @throws IOException
     */
 	public String iniciarSesion(String email,String contrasena) throws IOException {

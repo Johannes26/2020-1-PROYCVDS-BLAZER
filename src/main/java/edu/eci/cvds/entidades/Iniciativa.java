@@ -2,14 +2,15 @@ package edu.eci.cvds.entidades;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Iniciativa implements Serializable {
-
 
 	private int num;
 	private String descripcion;
 	private Usuario usuarioproponente;
-	private String palabrasclave;
+	private List<IniciativaPalabra> iniciativasPalabras;
 	private Date fechaRegistro;
 	private String estado;
 	private String areaProponente;
@@ -18,21 +19,21 @@ public class Iniciativa implements Serializable {
 	public Iniciativa(){
 	};
 
-	public Iniciativa(int num, String descripcion, Usuario usuarioproponente,String palabrasClave,Date fechaRegistro,String estado,String areaProponente) {
+	public Iniciativa(int num, String descripcion, Usuario usuarioproponente,List<IniciativaPalabra> iniciativasPalabras,Date fechaRegistro,String estado,String areaProponente) {
 		this.num=num;
 		this.descripcion=descripcion;
 		this.usuarioproponente=usuarioproponente;
-		this.palabrasclave=palabrasClave;
+		this.iniciativasPalabras=iniciativasPalabras;
 		this.fechaRegistro=fechaRegistro;
 		this.estado=estado;
 		this.areaProponente=areaProponente;
 	}
 	
-	public Iniciativa(String descripcion, Usuario usuarioproponente ,String palabrasclave, String areaProponente) {
+	public Iniciativa(String descripcion, Usuario usuarioproponente , String areaProponente) {
 		this.descripcion=descripcion;
 		this.usuarioproponente=usuarioproponente;
-		this.palabrasclave=palabrasclave;
 		this.areaProponente=areaProponente;
+		iniciativasPalabras=new ArrayList<IniciativaPalabra>();
 	}
 
 
@@ -60,13 +61,12 @@ public class Iniciativa implements Serializable {
 		this.usuarioproponente = usuarioProponente;
 	}
 
-
-	public String getPalabrasClave() {
-		return palabrasclave;
+	public List<IniciativaPalabra> getIniciativasPalabras() {
+		return iniciativasPalabras;
 	}
 
-	public void setPalabrasClave(String palabrasClave) {
-		this.palabrasclave = palabrasClave;
+	public void setIniciativasPalabras(List<IniciativaPalabra> iniciativasPalabras) {
+		this.iniciativasPalabras = iniciativasPalabras;
 	}
 
 	public Date getfechaRegistro() {
@@ -95,7 +95,12 @@ public class Iniciativa implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Iniciativa [num=" + num + ", descripcion=" + descripcion + ", usuarioProponente=" + usuarioproponente
-				+ ", palabrasClave=" + palabrasclave + ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + ", areaProponente="+ areaProponente + "]";
+		return "Iniciativa [num=" + num + ", descripcion=" + descripcion + ", usuarioproponente=" + usuarioproponente
+				+ ", iniciativasPalabras=" + iniciativasPalabras + ", fechaRegistro=" + fechaRegistro + ", estado="
+				+ estado + ", areaProponente=" + areaProponente + "]";
 	}
+	
+
+
+
 }

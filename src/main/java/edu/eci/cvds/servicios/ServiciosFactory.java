@@ -4,8 +4,12 @@ import com.google.inject.Injector;
 
 import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.UsuarioDAO;
+import edu.eci.cvds.persistencia.PalabrasClaveDao;
+import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOIniciativa;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
+import edu.eci.cvds.persistencia.mybatisimpl.MyBatisPalabrasClaveDao;
+import edu.eci.cvds.persistencia.mybatisimpl.MyBatisIniciativaPalabraDAO;
 
 
 import edu.eci.cvds.servicios.impl.ServiciosImpl;
@@ -32,8 +36,11 @@ public class ServiciosFactory {
                 setClassPathResource(pathResource);
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(DaoIniciativa.class).to(MyBatisDAOIniciativa.class);
+                bind(PalabrasClaveDao.class).to(MyBatisPalabrasClaveDao.class);
+                bind(IniciativaPalabraDAO.class).to(MyBatisIniciativaPalabraDAO.class);
                 bind(Servicios.class).to(ServiciosImpl.class);
                 bind(BasePageBean.class).to(AdministradorBean.class);
+                
    
             }
         });

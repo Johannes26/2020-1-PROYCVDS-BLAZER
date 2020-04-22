@@ -5,6 +5,7 @@ import edu.eci.cvds.entidades.Usuario;
 import java.util.List;
 
 import edu.eci.cvds.entidades.Iniciativa;
+import edu.eci.cvds.entidades.PalabrasClave;
 
 public interface Servicios {
 
@@ -25,11 +26,11 @@ public interface Servicios {
 	 * metodo que permite crear una inciativa
 	 * @param i a insertar
 	 */
-	public abstract void registrarIniciativa(Iniciativa i) throws ServiciosException;
+	public abstract void registrarIniciativa(Iniciativa i, List<PalabrasClave> palabras) throws ServiciosException;
 	/**
 	 * valida si el usuario se encuentra en la base de datos
 	 * @param email email del usuario
-	 * @param contrasena contraseña del usuario
+	 * @param contrasena contraseï¿½a del usuario
 	 * @return booleano validando si existe
 	 * @throws ServiciosException
 	 */
@@ -68,4 +69,12 @@ public interface Servicios {
 	 */
 	public abstract List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws ServiciosException;
 	
+	
+	public abstract void registrarPalabras(List<PalabrasClave> palabras) throws ServiciosException;
+	
+	
+	public abstract PalabrasClave consultarPalabraClave(String descripcion) throws ServiciosException;
+	
+
+	public abstract List<PalabrasClave> consultarPalabrasClave() throws ServiciosException;
 }

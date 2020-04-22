@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.persistencia.mybatisimpl.mappers.PalabrasClaveMapper">
+
+	
+    <select parameterType="map" id="consultarPalabrasClave" resultMap="PalabrasClaveResult">
+    SELECT
+    	id ,
+    	descripcion 
+    FROM PALABRASCLAVE  
+    </select>
+    
+    <select parameterType="map" id="consultarPalabraClave" resultMap="PalabrasClaveResult">
+    SELECT
+    	id ,
+    	descripcion 
+    FROM PALABRASCLAVE 
+   	WHERE descripcion=#{descripcion};
+    </select>
+
+	<insert id="insertarPalabraClave" parameterType="map">
+		insert into PALABRASCLAVE(descripcion) values (#{descripcion});
+	</insert>
+	
+	
+    <resultMap type='PalabrasClave' id='PalabrasClaveResult'>
+        <id property='id' column='id'/>
+        <result property='descripcion' column='descripcion'/>
+    </resultMap>
+
+
+
+</mapper>
