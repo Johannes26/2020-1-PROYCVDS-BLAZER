@@ -3,6 +3,7 @@ package edu.eci.cvds.vista;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import com.google.inject.Inject;
@@ -21,15 +22,16 @@ import java.util.List;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "adminiBean")
-@SessionScoped
+@ViewScoped
 public class AdministradorBean extends BasePageBean {
 
 	@Inject
     private Servicios servicios;
-	private Usuario usuariobuscado = null;
+	private Usuario usuariobuscado;
 	private String rolNuevo;
 	private Iniciativa iniciativabuscada;
 	private String estadoNuevo;
+	
 	/**
 	 * metodo que consulta todos los usuarios
 	 * @return lista de usuarios

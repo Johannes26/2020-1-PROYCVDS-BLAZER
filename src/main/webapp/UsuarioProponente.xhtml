@@ -60,7 +60,7 @@
 
       <h:form id="RegistroIniciativa" >
            <h1 class="font-italic text-center" style="color: white;">Registrar Iniciativa</h1>
-           <p:panel id="panelRol" header="Cambiar Rol Usuario" style="background-color: #464646;">
+           <p:panel id="panelRegistrarIniciativa" header="Cambiar Rol Usuario" style="background-color: #464646;">
                 <p:messages autoUpdate="true" showDetail="true"/>
                 <h:panelGrid columns="2" id="Nuevainiciativa">
 
@@ -71,17 +71,17 @@
                 <p:inputText id="areaProponente" required="true" type="String" binding="#{areaProponente}"/>
 
                 <p:outputLabel for="descripcion" value="Descripcion" style="color:#FFFFFF" />
-                <p:panel id="descripcion" style="color:#FFFFFF">
-                  <p:textEditor widgetVar="editor1" id="descripcion2" required="true" type="String" binding="#{descripcion}" height="300" style="margin-bottom:10px st"/>
-                </p:panel>
+                <p:inputTextarea id="descripcion" rows="7" cols="60" counter="display" maxlength="100" counterTemplate="{0} caracteres restantes" autoResize="false" value="#{iniciativaBean.descripcion}" />
+                <br />
+                <h:outputText id="display" style="color:#FFFFFF"/>
 
                 <p:outputLabel for="palabrasclave" value="Palabras Clave" style="color:#FFFFFF"  />
                 <p:inputText id="palabrasclave" required="true" type="String" binding="#{palabrasclave}"/>
 
 
               </h:panelGrid>
-              <p:commandButton icon="ui-icon-check" id="btonNuevaIniciativa" value="Crear Iniciativa"
-                action="#{iniciativaBean.registrarIniciativa(descripcion.value,emailProponente.value,palabrasclave.value,areaProponente.value)}"/>
+              <p:commandButton icon="ui-icon-check" id="btonNuevaIniciativa" value="Crear Iniciativa" update="panelRegistrarIniciativa"
+                actionListener="#{iniciativaBean.registrarIniciativa(emailProponente.value,palabrasclave.value,areaProponente.value)}"/>
           </p:panel>
             <br></br>
             <br></br>

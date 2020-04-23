@@ -1,6 +1,7 @@
 package edu.eci.cvds.vista;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -24,22 +25,30 @@ public class IniciativaBean extends BasePageBean {
 	@Inject
     private Servicios servicios;
 	
-	public String registrarIniciativa(String descripcion, String emailProponente ,String palabrasclave, String areaProponente) {
-		String redirec = null;
+	private String descripcion;
+	
+	public void registrarIniciativa(String emailProponente ,String palabrasclave, String areaProponente) {
 		try {
-			String[] p=palabrasclave.split(",");
+			String p[]=palabrasclave.split(",");
 			List<PalabrasClave> palabras= new ArrayList<PalabrasClave>();
 			for(String s: p) {
 				palabras.add(new PalabrasClave(s));
 			}
 			Usuario u = servicios.consultarUsuario(emailProponente);
 			servicios.registrarIniciativa(new Iniciativa(descripcion,u,areaProponente),palabras);
-			redirec = "UsuarioProponente.xhtml?faces-redirect=true";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se ha registrado la inicativa"));
 		} catch (ServiciosException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso","Error al registrar iniciativa del usuario"));
 		}
-		return redirec;
 		
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 	
