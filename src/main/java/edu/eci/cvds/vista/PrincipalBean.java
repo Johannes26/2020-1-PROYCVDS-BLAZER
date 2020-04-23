@@ -5,10 +5,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIViewRoot;
 
 
 import com.google.inject.Inject;
@@ -19,10 +15,8 @@ import java.io.IOException;
 
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
-import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.Usuario;
 
-import java.util.List;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "principalBean")

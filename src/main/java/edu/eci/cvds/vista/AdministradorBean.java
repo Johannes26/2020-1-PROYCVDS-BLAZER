@@ -2,7 +2,6 @@ package edu.eci.cvds.vista;
 
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -17,7 +16,6 @@ import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.Usuario;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("deprecation")
@@ -96,6 +94,7 @@ public class AdministradorBean extends BasePageBean {
 		}
 	}
 	
+	
 	/**
 	 * metodo que consulta una inciativa
 	 * @param num numero de iniciativa
@@ -141,5 +140,7 @@ public class AdministradorBean extends BasePageBean {
 	public void setEstadoNuevo(String estadoNuevo) {
 		this.estadoNuevo = estadoNuevo;
 	}
+	
+	
 	
 }

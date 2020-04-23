@@ -1,7 +1,6 @@
 package edu.eci.cvds.vista;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -27,6 +26,7 @@ public class IniciativaBean extends BasePageBean {
 	
 	private String descripcion;
 	
+	
 	public void registrarIniciativa(String emailProponente ,String palabrasclave, String areaProponente) {
 		try {
 			String p[]=palabrasclave.split(",");
@@ -42,7 +42,9 @@ public class IniciativaBean extends BasePageBean {
 		}
 		
 	}
-
+	
+	
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -50,6 +52,7 @@ public class IniciativaBean extends BasePageBean {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
 	
 	
 }

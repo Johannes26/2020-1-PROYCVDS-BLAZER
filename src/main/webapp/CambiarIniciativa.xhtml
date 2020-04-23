@@ -85,6 +85,11 @@
               <p:column headerText="Estado">
                   <h:outputText value="#{iniciativa.estado}" />
               </p:column>
+              <p:column headerText="Palabras Clave">
+              <p:commandLink action="#{palabrasBean.consultarPalabras(iniciativa.iniciativasPalabras)}" style="margin-right:20px;">
+                  <h:outputText value="Consultar" />
+              </p:commandLink>
+              </p:column>
               <f:facet name="footer">
                     <p:commandButton process="singleDT" update=":AdmiVista" icon="pi pi-search" value="BUSCAR" />
               </f:facet>

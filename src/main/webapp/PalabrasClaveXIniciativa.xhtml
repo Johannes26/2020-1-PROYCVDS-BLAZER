@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <style>
+      div.iniciarSesion {
+        width:600px;
+        margin: auto;
+      }
+
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- Evento seguridad -->
+    <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
+    
+  </h:head>
+  <body background="fondo.jpg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">BlazerApp</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pagina escuela</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Opciones
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Opcion1</a>
+              <a class="dropdown-item" href="#">Opcion2</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Salir</a>
+            </div>
+          </li>
+        </ul>
+        <h:form class="form-inline my-2 my-lg-0">
+          <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
+          <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+        </h:form>
+      </div>
+    </nav>
+
+
+
+    <h:form id="PalabrasVista" class="text-center" background="fondo.jpg">
+
+         <h1 class="font-italic" style="color: white;">Palabras Clave</h1>
+         <p:dataTable var="pala" value="#{palabrasBean.palabras}">
+             <f:facet name="header">
+                  Palabras Clave
+              </f:facet>
+              <p:column headerText="id">
+                  <h:outputText value="#{pala.palabra.id}" />
+              </p:column>
+              <p:column headerText="Descripcion">
+                  <h:outputText value="#{pala.palabra.descripcion}" />
+              </p:column>
+
+          </p:dataTable>
+
+  </h:form>
+
+  <br></br>
+  <br></br>
+
+  </body>
+</html>
