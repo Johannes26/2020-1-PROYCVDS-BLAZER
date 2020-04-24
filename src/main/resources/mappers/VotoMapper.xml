@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.persistencia.mybatisimpl.mappers.VotoMapper">
+	
+	
+	<insert id="insertarVoto" parameterType="map">
+		insert into VOTO(idUsuario,numIniciativa) values (#{voto.id_usuario},#{voto.num_iniciativa});
+	</insert>
+	
+	<select parameterType="map" resultType="int" id="contarVotosIniciativa" >
+        select
+	     count(numIniciativa)
+        from VOTO 
+        WHERE numIniciativa=#{num_iniciativa};
+    </select>
+	
+	<delete id="quitarVoto" parameterType="map">
+		delete from VOTO where idUsuario=#{voto.id_usuario} and numIniciativa=#{voto.num_iniciativa}
+	</delete>
+
+ 	<resultMap type='Voto' id='VotoResult'>
+        <id property='id_usuario' column='idUsuario'/>
+        <id property='num_iniciativa' column='numIniciativa'/>
+ 	 </resultMap>
+
+
+</mapper>

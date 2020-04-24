@@ -27,4 +27,6 @@ public interface UsuarioMapper {
      * @param rol texto del rol nuevo que se le quiere poner
      */
     public void cambiarRol(@Param("id") int id,@Param("rol") String rol);
+    
+    public Usuario consultarUsuarioXId(@Param("id")int id);
 }

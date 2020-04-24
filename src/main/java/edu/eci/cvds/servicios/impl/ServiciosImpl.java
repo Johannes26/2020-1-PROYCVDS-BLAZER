@@ -2,7 +2,10 @@ package edu.eci.cvds.servicios.impl;
 
 
 
+import java.sql.SQLException;
 import java.util.List;
+
+import org.h2.jdbc.JdbcSQLException;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -12,11 +15,13 @@ import edu.eci.cvds.servicios.ServiciosException;
 import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.PalabrasClave;
 import edu.eci.cvds.entidades.Usuario;
+import edu.eci.cvds.entidades.Voto;
 import edu.eci.cvds.persistencia.UsuarioDAO;
+import edu.eci.cvds.persistencia.VotoDAO;
 import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
 import edu.eci.cvds.persistencia.PalabrasClaveDao;
-import edu.eci.cvds.persistencia.PersistenceException;
+import edu.eci.cvds.persistencia.PersistenciaException;
 
 
 @Singleton
@@ -30,6 +35,8 @@ public class ServiciosImpl implements Servicios {
 	private PalabrasClaveDao palabrasClaveDao;
 	@Inject
 	private IniciativaPalabraDAO iniciativaPalabraDao;
+	@Inject
+	private VotoDAO votoDAO;
 
 	@Override
     public Usuario consultarUsuario(String email) throws ServiciosException {
@@ -40,7 +47,7 @@ public class ServiciosImpl implements Servicios {
         	}else {
         		throw new ServiciosException("El usuario no existe");
         	}
-        } catch (PersistenceException e){
+        } catch (PersistenciaException e){
             throw new ServiciosException("Error en usuario");
         }
     }
@@ -52,21 +59,16 @@ public class ServiciosImpl implements Servicios {
 	
 	@Override
 	public Boolean validarUsuario(String email, String contrasena) throws ServiciosException {
-		boolean esvalido;
-		try {
-			Usuario usuario = consultarUsuario(email);
-			esvalido = usuario.getContrasena().equals(contrasena);
-		}catch(ServiciosException e) {
-			esvalido=false;
-		}
-		return esvalido;
+		Usuario usuario = consultarUsuario(email);
+		return usuario.getContrasena().equals(contrasena);
+		
 	}
 
 	@Override
 	public Iniciativa consultarIniciativa(int num) throws ServiciosException {
 		try {
             return iniciativaDAO.consultarIniciativa(num);
-        } catch (PersistenceException e){
+        } catch (PersistenciaException e){
             throw new ServiciosException("La iniciativa no existe");
         }
 	}
@@ -83,7 +85,7 @@ public class ServiciosImpl implements Servicios {
             	iniciativaPalabraDao.insertarIniciativaPalabra(idIniciativa, idPalabra);
             }
             
-        } catch (PersistenceException e){
+        } catch (PersistenciaException e){
             throw new ServiciosException("La iniciativa no existe");
         }
 	}
@@ -93,7 +95,7 @@ public class ServiciosImpl implements Servicios {
 	public List<Usuario> consultarUsuarios() throws ServiciosException {
 		try {
             return usuarioDAO.consultarUsuarios();
-        } catch (PersistenceException e){
+        } catch (PersistenciaException e){
             throw new ServiciosException("Error al consultar usuarios");
         }
 	}
@@ -102,7 +104,7 @@ public class ServiciosImpl implements Servicios {
 	public List<Iniciativa> consultarIniciativas() throws ServiciosException {
 		try {
             return iniciativaDAO.consultarIniciativas();
-        } catch (PersistenceException e){
+        } catch (PersistenciaException e){
             throw new ServiciosException("Error al consultar iniciativas");
         }
 	}
@@ -111,7 +113,7 @@ public class ServiciosImpl implements Servicios {
 	public void cambiarRol(int id, String rol) throws ServiciosException {
 		try {
             usuarioDAO.cambiarRol(id, rol);
-        } catch (PersistenceException e){
+        } catch (PersistenciaException e){
             throw new ServiciosException("Error al cambiar el rol de usuario");
         }
 	}
@@ -120,7 +122,7 @@ public class ServiciosImpl implements Servicios {
 	public void cambiarEstadoIniciativa(int num, String estado) throws ServiciosException {
 		try {
 			iniciativaDAO.cambiarEstadoIniciativa(num, estado);
-        } catch (PersistenceException e){
+        } catch (PersistenciaException e){
             throw new ServiciosException("Error al cambiar el estado de la iniciativa");
         }
 	}
@@ -129,7 +131,7 @@ public class ServiciosImpl implements Servicios {
 	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws ServiciosException {
 		try {
             return iniciativaDAO.consultarIniciativaXPalabraClave(PalabrasClave);
-        } catch (PersistenceException e){
+        } catch (PersistenciaException e){
             throw new ServiciosException("Error al consultar iniciativa por palabra clave");
         }
 	}
@@ -143,7 +145,7 @@ public class ServiciosImpl implements Servicios {
 					palabrasClaveDao.insertarPalabraClave(p.getDescripcion());
 				}
 			}
-		}catch(PersistenceException e) {
+		}catch(PersistenciaException e) {
             throw new ServiciosException("Error al consultar palabra clave");
 		}
 	}
@@ -152,7 +154,7 @@ public class ServiciosImpl implements Servicios {
 	public PalabrasClave consultarPalabraClave(String descripcion) throws ServiciosException{
 		try {
 			return palabrasClaveDao.consultarPalabraClave(descripcion);
-		}catch(PersistenceException e) {
+		}catch(PersistenciaException e) {
             throw new ServiciosException("Error al consultar palabras");
 		}
 	
@@ -162,10 +164,55 @@ public class ServiciosImpl implements Servicios {
 	public List<PalabrasClave> consultarPalabrasClave() throws ServiciosException{
 		try {
 			return palabrasClaveDao.consultarPalabrasClave();
-		}catch(PersistenceException e) {
+		}catch(PersistenciaException e) {
             throw new ServiciosException("Error al consultar palabras");
 		}
 	
 	}
+	
+	@Override
+	public void insertarVoto(int id_Usuario, int num_Iniciativa) throws ServiciosException{
+		try {
+			Usuario usuario = usuarioDAO.consultarUsuarioXId(id_Usuario);
+			Iniciativa iniciativa = iniciativaDAO.consultarIniciativa(num_Iniciativa);
+			if(usuario!=null && iniciativa!=null) {
+				Voto voto;
+				voto = new Voto(id_Usuario,num_Iniciativa);
+				votoDAO.insertarVoto(voto);
+			}
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al insertar Voto");
+		}
+	}
+
+	@Override
+	public void quitarVoto(int id_Usuario, int num_Iniciativa) throws ServiciosException {
+		try {
+			Usuario usuario = usuarioDAO.consultarUsuarioXId(id_Usuario);
+			Iniciativa iniciativa = iniciativaDAO.consultarIniciativa(num_Iniciativa);
+			if(usuario!=null && iniciativa!=null) {
+				Voto voto;
+				voto = new Voto(id_Usuario,num_Iniciativa);
+				votoDAO.quitarVoto(voto);
+			}
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al eliminar Voto");
+		}
+		
+	}
+	
+	public int contarVotos(int num_Iniciativa) throws ServiciosException{
+		try {
+			Iniciativa iniciativa = iniciativaDAO.consultarIniciativa(num_Iniciativa);
+			if(iniciativa!=null) {
+				return votoDAO.contarVotosIniciativa(num_Iniciativa);
+			}else {
+				throw new ServiciosException("Iniciativa no existe");
+			}
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al contar votos");
+		}
+	}
+	
 	
 }

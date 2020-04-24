@@ -9,6 +9,7 @@
         <typeAlias type='edu.eci.cvds.entidades.Iniciativa' alias='Iniciativa'/>
         <typeAlias type='edu.eci.cvds.entidades.PalabrasClave' alias='PalabrasClave'/>
         <typeAlias type='edu.eci.cvds.entidades.IniciativaPalabra' alias='IniciativaPalabra'/>
+        <typeAlias type='edu.eci.cvds.entidades.Voto' alias='Voto'/>
     </typeAliases>
 
     <environments default="test">
@@ -28,6 +29,7 @@
         <mapper resource="mappers/IniciativaMapper.xml"></mapper>
         <mapper resource="mappers/PalabrasClaveMapper.xml"></mapper>
         <mapper resource="mappers/IniciativaPalabraMapper.xml"></mapper>
+        <mapper resource="mappers/VotoMapper.xml"></mapper>
     </mappers>
 
 </configuration>

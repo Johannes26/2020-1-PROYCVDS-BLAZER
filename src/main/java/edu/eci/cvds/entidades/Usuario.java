@@ -15,6 +15,7 @@ public class Usuario implements Serializable{
 	private String tipoUsuario;
 	private String contrasena;
 	private List<Iniciativa> iniciativas;
+	private List<Voto> likes;
 	
 
 	public Usuario() {
@@ -77,12 +78,6 @@ public class Usuario implements Serializable{
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", telefono=" + telefono + ", tipoUsuario=" + tipoUsuario + "]";
-	}
 
 	public String getContrasena() {
 		return contrasena;
@@ -99,5 +94,22 @@ public class Usuario implements Serializable{
 	public void setIniciativas(List<Iniciativa> iniciativas) {
 		this.iniciativas = iniciativas;
 	}
+
+	public List<Voto> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(List<Voto> likes) {
+		this.likes = likes;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
+				+ ", telefono=" + telefono + ", tipoUsuario=" + tipoUsuario + ", contrasena=" + contrasena
+				+ ", iniciativas=" + iniciativas + ", likes=" + likes + "]";
+	}
+	
+	
 	
 }

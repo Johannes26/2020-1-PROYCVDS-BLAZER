@@ -34,7 +34,7 @@ public interface Servicios {
 	 * @return booleano validando si existe
 	 * @throws ServiciosException
 	 */
-	public abstract Boolean validarUsuario(String email, String contrasena) throws ServiciosException;
+	public abstract Boolean validarUsuario(String email, String contrasena)throws ServiciosException;
 	/**
 	 * consulta todos los usuarios en la base de datos
 	 * @return lista de usuarios
@@ -77,4 +77,10 @@ public interface Servicios {
 	
 
 	public abstract List<PalabrasClave> consultarPalabrasClave() throws ServiciosException;
+	
+	public abstract void insertarVoto(int id_Usuario, int num_Iniciativa) throws ServiciosException;
+	
+	public abstract void quitarVoto(int id_Usuario, int num_Iniciativa) throws ServiciosException;
+	
+	public abstract int contarVotos(int num_Iniciativa) throws ServiciosException;
 }

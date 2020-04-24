@@ -7,26 +7,39 @@
 
     <select parameterType="map" id="consultarUsuario" resultMap="UsuarioResult">
         select
-	        u.id as u_id,
-	        u.nombre as u_nombre,
-	        u.apellido as u_apellido,
-	        u.email as u_email,
-	        u.telefono as u_telefono,
-	        u.tipoUsuario as u_tipoUsuario,
-	        u.contrasena as u_contrasena
+	        u.id,
+	        u.nombre,
+	        u.apellido,
+	        u.email,
+	        u.telefono,
+	        u.tipoUsuario,
+	        u.contrasena
         from USUARIO u
         WHERE u.email=#{email};
     </select>
     
+    <select parameterType="map" id="consultarUsuarioXId" resultMap="UsuarioResult">
+        select
+	        u.id,
+	        u.nombre,
+	        u.apellido,
+	        u.email,
+	        u.telefono,
+	        u.tipoUsuario,
+	        u.contrasena
+        from USUARIO u
+        WHERE u.id=#{id};
+    </select>
+    
    <select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
         select
-	        u.id as u_id,
-	        u.nombre as u_nombre,
-	        u.apellido as u_apellido,
-	        u.email as u_email,
-	        u.telefono as u_telefono,
-	        u.tipoUsuario as u_tipoUsuario,
-	        u.contrasena as u_contrasena
+	        u.id,
+	        u.nombre,
+	        u.apellido,
+	        u.email,
+	        u.telefono,
+	        u.tipoUsuario,
+	        u.contrasena
         from USUARIO u
     </select>
     
@@ -37,13 +50,14 @@
     </update>
 
     <resultMap type='Usuario' id='UsuarioResult'>
-        <id property='id' column='u_id'/>
-        <result property='nombre' column='u_nombre'/>
-        <result property='apellido' column='u_apellido'/>
-        <result property='email' column='u_email'/>
-        <result property='telefono' column='u_telefono'/>
-        <result property='tipoUsuario' column='u_tipoUsuario'/>
-        <result property='contrasena' column='u_contrasena'/>
+        <id property='id' column='id'/>
+        <result property='nombre' column='nombre'/>
+        <result property='apellido' column='apellido'/>
+        <result property='email' column='email'/>
+        <result property='telefono' column='telefono'/>
+        <result property='tipoUsuario' column='tipoUsuario'/>
+        <result property='contrasena' column='contrasena'/>
+        <collection property='likes' columnPrefix='v_' ofType='Voto' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.VotoMapper.VotoResult' />
     </resultMap>
 
 

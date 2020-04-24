@@ -38,7 +38,19 @@ FOREIGN KEY (idPalabraClave)
 REFERENCES PALABRASCLAVE (id)
 );
 
-insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2158130,'Johann','Bogota','johann.bogota@mail.escuelaing.edu.co',123444,'Administrador','1234');
+CREATE TABLE VOTO(
+idUsuario int,
+numIniciativa int,
+PRIMARY KEY (idUsuario, numIniciativa),
+FOREIGN KEY (idUsuario) 
+REFERENCES USUARIO(id),
+FOREIGN KEY (numIniciativa) 
+REFERENCES INICIATIVA(num)
+);
+
+
+
 insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2157826,'Johan','Guerrero','johan.Guerrero@mail.escuelaing.edu.co',314021111,'usuario de consulta','0000');
+insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2158130,'Johann','Bogota','johann.bogota@mail.escuelaing.edu.co',123444,'Administrador','1234');
 insert into INICIATIVA (descripcion,usuarioproponente,areaProponente) values ('descripcion iniciativa',2158130,'Administrador');
 

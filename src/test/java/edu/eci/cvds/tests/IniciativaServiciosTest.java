@@ -44,17 +44,27 @@ public class IniciativaServiciosTest {
     
 
     @Test
-    public void deberiaValidarUsuario() {
+    public void deberiaValidarUsuarioExistente() {
     	Boolean a;
     	try {
     		a = servicios.validarUsuario("johann.bogota@mail.escuelaing.edu.co", "1234");
     		assertTrue(a);
-    		a = servicios.validarUsuario("otro@gmail.com", "111");
-    		assertTrue(!a);
     		a = servicios.validarUsuario("johann.bogota@mail.escuelaing.edu.co", "0000");
+    		assertTrue(!a);
+    		a = servicios.validarUsuario("johann.bogota@mail.escuelaing.edu.co", "78888");
     		assertTrue(!a);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
+    	}
+    }
+    
+    @Test
+    public void deberiaValidarUsuarioNoExistente() {
+    	try {
+    		servicios.validarUsuario("otro@gmail.com", "111");
+    		fail("error");
+    	}catch(ServiciosException e) {
+    		assertTrue(true);
     	}
     }
     
@@ -134,12 +144,53 @@ public class IniciativaServiciosTest {
     	try {
     		List<PalabrasClave> a=new ArrayList<PalabrasClave>();
     		a.add(new PalabrasClave("aaa"));
-    		System.out.print(servicios.consultarPalabrasClave());
     		servicios.registrarPalabras(a);
     		assertEquals(servicios.consultarPalabraClave("aaa").getId(),1);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
     }
+    
+    @Test
+    public void deberiaInsertarVoto(){
+    	try {
+    		servicios.insertarVoto(2158130, 2);
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
+    
+    @Test
+    public void NoDeberiaInsertarDosVoto(){
+    	boolean r = true;
+    	try {
+    		servicios.insertarVoto(2158130, 1);
+    		servicios.insertarVoto(2158130, 1);
+    	}catch(ServiciosException e) {
+    		assertTrue(r);
+    	}
+    	
+    }
+    
+    @Test
+    public void deberiaElimnarVoto() {
+    	try {
+    		servicios.insertarVoto(2157826, 2);
+    		servicios.quitarVoto(2157826, 2);
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
+    
+    
+    @Test
+    public void deberiaContarVotos() {
+    	try {
+    		assertTrue(servicios.contarVotos(2)==1);
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
+    
 
 }

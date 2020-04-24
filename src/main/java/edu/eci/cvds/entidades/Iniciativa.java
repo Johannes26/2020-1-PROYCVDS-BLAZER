@@ -14,6 +14,7 @@ public class Iniciativa implements Serializable {
 	private Date fechaRegistro;
 	private String estado;
 	private String areaProponente;
+	private List<Voto> likes;
 
 
 	public Iniciativa(){
@@ -93,12 +94,22 @@ public class Iniciativa implements Serializable {
 		this.areaProponente = areaProponente;
 	}
 
+	public List<Voto> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(List<Voto> likes) {
+		this.likes = likes;
+	}
+
 	@Override
 	public String toString() {
 		return "Iniciativa [num=" + num + ", descripcion=" + descripcion + ", usuarioproponente=" + usuarioproponente
 				+ ", iniciativasPalabras=" + iniciativasPalabras + ", fechaRegistro=" + fechaRegistro + ", estado="
-				+ estado + ", areaProponente=" + areaProponente + "]";
+				+ estado + ", areaProponente=" + areaProponente + ", likes=" + likes + "]";
 	}
+
+	
 	
 
 

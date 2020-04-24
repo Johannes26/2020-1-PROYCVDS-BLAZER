@@ -62,11 +62,11 @@ public class PrincipalBean extends BasePageBean {
 				facesContext.getExternalContext().getSessionMap().put("usuario", usuario);
 		        
 			}else {
-				facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso","Datos incorrectos"));
+				facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Aviso","La clave no coincide"));
 			}
 			
 		}catch(ServiciosException e) {
-			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso","Error"));
+			facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
 		}
 		return redirec;
 	}

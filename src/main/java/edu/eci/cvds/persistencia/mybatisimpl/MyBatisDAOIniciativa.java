@@ -3,6 +3,7 @@ package edu.eci.cvds.persistencia.mybatisimpl;
 
 import com.google.inject.Inject;
 import edu.eci.cvds.persistencia.DaoIniciativa;
+import edu.eci.cvds.persistencia.PersistenciaException;
 import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaMapper;
 
@@ -17,46 +18,46 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
     private IniciativaMapper IniciativaMapper;
 	
     
-    public Iniciativa consultarIniciativa(int num) throws PersistenceException{
+    public Iniciativa consultarIniciativa(int num) throws PersistenciaException{
     	try {
             Iniciativa iniciativa = IniciativaMapper.consultarIniciativa(num);
             return iniciativa;
         } catch (PersistenceException e){
-            throw new PersistenceException("Error al consultar la iniciativa");
+            throw new PersistenciaException("Error al consultar la iniciativa");
         }
     }
     
-    public List<Iniciativa> consultarIniciativas() throws PersistenceException{
+    public List<Iniciativa> consultarIniciativas() throws PersistenciaException{
     	try {
     		return IniciativaMapper.consultarIniciativas();
     	}catch (PersistenceException e){
-            throw new PersistenceException("No se pudo consultar las iniciativas");
+            throw new PersistenciaException("No se pudo consultar las iniciativas");
         }
     }
     
-    public void registrarIniciativa(Iniciativa texto) throws PersistenceException{
+    public void registrarIniciativa(Iniciativa texto) throws PersistenciaException{
     	try {
     		IniciativaMapper.registrarIniciativa(texto);
         } catch (PersistenceException e){
-            throw new PersistenceException("Error al registrar la iniciativa");
+            throw new PersistenciaException("Error al registrar la iniciativa");
         }
     }
 
 	@Override
-	public void cambiarEstadoIniciativa(int num, String estado) throws edu.eci.cvds.persistencia.PersistenceException {
+	public void cambiarEstadoIniciativa(int num, String estado) throws PersistenciaException {
 		try {
     		IniciativaMapper.cambiarEstadoIniciativa(num,estado);
         } catch (PersistenceException e){
-            throw new PersistenceException("Error al cambiar el estado de la iniciativa");
+            throw new PersistenciaException("Error al cambiar el estado de la iniciativa");
         }
 		
 	}
 	
-	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws PersistenceException{
+	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws PersistenciaException{
     	try {
     		return IniciativaMapper.consultarIniciativaXPalabraClave(PalabrasClave);
     	}catch (PersistenceException e){
-            throw new PersistenceException("No se pudo consultar las iniciativas por su palabra clave");
+            throw new PersistenciaException("No se pudo consultar las iniciativas por su palabra clave");
         }
     }
 

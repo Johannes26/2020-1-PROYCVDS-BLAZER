@@ -15,17 +15,19 @@ public interface UsuarioDAO {
 	 * @param contrasena contrase�a del ususario
 	 * @return boleeano que indica si el usuario esta registrado
 	 */
-    public Usuario consultarUsuario(String email) throws PersistenceException;
+    public Usuario consultarUsuario(String email) throws PersistenciaException;
     /**
      * metodo que consulta todos los usuarios en la base de datos
      * @return lista de usuarios
      */
-    public List<Usuario> consultarUsuarios() throws PersistenceException;
+    public List<Usuario> consultarUsuarios() throws PersistenciaException;
     /**
      * metodo que permite cambiar el rol de un usuario
      * @param id id del usuario
      * @param rol texto del rol nuevo que se le quiere poner
      */
-    public void cambiarRol(int id, String rol) throws PersistenceException;
+    public void cambiarRol(int id, String rol) throws PersistenciaException;
+    
+    public Usuario consultarUsuarioXId(int id) throws PersistenciaException;
     
 }	

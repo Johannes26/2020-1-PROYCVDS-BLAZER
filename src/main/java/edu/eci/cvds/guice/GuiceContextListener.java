@@ -8,10 +8,12 @@ import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
 import edu.eci.cvds.persistencia.PalabrasClaveDao;
 import edu.eci.cvds.persistencia.UsuarioDAO;
+import edu.eci.cvds.persistencia.VotoDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOIniciativa;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisIniciativaPalabraDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisPalabrasClaveDao;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
+import edu.eci.cvds.persistencia.mybatisimpl.MyBatisVotoDAO;
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.impl.ServiciosImpl;
 import edu.eci.cvds.vista.*;
@@ -41,6 +43,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(BasePageBean.class).to(PrincipalBean.class);
                 bind(Servicios.class).to(ServiciosImpl.class);
                 bind(PalabrasClaveDao.class).to(MyBatisPalabrasClaveDao.class);
+                bind(VotoDAO.class).to(MyBatisVotoDAO.class);
                 bind(IniciativaPalabraDAO.class).to(MyBatisIniciativaPalabraDAO.class);
 
             }

@@ -4,7 +4,7 @@ public interface IniciativaPalabraDAO {
 	
 	
 	
-	public abstract void insertarIniciativaPalabra(int idIniciativa,int idPalabra) throws PersistenceException;
+	public abstract void insertarIniciativaPalabra(int idIniciativa,int idPalabra) throws PersistenciaException;
 
 
 
