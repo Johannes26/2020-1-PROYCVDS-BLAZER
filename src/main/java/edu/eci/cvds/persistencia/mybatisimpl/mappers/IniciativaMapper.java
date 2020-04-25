@@ -39,6 +39,6 @@ public interface IniciativaMapper {
 	 * @param palabra palara clave a buscar
 	 * @return
 	 */
-	public List<Iniciativa> consultarIniciativaXPalabraClave(@Param("PalabrasClave") String palabra);
+	public List<Iniciativa> consultarIniciativaXPalabraClave(@Param("descripcion") String palabra);
 
 }

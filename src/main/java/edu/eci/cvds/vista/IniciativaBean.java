@@ -29,13 +29,8 @@ public class IniciativaBean extends BasePageBean {
 	
 	public void registrarIniciativa(String emailProponente ,String palabrasclave, String areaProponente) {
 		try {
-			String p[]=palabrasclave.split(",");
-			List<PalabrasClave> palabras= new ArrayList<PalabrasClave>();
-			for(String s: p) {
-				palabras.add(new PalabrasClave(s));
-			}
 			Usuario u = servicios.consultarUsuario(emailProponente);
-			servicios.registrarIniciativa(new Iniciativa(descripcion,u,areaProponente),palabras);
+			servicios.registrarIniciativa(new Iniciativa(descripcion,u,areaProponente),palabrasclave);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se ha registrado la inicativa"));
 		} catch (ServiciosException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));

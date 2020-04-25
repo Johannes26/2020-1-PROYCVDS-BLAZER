@@ -17,7 +17,6 @@ import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.PalabrasClave;
 import edu.eci.cvds.servicios.*;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import com.google.inject.Inject;
@@ -73,10 +72,8 @@ public class IniciativaServiciosTest {
     	Usuario u;
 		try {
 			u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
-			List<PalabrasClave> palabras= new ArrayList<PalabrasClave>();
-			palabras.add(new PalabrasClave("Segun"));
 	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"Administrador");
-	    	servicios.registrarIniciativa(ini,palabras);
+	    	servicios.registrarIniciativa(ini,"segun");
 	    	assertTrue(servicios.consultarIniciativas().size()==2);
 	    	
 		} catch (ServiciosException e) {
@@ -152,9 +149,24 @@ public class IniciativaServiciosTest {
     }
     
     @Test
+    public void deberiaConsultarIniciativaXPalabraClave() {
+    	try {
+    		Usuario u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
+	    	Iniciativa ini = new Iniciativa("Tercera Iniciativa",u,"Area Administrativa");
+	    	servicios.registrarIniciativa(ini,"precio,elevado");
+    		List<Iniciativa> i=servicios.consultarIniciativaXPalabraClave("precio,elevado");
+    		assertTrue(i.size()==1);
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    	
+    }
+    		
+    @Test
     public void deberiaInsertarVoto(){
     	try {
     		servicios.insertarVoto(2158130, 2);
+    
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
