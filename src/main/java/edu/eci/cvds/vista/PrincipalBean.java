@@ -11,7 +11,10 @@ import com.google.inject.Inject;
 
 
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
@@ -27,7 +30,14 @@ public class PrincipalBean extends BasePageBean {
     private Servicios servicios;
 	
 	private Usuario usuario;
- 
+	/*private HashMap<String, List<String>> verificacion;
+	
+	public PrincipalBean() {
+		verificacion = new HashMap<String, List<String>>();
+		ArrayList<String> paginas = new ArrayList<String>(
+				Arrays.asList("index", "Administrador"));
+
+	}*/
 
    public Usuario getUsuario() {
 		return usuario;
