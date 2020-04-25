@@ -100,7 +100,7 @@ public class IniciativaServiciosTest {
     public void deberiaConsultarIniciativa() {
     	try {
     		Iniciativa ini = servicios.consultarIniciativa(0001);
-    		assertEquals(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getId(),ini.getusuarioProponente().getId());
+    		assertEquals(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getId(),ini.getUsuarioproponente().getId());
     		
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());

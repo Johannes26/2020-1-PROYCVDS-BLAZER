@@ -90,7 +90,7 @@
         <result property='fechaRegistro' column='fechaRegistro'/>
         <result property='estado' column='estado'/>
         <result property='areaProponente' column='areaProponente'/>
-        <association property='usuarioProponente' javaType='Usuario' columnPrefix='u_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
+        <association property='usuarioproponente' javaType='Usuario' columnPrefix='u_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
    		<collection property='iniciativasPalabras' ofType='IniciativaPalabra' columnPrefix='c_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaPalabraMapper.IniciativaPalabraResult'></collection>
    		<collection property='likes' columnPrefix='v_' ofType='Voto' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.VotoMapper.VotoResult' />
     </resultMap>

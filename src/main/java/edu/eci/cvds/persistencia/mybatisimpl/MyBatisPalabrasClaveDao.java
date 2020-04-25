@@ -9,7 +9,7 @@ import edu.eci.cvds.persistencia.mybatisimpl.mappers.PalabrasClaveMapper;
 
 import java.util.List;
 
-import javax.persistence.PersistenceException;
+import org.apache.ibatis.exceptions.PersistenceException;
 
 public class MyBatisPalabrasClaveDao implements PalabrasClaveDao{
 	@Inject

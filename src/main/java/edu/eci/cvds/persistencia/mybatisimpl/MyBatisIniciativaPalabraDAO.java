@@ -6,7 +6,7 @@ import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
 import edu.eci.cvds.persistencia.PersistenciaException;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaPalabraMapper;
 
-import javax.persistence.PersistenceException;
+import org.apache.ibatis.exceptions.PersistenceException;
 
 public class MyBatisIniciativaPalabraDAO implements IniciativaPalabraDAO {
 	@Inject

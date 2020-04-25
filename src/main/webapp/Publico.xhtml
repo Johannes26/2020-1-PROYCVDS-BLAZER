@@ -35,8 +35,9 @@
     <!-- Bootstrap CSS -->
     <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <h:outputStylesheet library="webjars" name="font-awesome/5.12.0/css/all.min-jsf.css" />
-    <h:outputStylesheet library="webjars" name="font-awesome/5.12.0/css/v4-shims.min-jsf.css" />
+
+    <!-- Evento seguridad -->
+    <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
 
   </h:head>
   <body background="fondo.jpg">
@@ -73,45 +74,65 @@
       </div>
     </nav>
 
-
-<i class="pi pi-heart"></i>
     <h:form id="VistaUsuarioConsulta" class="text-center" background="fondo.jpg">
 
          <h1 class="font-italic" style="color: white;">Consultar Iniciativas</h1>
-
+         <p:growl id="growl" showDetail="true" sticky="true" />
          <p:dataView var="iniciativa" value="#{adminiBean.consultarIniciativas()}"
                 gridIcon="pi pi-th-large" listIcon="pi pi-bars" >
 
               <p:dataViewGridItem>
                   <p:panel header="#{iniciativa.num}" style="text-align:center">
                       <h:panelGrid columns="1" style="width:100%">
+                          <h:outputText value="#{iniciativa.descripcion}"/>
 
-                          <h:outputText value="#{iniciativa.descripcion}" />
-                          <i class="pi pi-thumbs-up"></i>
-                          <h:outputText icon="pi pi-heart" style="margin:0 auto;" />
+                          <h:panelGrid columns="3" cellpadding="5">
+                                  <p:commandLink update=":VistaUsuarioConsulta" actionListener="#{iniciativaBean.registrarVoto(principalBean.usuario.id,iniciativa.num)}">
+                                              <h:outputText styleClass=" pi pi-star" style="margin:0 auto; font-size: 45px;" />
+                                  </p:commandLink>
+                                  <p:commandLink update=":VistaUsuarioConsulta" actionListener="#{iniciativaBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}">
+                                              <h:outputText styleClass="pi pi-star-o" style="margin:0 auto; font-size: 45px;" />
+                                  </p:commandLink>
+                                  <h:outputText value="#{iniciativaBean.consultarVotos(iniciativa.num)}" />
+                          </h:panelGrid>
                       </h:panelGrid>
                   </p:panel>
               </p:dataViewGridItem>
 
-        <p:dataViewListItem>
-            <h:panelGrid columns="1" style="width:100%" >
+              <p:dataViewListItem>
+                  <h:panelGrid columns="2" style="width:100%" >
+                      <p:outputPanel >
+                          <h:panelGrid columns="2" cellpadding="5">
+                              <h:outputText value="Id:" />
+                              <h:outputText value="#{iniciativa.num}" style="font-weight: bold"/>
 
-                <p:outputPanel>
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="Id:" />
-                        <h:outputText value="#{iniciativa.num}" style="font-weight: bold"/>
+                              <h:outputText value="descripcion:" />
+                              <h:outputText value="#{iniciativa.descripcion}" style="font-weight: bold"/>
 
-                        <h:outputText value="descripcion:" />
-                        <h:outputText value="#{iniciativa.descripcion}" style="font-weight: bold"/>
+                              <h:outputText value="fecha:" />
+                              <h:outputText value="#{iniciativa.fechaRegistro}" style="font-weight: bold"/>
 
-                        <h:outputText value="fecha:" />
-                        <h:outputText value="#{iniciativa.fechaRegistro}" style="font-weight: bold"/>
-                    </h:panelGrid>
-                </p:outputPanel>
+                              <h:outputText value="Usuario Proponente:" />
+                              <h:outputText value="#{iniciativa.usuarioproponente.nombre} #{iniciativa.usuarioproponente.apellido}" style="font-weight: bold"/>
+                          </h:panelGrid>
+                    </p:outputPanel>
+                    <p:outputPanel style="float:right ;margin:0px 0px 3px 0px;">
+                          <h:panelGrid columns="3" cellpadding="5">
+                                  <p:commandLink update=":VistaUsuarioConsulta" actionListener="#{iniciativaBean.registrarVoto(principalBean.usuario.id,iniciativa.num)}">
+                                              <h:outputText styleClass=" pi pi-star" style="margin:0 auto; font-size: 45px;" />
+                                  </p:commandLink>
+                                  <p:commandLink update=":VistaUsuarioConsulta" actionListener="#{iniciativaBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}">
+                                              <h:outputText styleClass="pi pi-star-o" style="margin:0 auto; font-size: 45px;" />
+                                  </p:commandLink>
+                                  <h:outputText value="#{iniciativaBean.consultarVotos(iniciativa.num)}" />
+                          </h:panelGrid>
+                  </p:outputPanel>
 
-            </h:panelGrid>
-        </p:dataViewListItem>
-        </p:dataView>
+
+                  </h:panelGrid>
+              </p:dataViewListItem>
+      </p:dataView>
+
 
   </h:form>
 

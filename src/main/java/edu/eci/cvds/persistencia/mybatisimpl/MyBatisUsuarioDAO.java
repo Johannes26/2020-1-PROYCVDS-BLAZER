@@ -6,13 +6,11 @@ import edu.eci.cvds.persistencia.PersistenciaException;
 import edu.eci.cvds.persistencia.UsuarioDAO;
 import edu.eci.cvds.entidades.Usuario;
 
+import org.apache.ibatis.exceptions.PersistenceException;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper;
 
 import java.util.List;
 
-import javax.persistence.PersistenceException;
-
-import org.apache.ibatis.annotations.Param;
 
 public class MyBatisUsuarioDAO implements UsuarioDAO {
 	@Inject

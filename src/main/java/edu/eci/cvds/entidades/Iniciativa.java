@@ -54,12 +54,12 @@ public class Iniciativa implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Usuario getusuarioProponente() {
+	public Usuario getUsuarioproponente() {
 		return usuarioproponente;
 	}
 
-	public void setusuarioProponente(Usuario usuarioProponente) {
-		this.usuarioproponente = usuarioProponente;
+	public void setUsuarioproponente(Usuario usuarioproponente) {
+		this.usuarioproponente = usuarioproponente;
 	}
 
 	public List<IniciativaPalabra> getIniciativasPalabras() {

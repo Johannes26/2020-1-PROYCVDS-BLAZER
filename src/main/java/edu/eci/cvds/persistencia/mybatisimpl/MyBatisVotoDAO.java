@@ -2,11 +2,9 @@ package edu.eci.cvds.persistencia.mybatisimpl;
 
 import com.google.inject.Inject;
 
-import java.sql.SQLException;
 
-import javax.persistence.PersistenceException;
 
-import org.h2.jdbc.JdbcSQLException;
+import org.apache.ibatis.exceptions.PersistenceException;
 
 import edu.eci.cvds.entidades.Voto;
 import edu.eci.cvds.persistencia.PersistenciaException;
@@ -23,8 +21,6 @@ public class MyBatisVotoDAO implements VotoDAO{
 	public void insertarVoto(Voto voto) throws PersistenciaException {
 		try {
 			votoMapper.insertarVoto(voto);
-		}catch(JdbcSQLException ex) {
-			throw new PersistenciaException("Error al registrar un voto");
 		}catch (PersistenceException e){
 			throw new PersistenciaException("Error al registrar un voto");
 		}

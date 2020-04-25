@@ -26,7 +26,7 @@ public class PrincipalBean extends BasePageBean {
 	@Inject
     private Servicios servicios;
 	
-	private Usuario usuario;;
+	private Usuario usuario;
  
 
    public Usuario getUsuario() {
@@ -56,6 +56,8 @@ public class PrincipalBean extends BasePageBean {
 					redirec = "Administrador.xhtml?faces-redirect=true";
 				}else if (tipo.equals("Proponente")) {
 					redirec = "UsuarioProponente.xhtml?faces-redirect=true";
+				}else if (tipo.equals("Publico")) {
+					redirec = "Publico.xhtml?faces-redirect=true";
 				}
 				
 				//almacenar Sesion

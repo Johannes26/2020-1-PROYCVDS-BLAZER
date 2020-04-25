@@ -38,11 +38,37 @@ public class IniciativaBean extends BasePageBean {
 			servicios.registrarIniciativa(new Iniciativa(descripcion,u,areaProponente),palabras);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se ha registrado la inicativa"));
 		} catch (ServiciosException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso","Error al registrar iniciativa del usuario"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
 		}
 		
 	}
 	
+	public void registrarVoto(int id_Usuario, int num_Iniciativa) {
+		try {
+			servicios.insertarVoto(id_Usuario, num_Iniciativa);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Le has dado me gusta a la iniciativa "+num_Iniciativa));
+		} catch (ServiciosException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
+		}
+	}
+	
+	public void quitarVoto(int id_Usuario, int num_Iniciativa) {
+		try {
+			servicios.quitarVoto(id_Usuario, num_Iniciativa);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Ya no te gusta la iniciativa "+num_Iniciativa));
+		} catch (ServiciosException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
+		}
+	}
+	
+	public int consultarVotos(int num_Iniciativa) {
+		try {
+			return servicios.contarVotos(num_Iniciativa);
+		} catch (ServiciosException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
+			return 0;
+		}
+	}
 	
 	
 	public String getDescripcion() {
