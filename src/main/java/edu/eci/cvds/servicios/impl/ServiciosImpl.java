@@ -2,6 +2,7 @@ package edu.eci.cvds.servicios.impl;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -72,14 +73,20 @@ public class ServiciosImpl implements Servicios {
 	}
 
 	@Override
-	public void registrarIniciativa(Iniciativa i, List<PalabrasClave> palabras) throws ServiciosException {
+	public void registrarIniciativa(Iniciativa i, String palabrasclave) throws ServiciosException {
 		try {
+			String p[]=palabrasclave.split(",");	
+			List<PalabrasClave> palabras= new ArrayList<PalabrasClave>();			
+			for(String s: p) {
+				palabras.add(new PalabrasClave(s));
+			}
             iniciativaDAO.registrarIniciativa(i);
             registrarPalabras(palabras);
             List<Iniciativa> a=iniciativaDAO.consultarIniciativas();
             int idIniciativa=a.get(a.size()-1).getNum();
-            for(PalabrasClave p: palabras) {
-            	int idPalabra=palabrasClaveDao.consultarPalabraClave(p.getDescripcion()).getId();
+            
+            for(PalabrasClave pa: palabras) {
+            	int idPalabra=palabrasClaveDao.consultarPalabraClave(pa.getDescripcion()).getId();
             	iniciativaPalabraDao.insertarIniciativaPalabra(idIniciativa, idPalabra);
             }
             
@@ -126,9 +133,26 @@ public class ServiciosImpl implements Servicios {
 	}
 	
 	@Override
-	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws ServiciosException {
+	public List<Iniciativa> consultarIniciativaXPalabraClave(String palabras) throws ServiciosException {
 		try {
-            return iniciativaDAO.consultarIniciativaXPalabraClave(PalabrasClave);
+			String p[]=palabras.split(",");	
+			List<PalabrasClave> palabrasClave= new ArrayList<PalabrasClave>();			
+			for(String s: p) {
+				palabrasClave.add(new PalabrasClave(s));
+			}
+			
+			List<Iniciativa> iniciativasBuscadas=new ArrayList<Iniciativa>();
+			List<Integer> numeroIniciativas=new ArrayList<Integer>();
+			for(PalabrasClave s: palabrasClave) {
+				List<Iniciativa> iniciativas=iniciativaDAO.consultarIniciativaXPalabraClave(s.getDescripcion());
+				for(Iniciativa i: iniciativas) {
+					if(!numeroIniciativas.contains(i.getNum())) {
+						iniciativasBuscadas.add(i);
+						numeroIniciativas.add(i.getNum());
+					}
+				}
+			}
+            return iniciativasBuscadas;
         } catch (PersistenceException e){
             throw new ServiciosException("Error al consultar iniciativa por palabra clave");
         }

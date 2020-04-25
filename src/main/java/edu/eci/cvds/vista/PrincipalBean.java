@@ -62,6 +62,8 @@ public class PrincipalBean extends BasePageBean {
 					redirec = "Administrador.xhtml?faces-redirect=true";
 				}else if (tipo.equals("Proponente")) {
 					redirec = "UsuarioProponente.xhtml?faces-redirect=true";
+				}else if(tipo.equals("Publico")) {
+					redirec = "ConsultarIniciativaXPalabra.xhtml?faces-redirect=true";
 				}
 				
 				//almacenar Sesion

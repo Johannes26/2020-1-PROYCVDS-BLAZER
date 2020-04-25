@@ -26,7 +26,7 @@ public interface Servicios {
 	 * metodo que permite crear una inciativa
 	 * @param i a insertar
 	 */
-	public abstract void registrarIniciativa(Iniciativa i, List<PalabrasClave> palabras) throws ServiciosException;
+	public abstract void registrarIniciativa(Iniciativa i, String palabrasclave) throws ServiciosException;
 	/**
 	 * valida si el usuario se encuentra en la base de datos
 	 * @param email email del usuario
@@ -67,7 +67,7 @@ public interface Servicios {
 	 * @return lista de inciativas con esa palabra
 	 * @throws ServiciosException
 	 */
-	public abstract List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws ServiciosException;
+	public abstract List<Iniciativa> consultarIniciativaXPalabraClave(String palabras) throws ServiciosException;
 	
 	
 	public abstract void registrarPalabras(List<PalabrasClave> palabras) throws ServiciosException;

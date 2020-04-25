@@ -63,10 +63,8 @@ public class IniciativaServiciosTest {
     	Usuario u;
 		try {
 			u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
-			List<PalabrasClave> palabras= new ArrayList<PalabrasClave>();
-			palabras.add(new PalabrasClave("Segun"));
 	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"Administrador");
-	    	servicios.registrarIniciativa(ini,palabras);
+	    	servicios.registrarIniciativa(ini,"segun");
 	    	assertTrue(servicios.consultarIniciativas().size()==2);
 	    	
 		} catch (ServiciosException e) {
@@ -90,7 +88,7 @@ public class IniciativaServiciosTest {
     public void deberiaConsultarIniciativa() {
     	try {
     		Iniciativa ini = servicios.consultarIniciativa(0001);
-    		assertEquals(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getId(),ini.getusuarioProponente().getId());
+    		assertEquals(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getId(),ini.getUsuarioproponente().getId());
     		
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
@@ -134,9 +132,21 @@ public class IniciativaServiciosTest {
     	try {
     		List<PalabrasClave> a=new ArrayList<PalabrasClave>();
     		a.add(new PalabrasClave("aaa"));
-    		System.out.print(servicios.consultarPalabrasClave());
     		servicios.registrarPalabras(a);
     		assertEquals(servicios.consultarPalabraClave("aaa").getId(),1);
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
+    
+    @Test
+    public void deberiaConsultarIniciativaXPalabraClave() {
+    	try {
+    		Usuario u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
+	    	Iniciativa ini = new Iniciativa("Tercera Iniciativa",u,"Area Administrativa");
+	    	servicios.registrarIniciativa(ini,"precio,elevado");
+    		List<Iniciativa> i=servicios.consultarIniciativaXPalabraClave("precio,elevado");
+    		assertTrue(i.size()==1);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}

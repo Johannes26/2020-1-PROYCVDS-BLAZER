@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <style>
+      .centrar {
+        text-align:center;
+        margin-top: 10%;
+      }
+      .ui-dataview-list .ui-dataview-row {
+        border-bottom: 1px solid #A8A8A8;
+        padding: 25px 10px;
+        /* with the exported variables from Nova and Luna Themes*/
+        border-bottom-color: var(--input-border-color, #A8A8A8);
+    }
+ 
+    .logo {
+        width: 5%;
+    }
+    .detail {
+        width: 85%;
+        padding-left: 25px;
+    }
+      
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Evento seguridad -->
+    <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
+    
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+  </h:head>
+
+  <body background="fondo.jpg">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">BlazerApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pagina escuela</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Opciones
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Opcion1</a>
+                <a class="dropdown-item" href="#">Opcion2</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Salir</a>
+              </div>
+            </li>
+          </ul>
+          <h:form class="form-inline my-2 my-lg-0">
+            <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
+            <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+          </h:form>
+        </div>
+      </nav>
+  		<h:form id="principal">
+  		<h1 class="text-center" style="color:white">Buscar iniciativa por palabras clave</h1>
+  
+  		<div class="centrar">
+  		<h:outputText class="h3 mb-3 font-weight-normal" style="color:white" value="Palabras Clave " />
+  		<br />
+        <p:inputText id="palabras" required="true" type="String" binding="#{palabras}"/>
+        <br />
+        <p:commandButton update="principal" id="boton_buscar" actionListener="#{buscarBean.buscar(palabras.value)}" value="Buscar"/>
+        </div>
+        
+         
+        
+        
+        <h:form id="form" >
+         
+        <p:dataView var="iniciativa" value="#{buscarBean.iniciativasBuscadas}" 
+                gridIcon="pi pi-th-large" listIcon="pi pi-bars" >
+
+		<p:dataViewGridItem>
+            <p:panel header="#{iniciativa.num}" style="text-align:center">
+                <h:panelGrid columns="1" style="width:100%">
+ 
+                    <h:outputText value="#{iniciativa.descripcion}" />
+                    <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+                </h:panelGrid>
+            </p:panel>
+        </p:dataViewGridItem>
+        <p:dataViewListItem>
+            <h:panelGrid columns="1" style="width:100%" >
+ 
+                <p:outputPanel>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{iniciativa.num}" style="font-weight: bold"/>
+ 
+                        <h:outputText value="Descripcion:" />
+                        <h:outputText value="#{iniciativa.descripcion}" style="font-weight: bold"/>
+ 
+                        <h:outputText value="Fecha:" />
+                        <h:outputText value="#{iniciativa.fechaRegistro}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Area Proponente:" />
+                        <h:outputText value="#{iniciativa.areaProponente}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="Usuario Proponente:" />
+                        <h:outputText value="#{iniciativa.usuarioproponente.id}" style="font-weight: bold"/>
+                        
+                    </h:panelGrid>
+                </p:outputPanel>
+ 
+            </h:panelGrid>
+        </p:dataViewListItem>
+    	</p:dataView>
+        </h:form>
+        
+        </h:form>
+       
+ 
+  
+  	
+  
+  
+  
+  
+  </body>
+</html>
