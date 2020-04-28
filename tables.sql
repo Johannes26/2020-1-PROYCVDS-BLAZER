@@ -49,6 +49,20 @@ FOREIGN KEY (numIniciativa)
 REFERENCES INICIATIVA(num)
 );
 
+CREATE TABLE COMENTARIO(
+idComentario int,
+descripcion varchar(100) NOT NULL,
+FechaDeRegistro DATE DEFAULT now(),
+numIniciativa int NOT NULL,
+usuario int NOT NULL,
+PRIMARY KEY (idComentario),
+FOREIGN KEY (usuario) 
+REFERENCES USUARIO(id),
+FOREIGN KEY (numIniciativa) 
+REFERENCES INICIATIVA(num),
+);
+
+
 
 insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2157826,'Johan','Guerrero','johan.Guerrero@mail.escuelaing.edu.co',314021111,'Proponente','0000');
 insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2158130,'Johann','Bogota','johann.bogota@mail.escuelaing.edu.co',123444,'Administrador','1234');
