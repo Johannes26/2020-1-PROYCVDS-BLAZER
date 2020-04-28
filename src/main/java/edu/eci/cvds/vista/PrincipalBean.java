@@ -5,7 +5,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
+import javax.servlet.http.HttpServletRequest;
 
 import com.google.inject.Inject;
 
@@ -30,22 +30,53 @@ public class PrincipalBean extends BasePageBean {
     private Servicios servicios;
 	
 	private Usuario usuario;
-	/*private HashMap<String, List<String>> verificacion;
+	private HashMap<String, List<String>> verificacion;
 	
 	public PrincipalBean() {
 		verificacion = new HashMap<String, List<String>>();
-		ArrayList<String> paginas = new ArrayList<String>(
-				Arrays.asList("index", "Administrador"));
+		ArrayList<String> usuarioAdmin = new ArrayList<String>(
+				Arrays.asList("/ConsultarUsuarios.xhtml","/CambiarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml"));
+		ArrayList<String> usuarioPropo = new ArrayList<String>(
+				Arrays.asList("/AgregarIniciativas.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml"));
+		ArrayList<String> usuarioPubli = new ArrayList<String>(
+				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml"));
+		ArrayList<String> usuarioPmo = new ArrayList<String>(
+				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml"));
+		
+		verificacion.put("Administrador", usuarioAdmin);
+		verificacion.put("Proponente", usuarioPropo);
+		verificacion.put("PMO", usuarioPmo);
+		verificacion.put("Publico", usuarioPubli);
+		
 
-	}*/
-
-   public Usuario getUsuario() {
-		return usuario;
+	}
+	public ArrayList<String> consultarPaginas(){
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		Usuario u = (Usuario) facesContext.getExternalContext().getSessionMap().get("usuario");
+		String RolU = u.getTipoUsuario();
+		ArrayList<String> e = (ArrayList<String>) verificacion.get(RolU);
+		return e;
+	}
+	
+	public boolean esVisibleConsultarUsuarios() {
+			return consultarPaginas().contains("/ConsultarUsuarios.xhtml")?true:false;
+	}
+	public boolean esVisibleConsultarIniciativaXPalabra() {
+		return consultarPaginas().contains("/ConsultarIniciativaXPalabra.xhtml")?true:false;
+}
+	
+	public boolean esVisibleConsultarIniciativas() {
+		return consultarPaginas().contains("/ConsultarIniciativas.xhtml")?true:false;
+	}
+	
+	public boolean esVisibleAgregarIniciativas() {
+		return consultarPaginas().contains("/AgregarIniciativas.xhtml")?true:false;
+	}
+	
+	public boolean esVisibleCambiarIniciativa() {
+		return consultarPaginas().contains("/CambiarIniciativa.xhtml")?true:false;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
 
 /**
     * metodo que inicia sesion en la pagina
@@ -63,11 +94,11 @@ public class PrincipalBean extends BasePageBean {
 				usuario = servicios.consultarUsuario(email);
 				String tipo = usuario.getTipoUsuario();
 				if (tipo.equals("Administrador")) {
-					redirec = "Administrador.xhtml?faces-redirect=true";
+					redirec = "ConsultarUsuarios.xhtml?faces-redirect=true";
 				}else if (tipo.equals("Proponente")) {
-					redirec = "UsuarioProponente.xhtml?faces-redirect=true";
+					redirec = "ConsultarIniciativaXPalabra.xhtml?faces-redirect=true";
 				}else if (tipo.equals("Publico")) {
-					redirec = "Publico.xhtml?faces-redirect=true";
+					redirec = "ConsultarIniciativaXPalabra.xhtml?faces-redirect=true";
 				}
 				
 				//almacenar Sesion
@@ -98,17 +129,55 @@ public class PrincipalBean extends BasePageBean {
 	 */
 	public void verificarSesion() {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		
 		try {
+			
 			Usuario u = (Usuario) facesContext.getExternalContext().getSessionMap().get("usuario");
 			
 			if (u == null) {
 				facesContext.getExternalContext().redirect("index.xhtml");
+			}else {
+				redireccionar();
 			}
 		}catch(Exception e) {
 			//
 		}
 	}
+	
+	public void redireccionar() {
+		try {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			HttpServletRequest req = (HttpServletRequest) facesContext.getExternalContext().getRequest();
+			String url =req.getRequestURI();
+			
+			if (!consultarPaginas().contains(url)) {
+					facesContext.getExternalContext().redirect(consultarPaginas().get(0));
+			}
+		}catch(Exception e) {
+			//
+		}
+	}
+	
+	public void verificarSesionIndex() {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		try {
+			
+			Usuario u = (Usuario) facesContext.getExternalContext().getSessionMap().get("usuario");
+			
+			if (u != null) {
+				redireccionar();
+			}
+		}catch(Exception e) {
+			//
+		}
+	}
+	
 
+	  public Usuario getUsuario() {
+			return usuario;
+		}
+
+		public void setUsuario(Usuario usuario) {
+			this.usuario = usuario;
+		}
 
 }

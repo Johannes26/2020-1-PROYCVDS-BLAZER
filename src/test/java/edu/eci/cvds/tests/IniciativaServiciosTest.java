@@ -28,18 +28,14 @@ public class IniciativaServiciosTest {
 	@Inject
     private SqlSession sqlSession;
 	
-    private Servicios servicios;
+	private Servicios servicios;
 
     public IniciativaServiciosTest() {
 
-    servicios=ServiciosFactory.getInstance().getServiciosTesting();
+    	servicios=ServiciosFactory.getInstance().getServiciosTesting();
 
     }
-    
-    @Before
-    public void setUp(){
-    	
-    }
+
     
 
     @Test
@@ -67,7 +63,7 @@ public class IniciativaServiciosTest {
     	}
     }
     
-   @Test
+  @Test
     public void deberiaCrearIniciativa() {
     	Usuario u;
 		try {
@@ -165,44 +161,53 @@ public class IniciativaServiciosTest {
     @Test
     public void deberiaInsertarVoto(){
     	try {
-    		servicios.insertarVoto(2158130, 2);
-    
+
+    		//System.out.println(servicios.consultarVotos());
+    		servicios.insertarVoto(2158130, 1);
+    		assertTrue(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getLikes().size()==1);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
-    }
-    
-    @Test
-    public void NoDeberiaInsertarDosVoto(){
-    	boolean r = true;
-    	try {
-    		servicios.insertarVoto(2158130, 1);
-    		servicios.insertarVoto(2158130, 1);
-    	}catch(ServiciosException e) {
-    		assertTrue(r);
-    	}
-    	
     }
     
     @Test
     public void deberiaElimnarVoto() {
     	try {
-    		servicios.insertarVoto(2157826, 2);
-    		servicios.quitarVoto(2157826, 2);
+    		servicios.quitarVoto(2158130, 1);
+    		assertTrue(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getLikes().size()==1);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
     }
+    
+    @Test
+    public void NodeberiaInsertarDosVoto(){
+    	try {
+    		servicios.insertarVoto(2158130, 2);
+    		servicios.insertarVoto(2158130, 2);
+    		assertTrue(false);
+    	}catch(ServiciosException e) {
+    		assertTrue(true);
+    	}
+    }
+    
     
     
     @Test
-    public void deberiaContarVotos() {
+    public void deberiaContarVotosXIniciativa() {
     	try {
-    		assertTrue(servicios.contarVotos(2)==1);
+    		Usuario u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
+	    	Iniciativa ini = new Iniciativa("Tercera iniciativa",u,"Administrador");
+	    	servicios.registrarIniciativa(ini,"");
+	    	servicios.insertarVoto(2158130, 3);
+    		servicios.insertarVoto(2157826, 3);
+    		//assertTrue(servicios.contarVotos(1)==0);
+    		assertTrue(servicios.contarVotos(3)==2);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
     }
     
-
+    
+    
 }

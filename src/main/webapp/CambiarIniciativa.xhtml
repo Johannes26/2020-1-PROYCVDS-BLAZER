@@ -43,21 +43,23 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pagina escuela</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Opciones
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Opcion1</a>
-              <a class="dropdown-item" href="#">Opcion2</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Salir</a>
-            </div>
+                <p:menubar >
+                      <p:menuitem value="Pagina Escuela" url="#" />
+                      <p:submenu label="Consultas">
+
+                          <p:submenu label="Usuarios">
+                              <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
+                          </p:submenu>
+
+                          <p:submenu label="Iniciativas">
+                              <p:menuitem value="Agregar" url="AgregarIniciativas.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
+                              <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
+                              <p:menuitem value="Consultar" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
+                              <p:menuitem value="Consultar por palabra" url="ConsultarIniciativaXPalabra.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXPalabra()}"/>
+                          </p:submenu>
+
+                      </p:submenu>
+                </p:menubar>
           </li>
         </ul>
         <h:form class="form-inline my-2 my-lg-0">

@@ -39,15 +39,15 @@ REFERENCES PALABRASCLAVE (id)
 );
 
 CREATE TABLE VOTO(
+id SERIAL,
 idUsuario int,
 numIniciativa int,
-PRIMARY KEY (idUsuario, numIniciativa),
+PRIMARY KEY (id),
 FOREIGN KEY (idUsuario) 
 REFERENCES USUARIO(id),
 FOREIGN KEY (numIniciativa) 
 REFERENCES INICIATIVA(num)
 );
-
 
 
 insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2157826,'Johan','Guerrero','johan.Guerrero@mail.escuelaing.edu.co',314021111,'Proponente','0000');

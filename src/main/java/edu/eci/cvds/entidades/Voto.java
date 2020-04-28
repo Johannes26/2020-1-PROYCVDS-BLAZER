@@ -4,8 +4,10 @@ import java.io.Serializable;
 
 public class Voto implements Serializable{
 	
+	int id;
 	int id_usuario;
 	int num_iniciativa;
+	Iniciativa ini;
 	
 	public Voto() {}
 	
@@ -13,26 +15,37 @@ public class Voto implements Serializable{
 		this.id_usuario = id_usuario;
 		this.num_iniciativa = num_iniciativa;
 	}
-	public int getUsuario() {
-		return id_usuario;
+
+
+	public Iniciativa getIni() {
+		return ini;
 	}
 
-	public void setUsuario(int usuario) {
-		this.id_usuario = usuario;
+	public void setIni(Iniciativa ini) {
+		this.ini = ini;
+	}
+	
+
+	public int getId() {
+		return id;
 	}
 
-	public int getIniciativa() {
-		return num_iniciativa;
+	public void setId(int id) {
+		this.id = id;
 	}
-
-	public void setIniciativa(int iniciativa) {
-		this.num_iniciativa = iniciativa;
-	}
+	
 
 	@Override
 	public String toString() {
-		return "Voto [usuario=" + id_usuario + ", iniciativa=" + num_iniciativa + "]";
+		return "Voto [id=" + id + ", ini=" + ini + "]";
 	}
+
+
+
+	
+
+	
+	
 	
 	
 

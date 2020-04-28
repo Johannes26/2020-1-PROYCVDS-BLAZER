@@ -197,14 +197,30 @@ public class ServiciosImpl implements Servicios {
 	}
 	
 	@Override
+	public Usuario consultarUsuarioXId(int num) throws ServiciosException {
+		try {
+			return usuarioDAO.consultarUsuarioXId(num);
+		} catch (PersistenciaException e) {
+			 throw new ServiciosException("Error al consultar");
+		}
+	}
+	
+	@Override
 	public void insertarVoto(int id_Usuario, int num_Iniciativa) throws ServiciosException{
 		try {
-			Usuario usuario = usuarioDAO.consultarUsuarioXId(id_Usuario);
+			Usuario usuario = consultarUsuarioXId(id_Usuario);
 			Iniciativa iniciativa = iniciativaDAO.consultarIniciativa(num_Iniciativa);
 			if(usuario!=null && iniciativa!=null) {
-				Voto voto;
-				voto = new Voto(id_Usuario,num_Iniciativa);
-				votoDAO.insertarVoto(voto);
+				if(!tieneVotos(num_Iniciativa,id_Usuario)) {
+					Voto voto;
+					voto = new Voto(id_Usuario,num_Iniciativa);
+					votoDAO.insertarVoto(voto);
+				}else {
+					throw new ServiciosException("Error: No puede tener mas de dos votos");
+				}
+				
+			}else {
+				throw new ServiciosException("No esta identificado o la inciativa no es valida");
 			}
 		}catch(PersistenciaException e) {
             throw new ServiciosException("Error al insertar Voto");
@@ -220,6 +236,7 @@ public class ServiciosImpl implements Servicios {
 				Voto voto;
 				voto = new Voto(id_Usuario,num_Iniciativa);
 				votoDAO.quitarVoto(voto);
+				
 			}
 		}catch(PersistenciaException e) {
             throw new ServiciosException("Error al eliminar Voto");
@@ -239,6 +256,38 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error al contar votos");
 		}
 	}
+
+	@Override
+	public boolean tieneVotos(int num_iniciativa, int id_usuario) throws ServiciosException {
+		try {
+			return votoDAO.tieneVotos(num_iniciativa, id_usuario)!=1?false:true;
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al contar votos");
+		}
+	}
+
+	@Override
+	public List<Voto> consultarVotos() throws ServiciosException {
+		try {
+			return votoDAO.consultarVotos();
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al contar votos");
+		}
+	}
+
+	@Override
+	public void registrarUsuario(int id, String nombre, String apellido, String email, int telefono, String tipoUsuario,
+			String contrasena) throws ServiciosException {
+		try {
+			usuarioDAO.registrarUsuario(id, nombre, apellido, email, telefono, tipoUsuario, contrasena);
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al crear usuario");
+		}
+		
+	}
+
+	
+
 	
 	
 }

@@ -16,14 +16,42 @@
         from VOTO 
         WHERE numIniciativa=#{num_iniciativa};
     </select>
+    
+    <select parameterType="map" resultMap="VotoResult" id="consultarVotos" >
+        select
+        	v.id,
+	     	i.num as i_num,
+	        i.descripcion as i_descripcion,
+	        i.fechaRegistro as i_fechaRegistro,
+	        i.estado as i_estado,
+	        i.areaProponente as i_areaProponente,
+	        
+	        u.id as i_u_id,
+	        u.nombre as i_u_nombre,
+	        u.apellido as i_u_apellido,
+	        u.email as i_u_email,
+	        u.telefono as i_u_telefono,
+	        u.tipoUsuario as i_u_tipoUsuario,
+	        u.contrasena as i_u_contrasena
+        from VOTO v
+        left join INICIATIVA as i on v.numIniciativa=i.num
+        left join USUARIO as u on i.usuarioProponente=u.id
+    </select>
+    
+    <select parameterType="map" resultType="int" id="tieneVotos" >
+        select
+	     count(numIniciativa)
+        from VOTO 
+        WHERE numIniciativa=#{num_iniciativa} and idUsuario=#{id_usuario};
+    </select>
 	
 	<delete id="quitarVoto" parameterType="map">
 		delete from VOTO where idUsuario=#{voto.id_usuario} and numIniciativa=#{voto.num_iniciativa}
 	</delete>
 
  	<resultMap type='Voto' id='VotoResult'>
-        <id property='id_usuario' column='idUsuario'/>
-        <id property='num_iniciativa' column='numIniciativa'/>
+ 		<id property='id' column='id'/>
+        <association property='ini' javaType='Iniciativa' columnPrefix='i_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaMapper.IniciativaResult'></association>
  	 </resultMap>
 
 

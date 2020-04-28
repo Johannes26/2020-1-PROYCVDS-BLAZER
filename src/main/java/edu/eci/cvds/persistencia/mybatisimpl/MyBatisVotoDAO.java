@@ -2,7 +2,7 @@ package edu.eci.cvds.persistencia.mybatisimpl;
 
 import com.google.inject.Inject;
 
-
+import java.util.List;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
@@ -25,6 +25,11 @@ public class MyBatisVotoDAO implements VotoDAO{
 			throw new PersistenciaException("Error al registrar un voto");
 		}
 	}
+	
+	@Override
+	public List<Voto> consultarVotos() {
+		return votoMapper.consultarVotos();
+	}
 
 	@Override
 	public void quitarVoto(Voto voto) throws PersistenciaException {
@@ -41,6 +46,15 @@ public class MyBatisVotoDAO implements VotoDAO{
 			return votoMapper.contarVotosIniciativa(num_iniciativa);
 		}catch (PersistenceException e){
 			throw new PersistenciaException("Error al contar votos");
+		}
+	}
+
+	@Override
+	public int tieneVotos(int num_iniciativa, int id_usuario) throws PersistenciaException {
+		try {
+			return votoMapper.tieneVotos(num_iniciativa, id_usuario);
+		}catch (PersistenceException e){
+			throw new PersistenciaException("Error al consultar votos");
 		}
 	}
 	

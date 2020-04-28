@@ -11,8 +11,9 @@
 	</insert>
 	
     <resultMap type='IniciativaPalabra' id='IniciativaPalabraResult'>
-     <id property='idIniciativa' column='idIniciativa'/>
-     <id property='idPalabraClave' column='idPalabraClave'/>
+   	 <id property='id' column='id'/>
+     <result property='idIniciativa' column='idIniciativa'/>
+     <result property='idPalabraClave' column='idPalabraClave'/>
      <association property='palabra' javaType='PalabrasClave' columnPrefix="d_" resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.PalabrasClaveMapper.PalabrasClaveResult'></association>
     </resultMap>
     
