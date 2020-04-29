@@ -51,15 +51,15 @@ REFERENCES PALABRASCLAVE (id)
 );
 
 CREATE TABLE VOTO(
+id SERIAL,
 idUsuario int,
 numIniciativa int,
-PRIMARY KEY (idUsuario, numIniciativa),
+PRIMARY KEY (id),
 FOREIGN KEY (idUsuario) 
 REFERENCES USUARIO(id),
 FOREIGN KEY (numIniciativa) 
 REFERENCES INICIATIVA(num)
 );
-
 
 CREATE TABLE COMENTARIO(
 idComentario int,

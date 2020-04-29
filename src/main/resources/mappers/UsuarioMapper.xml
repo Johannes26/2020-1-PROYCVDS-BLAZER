@@ -13,10 +13,40 @@
 	        u.email,
 	        u.telefono,
 	        u.tipoUsuario,
-	        u.contrasena
+	        u.contrasena,
+	      	
+	      	v.id as v_id,
+	        
+	        u2.id as v_i_u_id,
+	        u2.nombre as v_i_u_nombre,
+	        u2.apellido as v_i_u_apellido,
+	        u2.email as v_i_u_email,
+	        u2.telefono as v_i_u_telefono,
+	        u2.tipoUsuario as v_i_u_tipoUsuario,
+	        u2.contrasena as v_i_u_contrasena,
+	        
+	      	i.num as v_i_num,
+	        i.descripcion as v_i_descripcion,
+	        i.fechaRegistro as v_i_fechaRegistro,
+	        i.estado as v_i_estado,
+	        i.areaProponente as v_i_areaProponente,
+	        
+	        c.id as v_i_c_id ,
+	        c.idIniciativa as v_i_c_idIniciativa,
+	      	c.idPalabraClave as v_i_c_idPalabraClave,
+	      	
+	      	d.id as v_i_c_d_id,
+	      	d.descripcion as v_i_c_d_descripcion
         from USUARIO u
+        left join VOTO as v on v.idUsuario=u.id
+        left join INICIATIVA as i on v.numIniciativa=i.num
+        left join USUARIO as u2 on i.usuarioProponente=u2.id
+	    left join INICIATIVAPALABRA as c on c.idIniciativa=i.num
+	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
         WHERE u.email=#{email};
     </select>
+    
+ 
     
     <select parameterType="map" id="consultarUsuarioXId" resultMap="UsuarioResult">
         select
@@ -26,8 +56,36 @@
 	        u.email,
 	        u.telefono,
 	        u.tipoUsuario,
-	        u.contrasena
+	        u.contrasena,
+	      	
+	      	v.id as v_id,
+	        
+	        u2.id as v_i_u_id,
+	        u2.nombre as v_i_u_nombre,
+	        u2.apellido as v_i_u_apellido,
+	        u2.email as v_i_u_email,
+	        u2.telefono as v_i_u_telefono,
+	        u2.tipoUsuario as v_i_u_tipoUsuario,
+	        u2.contrasena as v_i_u_contrasena,
+	        
+	      	i.num as v_i_num,
+	        i.descripcion as v_i_descripcion,
+	        i.fechaRegistro as v_i_fechaRegistro,
+	        i.estado as v_i_estado,
+	        i.areaProponente as v_i_areaProponente,
+	        
+	        c.id as v_i_c_id ,
+	        c.idIniciativa as v_i_c_idIniciativa,
+	      	c.idPalabraClave as v_i_c_idPalabraClave,
+	      	
+	      	d.id as v_i_c_d_id,
+	      	d.descripcion as v_i_c_d_descripcion
         from USUARIO u
+        left join VOTO as v on v.idUsuario=u.id
+        left join INICIATIVA as i on v.numIniciativa=i.num
+        left join USUARIO as u2 on i.usuarioProponente=u2.id
+	    left join INICIATIVAPALABRA as c on c.idIniciativa=i.num
+	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
         WHERE u.id=#{id};
     </select>
     
@@ -39,8 +97,36 @@
 	        u.email,
 	        u.telefono,
 	        u.tipoUsuario,
-	        u.contrasena
+	        u.contrasena,
+	        
+	        v.id as v_id,
+	        
+	        u2.id as v_i_u_id,
+	        u2.nombre as v_i_u_nombre,
+	        u2.apellido as v_i_u_apellido,
+	        u2.email as v_i_u_email,
+	        u2.telefono as v_i_u_telefono,
+	        u2.tipoUsuario as v_i_u_tipoUsuario,
+	        u2.contrasena as v_i_u_contrasena,
+	        
+	      	i.num as v_i_num,
+	        i.descripcion as v_i_descripcion,
+	        i.fechaRegistro as v_i_fechaRegistro,
+	        i.estado as v_i_estado,
+	        i.areaProponente as v_i_areaProponente,
+	        
+	        c.id as v_i_c_id ,
+	        c.idIniciativa as v_i_c_idIniciativa,
+	      	c.idPalabraClave as v_i_c_idPalabraClave,
+	      	
+	      	d.id as v_i_c_d_id,
+	      	d.descripcion as v_i_c_d_descripcion
         from USUARIO u
+        left join VOTO as v on v.idUsuario=u.id
+        left join INICIATIVA as i on v.numIniciativa=i.num
+        left join USUARIO as u2 on i.usuarioProponente=u2.id
+	    left join INICIATIVAPALABRA as c on c.idIniciativa=i.num
+	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
     </select>
     
     <update id="cambiarRol" parameterType="map">
@@ -48,6 +134,11 @@
     	set tipoUsuario= #{rol}
     	where id=#{id};
     </update>
+    
+    <insert id="registrarUsuario" parameterType="map">
+        insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (#{id},#{nombre},#{apellido},#{email},#{telefono},#{tipoUsuario},#{contrasena});
+	</insert>
+
 
     <resultMap type='Usuario' id='UsuarioResult'>
         <id property='id' column='id'/>

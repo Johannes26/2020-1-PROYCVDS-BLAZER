@@ -2,6 +2,8 @@ package edu.eci.cvds.persistencia;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import edu.eci.cvds.entidades.Usuario;
 
 
@@ -29,5 +31,9 @@ public interface UsuarioDAO {
     public void cambiarRol(int id, String rol) throws PersistenciaException;
     
     public Usuario consultarUsuarioXId(int id) throws PersistenciaException;
+    
+    
+    public void registrarUsuario(int id, String nombre,String apellido,String email,int telefono,String tipoUsuario,String contrasena) throws PersistenciaException;
+    
     
 }	

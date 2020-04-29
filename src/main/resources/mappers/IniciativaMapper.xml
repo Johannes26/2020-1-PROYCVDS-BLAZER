@@ -12,6 +12,7 @@
 	        i.fechaRegistro,
 	        i.estado,
 	        i.areaProponente,
+	        
             u.id as u_id,
 	        u.nombre as u_nombre,
 	        u.apellido as u_apellido,
@@ -19,9 +20,11 @@
 	        u.telefono as u_telefono,
 	        u.tipoUsuario as u_tipoUsuario,
 	        u.contrasena as u_contrasena,
+	        
 	        c.id as c_id ,
 	        c.idIniciativa as c_idIniciativa,
 	      	c.idPalabraClave as c_idPalabraClave,
+	      	
 	      	d.id as d_id,
 	      	d.descripcion as d_descripcion
         from INICIATIVA as i
@@ -38,6 +41,7 @@
 	        i.fechaRegistro,
 	        i.estado,
 	        i.areaProponente,
+	        
             u.id as u_id,
 	        u.nombre as u_nombre,
 	        u.apellido as u_apellido,
@@ -45,13 +49,14 @@
 	        u.telefono as u_telefono,
 	        u.tipoUsuario as u_tipoUsuario,
 	        u.contrasena as u_contrasena,
+	        
 	        c.id as c_id ,
 	        c.idIniciativa as c_idIniciativa,
 	      	c.idPalabraClave as c_idPalabraClave,
-	      	d.id as c_d_id,
-	      	d.descripcion as c_d_descripcion
+	      	
+	      	d.id as d_id,
+	      	d.descripcion as d_descripcion
         from INICIATIVA as i
-        
 	    left join USUARIO as u on i.usuarioProponente=u.id
 	    left join INICIATIVAPALABRA as c on c.idIniciativa=i.num
 	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
@@ -85,12 +90,14 @@
 	        u.telefono as u_telefono,
 	        u.tipoUsuario as u_tipoUsuario,
 	        u.contrasena as u_contrasena,
+	        
 	        c.id as c_id ,
 	        c.idIniciativa as c_idIniciativa,
 	      	c.idPalabraClave as c_idPalabraClave,
-	      	d.id as c_d_id,
-	      	d.descripcion as c_d_descripcion
-        FROM INICIATIVA i
+	      	
+	      	d.id as d_id,
+	      	d.descripcion as d_descripcion
+        from INICIATIVA as i
 	    left join USUARIO as u on i.usuarioProponente=u.id
 	    left join INICIATIVAPALABRA as c on c.idIniciativa=i.num
 	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
@@ -105,9 +112,9 @@
         <result property='areaProponente' column='areaProponente'/>
         <association property='usuarioproponente' javaType='Usuario' columnPrefix='u_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
    		<collection property='iniciativasPalabras' ofType='IniciativaPalabra' columnPrefix='c_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaPalabraMapper.IniciativaPalabraResult'></collection>
-   		<collection property='likes' columnPrefix='v_' ofType='Voto' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.VotoMapper.VotoResult' />
-    	<collection property='iniciativasRelacionadas' ofType='IniciativasRelacionadas' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativasRelacionadasMapper.IniciativasRelacionadasResult'/>
+   		<collection property='iniciativasRelacionadas' ofType='IniciativasRelacionadas' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativasRelacionadasMapper.IniciativasRelacionadasResult'/>
     </resultMap>
+
 
 
 </mapper>

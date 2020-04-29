@@ -11,6 +11,7 @@
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/MyBatisIniciativaPalabraDAO.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/mappers/IniciativasRelacionadasMapper.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/DaoIniciativa.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/vista/VotosBean.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/entidades/IniciativaPalabra.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/mappers/IniciativaMapper.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/entidades/Iniciativa.java

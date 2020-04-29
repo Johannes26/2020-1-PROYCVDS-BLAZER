@@ -1,10 +1,10 @@
 package edu.eci.cvds.servicios;
 
 import edu.eci.cvds.entidades.Usuario;
-import edu.eci.cvds.persistencia.PersistenciaException;
+import edu.eci.cvds.entidades.Voto;
 
-import java.sql.Date;
 import java.util.List;
+
 
 import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.PalabrasClave;
@@ -86,6 +86,19 @@ public interface Servicios {
 	
 	public abstract int contarVotos(int num_Iniciativa) throws ServiciosException;
 	
+
 	public abstract void insertarIniciativaRelacionada(int numIniciativa1, int numIniciativa2,String descripcion) throws ServiciosException;
+
+
+	public abstract boolean tieneVotos(int num_iniciativa,int id_usuario) throws ServiciosException;
+	
+	public abstract List<Voto> consultarVotos() throws ServiciosException;
+
+	
+	public abstract void registrarUsuario(int id, String nombre,String apellido,String email,
+			int telefono,String tipoUsuario,String contrasena) throws ServiciosException;
+    
+	public abstract Usuario consultarUsuarioXId(int num) throws ServiciosException;
+    
 
 }

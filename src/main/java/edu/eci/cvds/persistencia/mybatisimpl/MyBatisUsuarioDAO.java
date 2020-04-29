@@ -50,4 +50,18 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
             throw new PersistenciaException("No se pudo actualizar el rol");
     	}
     }
+
+
+	@Override
+	public void registrarUsuario(int id, String nombre, String apellido, String email, int telefono, String tipoUsuario,
+			String contrasena) throws PersistenciaException {
+		try {
+    		usuarioMapper.registrarUsuario(id, nombre, apellido, email, telefono, tipoUsuario, contrasena);
+    	}catch(PersistenceException e) {
+            throw new PersistenciaException("No se crear usuario");
+    	}
+		
+	}
+
+	
 }

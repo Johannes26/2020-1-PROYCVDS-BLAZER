@@ -14,7 +14,6 @@ public class Iniciativa implements Serializable {
 	private Date fechaRegistro;
 	private String estado;
 	private String areaProponente;
-	private List<Voto> likes;
 	private List<IniciativasRelacionadas> iniciativasRelacionadas;
 
 
@@ -41,7 +40,7 @@ public class Iniciativa implements Serializable {
 	
 	public Iniciativa(int num, String descripcion, Usuario usuarioproponente,
 			List<IniciativaPalabra> iniciativasPalabras, Date fechaRegistro, String estado, String areaProponente,
-			List<Voto> likes, List<IniciativasRelacionadas> iniciativasRelacionadas) {
+			 List<IniciativasRelacionadas> iniciativasRelacionadas) {
 		this.num = num;
 		this.descripcion = descripcion;
 		this.usuarioproponente = usuarioproponente;
@@ -49,7 +48,6 @@ public class Iniciativa implements Serializable {
 		this.fechaRegistro = fechaRegistro;
 		this.estado = estado;
 		this.areaProponente = areaProponente;
-		this.likes = likes;
 		this.iniciativasRelacionadas = iniciativasRelacionadas;
 	}
 
@@ -83,14 +81,6 @@ public class Iniciativa implements Serializable {
 
 	public void setIniciativasPalabras(List<IniciativaPalabra> iniciativasPalabras) {
 		this.iniciativasPalabras = iniciativasPalabras;
-	}
-
-	public List<Voto> getLikes() {
-		return likes;
-	}
-
-	public void setLikes(List<Voto> likes) {
-		this.likes = likes;
 	}
 
 	public List<IniciativasRelacionadas> getIniciativasRelacionadas() {
@@ -130,11 +120,13 @@ public class Iniciativa implements Serializable {
 	public String toString() {
 		return "Iniciativa [num=" + num + ", descripcion=" + descripcion + ", usuarioproponente=" + usuarioproponente
 				+ ", iniciativasPalabras=" + iniciativasPalabras + ", fechaRegistro=" + fechaRegistro + ", estado="
-				+ estado + ", areaProponente=" + areaProponente + ", likes=" + likes + "]";
+				+ estado + ", areaProponente=" + areaProponente + ", iniciativasRelacionadas=" + iniciativasRelacionadas
+				+ "]";
 	}
 
-	
-	
+
+
+
 
 
 

@@ -14,7 +14,6 @@ public class Usuario implements Serializable{
 	private int telefono;
 	private String tipoUsuario;
 	private String contrasena;
-	private List<Iniciativa> iniciativas;
 	private List<Voto> likes;
 	
 
@@ -87,13 +86,6 @@ public class Usuario implements Serializable{
 		this.contrasena = contrasena;
 	}
 	
-	public List<Iniciativa> getIniciativas() {
-		return iniciativas;
-	}
-
-	public void setIniciativas(List<Iniciativa> iniciativas) {
-		this.iniciativas = iniciativas;
-	}
 
 	public List<Voto> getLikes() {
 		return likes;
@@ -106,9 +98,11 @@ public class Usuario implements Serializable{
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", telefono=" + telefono + ", tipoUsuario=" + tipoUsuario + ", contrasena=" + contrasena
-				+ ", iniciativas=" + iniciativas + ", likes=" + likes + "]";
+				+ ", telefono=" + telefono + ", tipoUsuario=" + tipoUsuario + ", contrasena=" + contrasena + ", likes="
+				+ likes + "]";
 	}
+
+	
 	
 	
 	
