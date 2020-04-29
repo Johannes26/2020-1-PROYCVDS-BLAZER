@@ -6,11 +6,13 @@ import javax.servlet.ServletContextListener;
 
 import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
+import edu.eci.cvds.persistencia.IniciativasRelacionadasDAO;
 import edu.eci.cvds.persistencia.PalabrasClaveDao;
 import edu.eci.cvds.persistencia.UsuarioDAO;
 import edu.eci.cvds.persistencia.VotoDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOIniciativa;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisIniciativaPalabraDAO;
+import edu.eci.cvds.persistencia.mybatisimpl.MyBatisIniciativasRelacionadasDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisPalabrasClaveDao;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisVotoDAO;
@@ -45,6 +47,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(PalabrasClaveDao.class).to(MyBatisPalabrasClaveDao.class);
                 bind(VotoDAO.class).to(MyBatisVotoDAO.class);
                 bind(IniciativaPalabraDAO.class).to(MyBatisIniciativaPalabraDAO.class);
+                bind(IniciativasRelacionadasDAO.class).to(MyBatisIniciativasRelacionadasDAO.class);
 
             }
         });

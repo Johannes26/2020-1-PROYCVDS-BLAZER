@@ -15,10 +15,11 @@ public class Iniciativa implements Serializable {
 	private String estado;
 	private String areaProponente;
 	private List<Voto> likes;
+	private List<IniciativasRelacionadas> iniciativasRelacionadas;
 
 
 	public Iniciativa(){
-	};
+	}
 
 	public Iniciativa(int num, String descripcion, Usuario usuarioproponente,List<IniciativaPalabra> iniciativasPalabras,Date fechaRegistro,String estado,String areaProponente) {
 		this.num=num;
@@ -36,7 +37,21 @@ public class Iniciativa implements Serializable {
 		this.areaProponente=areaProponente;
 		iniciativasPalabras=new ArrayList<IniciativaPalabra>();
 	}
-
+	
+	
+	public Iniciativa(int num, String descripcion, Usuario usuarioproponente,
+			List<IniciativaPalabra> iniciativasPalabras, Date fechaRegistro, String estado, String areaProponente,
+			List<Voto> likes, List<IniciativasRelacionadas> iniciativasRelacionadas) {
+		this.num = num;
+		this.descripcion = descripcion;
+		this.usuarioproponente = usuarioproponente;
+		this.iniciativasPalabras = iniciativasPalabras;
+		this.fechaRegistro = fechaRegistro;
+		this.estado = estado;
+		this.areaProponente = areaProponente;
+		this.likes = likes;
+		this.iniciativasRelacionadas = iniciativasRelacionadas;
+	}
 
 	public int getNum() {
 		return num;
@@ -70,36 +85,45 @@ public class Iniciativa implements Serializable {
 		this.iniciativasPalabras = iniciativasPalabras;
 	}
 
-	public Date getfechaRegistro() {
-		return fechaRegistro;
-	}
-
-	public void setfechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
-
-	public String getestado() {
-		return estado;
-	}
-
-	public void setestado(String estado) {
-		this.estado = estado;
-	}
-
-	public String getareaProponente() {
-		return areaProponente;
-	}
-
-	public void setareaProponente(String areaProponente) {
-		this.areaProponente = areaProponente;
-	}
-
 	public List<Voto> getLikes() {
 		return likes;
 	}
 
 	public void setLikes(List<Voto> likes) {
 		this.likes = likes;
+	}
+
+	public List<IniciativasRelacionadas> getIniciativasRelacionadas() {
+		return iniciativasRelacionadas;
+	}
+
+	public void setIniciativasRelacionadas(List<IniciativasRelacionadas> iniciativasRelacionadas) {
+		this.iniciativasRelacionadas = iniciativasRelacionadas;
+	}
+	
+	
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public String getAreaProponente() {
+		return areaProponente;
+	}
+
+	public void setAreaProponente(String areaProponente) {
+		this.areaProponente = areaProponente;
 	}
 
 	@Override

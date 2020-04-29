@@ -1,6 +1,8 @@
 package edu.eci.cvds.entidades;
 
-public class PalabrasClave {
+import java.io.Serializable;
+
+public class PalabrasClave implements Serializable{
 	
 	private int id;
 	private String descripcion;

@@ -1,7 +1,9 @@
 package edu.eci.cvds.servicios;
 
 import edu.eci.cvds.entidades.Usuario;
+import edu.eci.cvds.persistencia.PersistenciaException;
 
+import java.sql.Date;
 import java.util.List;
 
 import edu.eci.cvds.entidades.Iniciativa;
@@ -83,4 +85,7 @@ public interface Servicios {
 	public abstract void quitarVoto(int id_Usuario, int num_Iniciativa) throws ServiciosException;
 	
 	public abstract int contarVotos(int num_Iniciativa) throws ServiciosException;
+	
+	public abstract void insertarIniciativaRelacionada(int numIniciativa1, int numIniciativa2,String descripcion) throws ServiciosException;
+
 }

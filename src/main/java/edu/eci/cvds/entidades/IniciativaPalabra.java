@@ -1,6 +1,8 @@
 package edu.eci.cvds.entidades;
 
-public class IniciativaPalabra {
+import java.io.Serializable;
+
+public class IniciativaPalabra implements Serializable{
 	
 	private int id;
 	private int idIniciativa;

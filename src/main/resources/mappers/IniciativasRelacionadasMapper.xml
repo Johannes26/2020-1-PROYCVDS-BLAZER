@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativasRelacionadasMapper">
+	
+	<insert id="insertarIniciativaRelacionada" parameterType="map">
+	insert into INICIATIVASRELACIONADAS(numIniciativa1,numIniciativa2,descripcion) 
+	values (#{numIniciativa1},#{numIniciativa2},#{descripcion});
+	</insert>
+
+    <resultMap type='IniciativasRelacionadas' id='IniciativasRelacionadasResult'>
+     <id property='numIniciativa1' column='numIniciativa1'/>
+     <id property='numIniciativa2' column='numIniciativa2'/>
+     <result property='fechaCreacion' column='fechaCreacion'/>
+     <result property='descripcion' column='descripcion'/>
+     <association property='iniciativaRelacionada' javaType='Iniciativa' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaMapper.IniciativaResult'></association>
+    </resultMap>
+    
+</mapper>

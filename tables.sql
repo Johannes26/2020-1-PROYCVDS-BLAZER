@@ -27,6 +27,18 @@ FOREIGN KEY (usuarioproponente)
 REFERENCES USUARIO (id)
 );
 
+CREATE TABLE INICIATIVASRELACIONADAS(
+numIniciativa1 int,
+numIniciativa2	int,
+fechaCreacion DATE DEFAULT now(),
+descripcion varchar(100) NOT NULL,
+PRIMARY KEY(numIniciativa1,numIniciativa2),
+FOREIGN KEY(numIniciativa1) 
+REFERENCES INICIATIVA(num),
+FOREIGN KEY(numIniciativa2) 
+REFERENCES INICIATIVA(num)
+);
+
 CREATE TABLE INICIATIVAPALABRA(
 id SERIAL,
 idIniciativa int,

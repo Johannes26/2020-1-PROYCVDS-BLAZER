@@ -5,6 +5,7 @@ package edu.eci.cvds.servicios.impl;
 
 
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import edu.eci.cvds.persistencia.UsuarioDAO;
 import edu.eci.cvds.persistencia.VotoDAO;
 import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
+import edu.eci.cvds.persistencia.IniciativasRelacionadasDAO;
 import edu.eci.cvds.persistencia.PalabrasClaveDao;
 import edu.eci.cvds.persistencia.PersistenciaException;
 
@@ -40,6 +42,8 @@ public class ServiciosImpl implements Servicios {
 	private IniciativaPalabraDAO iniciativaPalabraDao;
 	@Inject
 	private VotoDAO votoDAO;
+	@Inject
+	private IniciativasRelacionadasDAO iniciativasRelacionadasDAO;
 
 	@Override
     public Usuario consultarUsuario(String email) throws ServiciosException {
@@ -237,6 +241,16 @@ public class ServiciosImpl implements Servicios {
 			}
 		}catch(PersistenciaException e) {
             throw new ServiciosException("Error al contar votos");
+		}
+	}
+
+	@Override
+	public void insertarIniciativaRelacionada(int numIniciativa1, int numIniciativa2,
+			String descripcion) throws ServiciosException {
+		try {
+			iniciativasRelacionadasDAO.insertarIniciativaRelacionada(numIniciativa1, numIniciativa2, descripcion);
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al insertar las iniciativas relacionadas");
 		}
 	}
 	

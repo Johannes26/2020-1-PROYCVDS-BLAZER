@@ -130,7 +130,7 @@ public class IniciativaServiciosTest {
     	try {
     		servicios.cambiarEstadoIniciativa(1,"En revision");
     		Iniciativa a=servicios.consultarIniciativa(1);
-    		assertEquals(a.getestado(),"En revision");
+    		assertEquals(a.getEstado(),"En revision");
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
@@ -204,5 +204,16 @@ public class IniciativaServiciosTest {
     	}
     }
     
+    @Test
+    public void deberiaAgruparIniciativas() {
+    	try {
+    		Usuario u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
+	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"Administrador");
+	    	servicios.registrarIniciativa(ini,"segun");
+    		//servicios.insertarIniciativaRelacionada(ini.getNum(), numIniciativa2, descripcion);
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
 
 }
