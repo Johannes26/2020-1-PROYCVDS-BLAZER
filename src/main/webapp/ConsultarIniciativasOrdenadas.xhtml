@@ -6,21 +6,29 @@
       xmlns:p="http://primefaces.org/ui">
 
   <h:head>
+    <style>
+        .ui-datatable input {
+        box-sizing: border-box;
+        width: 100%;
+        -webkit-box-shadow: none;
+        box-shadow: none !important;
+    }
 
+    </style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-
     <!-- Evento seguridad -->
     <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
-    
+
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
   </h:head>
-  <body background="fondo.jpg" onload="#{agruparBean.inicializar()}">
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <body background="fondo.jpg" onload="#{iniciativaBean.inicializar()}">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">BlazerApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -58,67 +66,33 @@
           </h:form>
         </div>
       </nav>
+      
+      <br/><br/>
+      <br/><br/>
+      <br/><br/>
+      <br/><br/>
+      <h:form>
+      <p:dataTable var="ini" value="#{iniciativaBean.iniciativas}" sortMode="multiple">
+        <f:facet name="header">
+            INICIATIVAS REGISTRADAS
+        </f:facet>
+        <p:column headerText="Numero" sortBy="#{ini.num}">
+            <h:outputText value="#{ini.num}" />
+        </p:column>
+ 
+ 		<p:column headerText="Estado" sortBy="#{ini.estado}">
+            <h:outputText value="#{ini.estado}" />
+        </p:column>
+        <p:column headerText="Usuario Proponente" sortBy="#{ini.usuarioproponente.nombre}">
+            <h:outputText value="#{ini.usuarioproponente.nombre}" />
+        </p:column>
+ 
+        <p:column headerText="Fecha de Registro" sortBy="#{ini.fechaRegistro}">
+            <h:outputText value="#{ini.fechaRegistro}" />
+        </p:column>
+ 
+    </p:dataTable>
+    </h:form>
     
-    
-<script type="text/javascript">
-    function handleDrop(event, ui) {
-        var droppedCar = ui.draggable;
- 
-        droppedCar.fadeOut('fast');
-    }
-</script>
- 
-<h:form id="iniciativasForm" >
-    <p:fieldset id="iniciativasR" legend="iniciativas Registradas">
-        <p:dataGrid id="iniciativas" var="iniciativa" value="#{agruparBean.iniciativas}" columns="3">
-            <p:panel id="pnl" header="#{iniciativa.num}" style="text-align:center">
-                <h:outputText value="#{iniciativa.descripcion}" />
-            </p:panel>
-            <p:draggable for="pnl" revert="true" handle=".ui-panel-titlebar" stack=".ui-panel"/>
-        </p:dataGrid>
-    </p:fieldset>
- 	<br/>
- 	<br/>
- 	<p:outputLabel value="Descripcion" style="color:#FFFFFF" />
- 	<br/>
- 	<p:inputText id="descripcion" required="true" type="String" binding="#{descripcion}"/>
- 	
- 	<p:commandButton update="iniciativasForm" action="#{agruparBean.inicializar()}" id="btnAgrupar" value="Agrupar" actionListener="#{agruparBean.agruparIniciativas(descripcion.value)}"/>
-    
-    <p:fieldset id="SeleccionIniciativas" legend="Seleccion Iniciativas" style="margin-top:20px">
-        <p:outputPanel id="dropArea">
-            <h:outputText value="!!!Arrastre aqui!!!" rendered="#{empty agruparBean.iniciativasArrastradas}" style="font-size:24px;" />
-            <p:dataTable id="IniciativasSeleccionadas" var="ini" value="#{agruparBean.iniciativasArrastradas}" rendered="#{not empty agruparBean.iniciativasArrastradas}">
-                <p:column headerText="num">
-                    <h:outputText value="#{ini.num}" />
-                </p:column>
- 
-                <p:column headerText="descripcion">
-                    <h:outputText value="#{ini.descripcion}" />
-                </p:column>
- 
-                <p:column headerText="Usuario Proponente">
-                    <h:outputText value="#{ini.usuarioproponente.nombre}" />
-                </p:column>
- 
-                <p:column headerText="Fecha Registro">
-                    <h:outputText value="#{ini.fechaRegistro}" />
-                </p:column>
-            </p:dataTable>
-        </p:outputPanel>
-    </p:fieldset>
- 
-    <p:droppable for="SeleccionIniciativas" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="iniciativas" onDrop="handleDrop">
-        <p:ajax listener="#{agruparBean.iniciativaArrastrada}" update="dropArea iniciativas" />
-    </p:droppable>
-</h:form>
-
-     
-
-    
-
-  <br></br>
-  <br></br>
-
-  </body>
+</body>
 </html>

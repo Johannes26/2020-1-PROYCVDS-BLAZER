@@ -1,6 +1,8 @@
 package edu.eci.cvds.vista;
 
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -22,7 +24,7 @@ public class IniciativaBean extends BasePageBean {
     private Servicios servicios;
 	
 	private String descripcion;
-	
+	private List<Iniciativa> iniciativas;
 	
 	public void registrarIniciativa(String emailProponente ,String palabrasclave, String areaProponente) {
 		try {
@@ -35,7 +37,14 @@ public class IniciativaBean extends BasePageBean {
 		
 	}
 	
-	
+	public void inicializar() {
+		try {
+			System.out.println("222");
+			iniciativas =servicios.consultarIniciativas();
+		} catch (ServiciosException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public String getDescripcion() {
 		return descripcion;
@@ -45,6 +54,15 @@ public class IniciativaBean extends BasePageBean {
 		this.descripcion = descripcion;
 	}
 
+	public List<Iniciativa> getIniciativas() {
+		return iniciativas;
+	}
+
+	public void setIniciativas(List<Iniciativa> iniciativas) {
+		this.iniciativas = iniciativas;
+	}
+
+	
 	
 	
 }

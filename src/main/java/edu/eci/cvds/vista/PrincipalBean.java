@@ -35,13 +35,13 @@ public class PrincipalBean extends BasePageBean {
 	public PrincipalBean() {
 		verificacion = new HashMap<String, List<String>>();
 		ArrayList<String> usuarioAdmin = new ArrayList<String>(
-				Arrays.asList("/ConsultarUsuarios.xhtml","/CambiarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/AgruparIniciativas.xhtml"));
+				Arrays.asList("/ConsultarUsuarios.xhtml","/CambiarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/AgruparIniciativas.xhtml","/ConsultarIniciativasOrdenadas.xhtml"));
 		ArrayList<String> usuarioPropo = new ArrayList<String>(
-				Arrays.asList("/AgregarIniciativas.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml"));
+				Arrays.asList("/AgregarIniciativas.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml"));
 		ArrayList<String> usuarioPubli = new ArrayList<String>(
-				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml"));
+				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml"));
 		ArrayList<String> usuarioPmo = new ArrayList<String>(
-				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml"));
+				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml"));
 		
 		verificacion.put("Administrador", usuarioAdmin);
 		verificacion.put("Proponente", usuarioPropo);
@@ -67,6 +67,10 @@ public class PrincipalBean extends BasePageBean {
 	
 	public boolean esVisibleConsultarIniciativas() {
 		return consultarPaginas().contains("/ConsultarIniciativas.xhtml")?true:false;
+	}
+	
+	public boolean esVisibleConsultarIniciativasOrdenadas() {
+		return consultarPaginas().contains("/ConsultarIniciativasOrdenadas.xhtml")?true:false;
 	}
 	
 	public boolean esVisibleAgregarIniciativas() {
