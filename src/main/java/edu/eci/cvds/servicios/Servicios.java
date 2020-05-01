@@ -2,6 +2,7 @@ package edu.eci.cvds.servicios;
 
 import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.entidades.Voto;
+import edu.eci.cvds.entidades.Comentario;
 
 import java.util.List;
 
@@ -99,6 +100,10 @@ public interface Servicios {
 			int telefono,String tipoUsuario,String contrasena) throws ServiciosException;
     
 	public abstract Usuario consultarUsuarioXId(int num) throws ServiciosException;
+	
+	public abstract void agregarComentario(String descripcion, Iniciativa i, Usuario u) throws ServiciosException;
+	
+	public abstract List<Comentario> consultarComentarios() throws ServiciosException;
     
 
 }

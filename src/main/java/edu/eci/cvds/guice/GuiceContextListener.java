@@ -4,12 +4,14 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import edu.eci.cvds.persistencia.ComentarioDAO;
 import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
 import edu.eci.cvds.persistencia.IniciativasRelacionadasDAO;
 import edu.eci.cvds.persistencia.PalabrasClaveDao;
 import edu.eci.cvds.persistencia.UsuarioDAO;
 import edu.eci.cvds.persistencia.VotoDAO;
+import edu.eci.cvds.persistencia.mybatisimpl.MyBatisComentarioDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisDAOIniciativa;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisIniciativaPalabraDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisIniciativasRelacionadasDAO;
@@ -46,6 +48,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(Servicios.class).to(ServiciosImpl.class);
                 bind(PalabrasClaveDao.class).to(MyBatisPalabrasClaveDao.class);
                 bind(VotoDAO.class).to(MyBatisVotoDAO.class);
+                bind(ComentarioDAO.class).to(MyBatisComentarioDAO.class);
                 bind(IniciativaPalabraDAO.class).to(MyBatisIniciativaPalabraDAO.class);
                 bind(IniciativasRelacionadasDAO.class).to(MyBatisIniciativasRelacionadasDAO.class);
 

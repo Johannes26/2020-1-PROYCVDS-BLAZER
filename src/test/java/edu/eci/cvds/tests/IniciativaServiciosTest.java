@@ -37,7 +37,7 @@ public class IniciativaServiciosTest {
     }
 
     
-
+    
     @Test
     public void deberiaValidarUsuarioExistente() {
     	Boolean a;
@@ -207,7 +207,24 @@ public class IniciativaServiciosTest {
     		fail("error"+e.getMessage());
     	}
     }
+    /**
+    @Test
+    public void deberiaInsertarComentario() {
+    	System.out.println(123);
+    	try {
+    		servicios.registrarUsuario(2155042, "Esteban", "Bernal", "guillermo.bernal@mail.escuelaing.edu.co", 6784436, "Publico", "2302");
+    		Usuario u = servicios.consultarUsuario("guillermo.bernal@mail.escuelaing.edu.co");
+	    	Iniciativa ini = new Iniciativa("Cuarta iniciativa",u,"Publico");
+	    	servicios.registrarIniciativa(ini,"");
+	    	System.out.println(servicios.consultarIniciativas());
+    		//assertTrue(servicios.contarVotos(1)==0);
+    		//assertTrue(servicios.contarVotos(3)==2);
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
     
+    **/
    /** @Test
     public void deberiaAgruparIniciativas() {
     	try {

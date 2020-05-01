@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.persistencia.mybatisimpl.mappers.ComentarioMapper">
+	
+	
+	<insert id="AgregarComentario" parameterType="map">
+		insert into COMENTARIO(descripcion,numIniciativa,usuario) values (#{descripcion},#{Iniciativa.num},#{usuario.id});
+	</insert>
+    
+    <select parameterType="map" resultMap="ComentarioResult" id="consultarComentarios" >
+        select
+        	c.idComentario,
+	        c.descripcion,
+	        c.FechaDeRegistro,
+	        i.num as i_num,
+	        u.nombre as u_nombre,
+	        u.apellido as u_apellido,
+        from COMENTARIO c
+        left join INICIATIVA as i on c.numIniciativa=i.num
+        left join USUARIO as u on i.usuarioProponente=u.id
+    </select>
+    
+
+ 	<resultMap type='Comentario' id='ComentarioResult'>
+ 		<id property='idComentario' column='idComentario'/>
+ 		<result property='descripcion' column='descripcion'/>
+ 		<result property='FechaRegistro' column='FechaDeRegistro'/>
+        <association property='ini' javaType='Iniciativa' columnPrefix='i_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaMapper.IniciativaResult'></association>
+        <association property='usu' javaType='Usuario' columnPrefix='u_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
+ 	 </resultMap>
+
+
+</mapper>

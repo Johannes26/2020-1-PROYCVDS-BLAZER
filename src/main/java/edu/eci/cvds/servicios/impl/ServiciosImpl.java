@@ -16,12 +16,14 @@ import com.google.inject.Singleton;
 
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
+import edu.eci.cvds.entidades.Comentario;
 import edu.eci.cvds.entidades.Iniciativa;
 import edu.eci.cvds.entidades.PalabrasClave;
 import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.entidades.Voto;
 import edu.eci.cvds.persistencia.UsuarioDAO;
 import edu.eci.cvds.persistencia.VotoDAO;
+import edu.eci.cvds.persistencia.ComentarioDAO;
 import edu.eci.cvds.persistencia.DaoIniciativa;
 import edu.eci.cvds.persistencia.IniciativaPalabraDAO;
 import edu.eci.cvds.persistencia.IniciativasRelacionadasDAO;
@@ -42,6 +44,8 @@ public class ServiciosImpl implements Servicios {
 	private IniciativaPalabraDAO iniciativaPalabraDao;
 	@Inject
 	private VotoDAO votoDAO;
+	@Inject
+	private ComentarioDAO comentarioDAO;
 	@Inject
 	private IniciativasRelacionadasDAO iniciativasRelacionadasDAO;
 
@@ -298,6 +302,24 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error al crear usuario");
 		}
 		
+	}
+	
+	@Override
+	public void agregarComentario(String descripcion, Iniciativa i, Usuario u) throws ServiciosException{
+		try {
+			comentarioDAO.agregarComentario(descripcion, i, u);
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al agregar comentario");
+		}
+	}
+	
+	@Override
+	public List<Comentario> consultarComentarios() throws ServiciosException{
+		try {
+			return comentarioDAO.consultarComentarios();
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al consultar los comentarios");
+		}
 	}
 	
 	
