@@ -67,21 +67,27 @@
 
 
 
-    <h:form id="PalabrasVista" class="text-center" background="fondo.jpg">
+    <h:form id="IniciativasVista" class="text-center" background="fondo.jpg">
 
-         <h1 class="font-italic" style="color: white;">Palabras Clave</h1>
-         <p:dataTable var="pala" value="#{palabrasBean.palabras}">
+         <h1 class="font-italic" style="color: white;">Iniciativas Relacionadas</h1>
+         
+         <p:dataTable var="ini" value="#{iniciativasrela.iniciativasRelacionadas}">
              <f:facet name="header">
-                  Palabras Clave
+                  Iniciativas Relacionadas
               </f:facet>
-              <p:column headerText="id">
-                  <h:outputText value="#{pala.palabra.id}" />
+              <p:column headerText="Descripcion Agrupacion">
+                  <h:outputText value="#{ini.numIniciativa1}" />
               </p:column>
-              <p:column headerText="Descripcion">
-                  <h:outputText value="#{pala.palabra.descripcion}" />
+              <p:column headerText="Descripcion Agrupacion">
+                  <h:outputText value="#{ini.numIniciativa2}" />
               </p:column>
-
-          </p:dataTable>
+              <p:column headerText="Fecha de Creacion">
+                  <h:outputText value="#{ini.fechaCreacion}" />
+              </p:column>
+              <p:column headerText="Descripcion Agrupacion">
+                  <h:outputText value="#{ini.descripcion}" />
+              </p:column>
+          </p:dataTable>	
 
   </h:form>
 

@@ -55,11 +55,18 @@
 	      	c.idPalabraClave as c_idPalabraClave,
 	      	
 	      	d.id as c_d_id,
-	      	d.descripcion as c_d_descripcion
+	      	d.descripcion as c_d_descripcion,
+	      	
+	      	r.numIniciativa1 as r_numIniciativa1,
+	      	r.numIniciativa2 as r_numIniciativa2,
+	      	r.fechaCreacion as r_fechaCreacion,
+	      	r.descripcion as r_descripcion
+	      	
         from INICIATIVA as i
 	    left join USUARIO as u on i.usuarioProponente=u.id
 	    left join INICIATIVAPALABRA as c on c.idIniciativa=i.num
 	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
+	    left join INICIATIVASRELACIONADAS as r on r.numIniciativa1=i.num 
     </select>
 
     <insert id="registrarIniciativa" parameterType="map">
@@ -112,7 +119,7 @@
         <result property='areaProponente' column='areaProponente'/>
         <association property='usuarioproponente' javaType='Usuario' columnPrefix='u_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
    		<collection property='iniciativasPalabras' ofType='IniciativaPalabra' columnPrefix='c_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaPalabraMapper.IniciativaPalabraResult'></collection>
-   		<collection property='iniciativasRelacionadas' ofType='IniciativasRelacionadas' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativasRelacionadasMapper.IniciativasRelacionadasResult'/>
+   		<collection property='iniciativasRelacionadas' ofType='IniciativasRelacionadas'  columnPrefix='r_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativasRelacionadasMapper.IniciativasRelacionadasResult'/>
     </resultMap>
 
 

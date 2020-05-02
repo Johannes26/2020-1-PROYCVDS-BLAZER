@@ -15,7 +15,6 @@
      <id property='numIniciativa2' column='numIniciativa2'/>
      <result property='fechaCreacion' column='fechaCreacion'/>
      <result property='descripcion' column='descripcion'/>
-     <association property='iniciativaRelacionada' javaType='Iniciativa' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaMapper.IniciativaResult'></association>
     </resultMap>
     
 </mapper>

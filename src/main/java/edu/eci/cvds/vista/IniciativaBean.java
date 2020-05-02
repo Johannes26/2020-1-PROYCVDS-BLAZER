@@ -10,6 +10,8 @@ import javax.faces.bean.ViewScoped;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entidades.Iniciativa;
+import edu.eci.cvds.entidades.IniciativaPalabra;
+import edu.eci.cvds.entidades.IniciativasRelacionadas;
 import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
@@ -25,6 +27,8 @@ public class IniciativaBean extends BasePageBean {
 	
 	private String descripcion;
 	private List<Iniciativa> iniciativas;
+	
+
 	
 	public void registrarIniciativa(String emailProponente ,String palabrasclave, String areaProponente) {
 		try {
@@ -61,7 +65,14 @@ public class IniciativaBean extends BasePageBean {
 	public void setIniciativas(List<Iniciativa> iniciativas) {
 		this.iniciativas = iniciativas;
 	}
+	
 
+
+
+
+	
+	
+	
 	
 	
 	

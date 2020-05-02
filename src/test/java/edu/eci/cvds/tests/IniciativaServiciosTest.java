@@ -208,15 +208,20 @@ public class IniciativaServiciosTest {
     	}
     }
     
-   /** @Test
-    public void deberiaAgruparIniciativas() {
+    
+    
+    @Test
+    public void deberiaConsultarRelaciones() {
     	try {
-    		Usuario u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
-	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"Administrador");
-	    	servicios.registrarIniciativa(ini,"segun");
+	    	servicios.insertarIniciativaRelacionada(1, 2, "prueba");
+    		System.out.println(servicios.consultarIniciativas());
     		//servicios.insertarIniciativaRelacionada(ini.getNum(), numIniciativa2, descripcion);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
-    }*/
+    }
+    
+    
+    
+
 }
