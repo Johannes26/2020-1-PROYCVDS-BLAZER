@@ -149,6 +149,7 @@
         <result property='tipoUsuario' column='tipoUsuario'/>
         <result property='contrasena' column='contrasena'/>
         <collection property='likes' columnPrefix='v_' ofType='Voto' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.VotoMapper.VotoResult' />
+        
     </resultMap>
 
 

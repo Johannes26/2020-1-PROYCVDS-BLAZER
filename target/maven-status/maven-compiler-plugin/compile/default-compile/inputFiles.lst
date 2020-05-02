@@ -1,6 +1,7 @@
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/servicios/impl/ServiciosImpl.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/MyBatisVotoDAO.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/entidades/PalabrasClave.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/mappers/ComentarioMapper.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/vista/PrincipalBean.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/servicios/cliente/MyBatisExample.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/servicios/ServiciosException.java
@@ -11,6 +12,7 @@
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/MyBatisIniciativaPalabraDAO.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/mappers/IniciativasRelacionadasMapper.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/DaoIniciativa.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/MyBatisComentarioDAO.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/vista/VotosBean.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/entidades/IniciativaPalabra.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/mappers/IniciativaMapper.java
@@ -37,5 +39,6 @@
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/IniciativaPalabraDAO.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/PersistenciaException.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/vista/IniciativaBean.java
+/Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/ComentarioDAO.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/persistencia/mybatisimpl/MyBatisIniciativasRelacionadasDAO.java
 /Users/johanguerrero/Documents/Ciclos/2020-1-PROYCVDS-BLAZER/src/main/java/edu/eci/cvds/vista/BasePageBean.java

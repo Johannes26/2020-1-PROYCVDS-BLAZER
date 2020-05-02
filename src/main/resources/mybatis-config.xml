@@ -15,6 +15,7 @@
         <typeAlias type='edu.eci.cvds.entidades.PalabrasClave' alias='PalabrasClave'/>
         <typeAlias type='edu.eci.cvds.entidades.IniciativaPalabra' alias='IniciativaPalabra'/>
         <typeAlias type='edu.eci.cvds.entidades.Voto' alias='Voto'/>
+        <typeAlias type='edu.eci.cvds.entidades.Comentario' alias='Comentario'/>
         <typeAlias type='edu.eci.cvds.entidades.IniciativasRelacionadas' alias='IniciativasRelacionadas'/>
     </typeAliases>
 
@@ -38,6 +39,7 @@
         <mapper resource="mappers/PalabrasClaveMapper.xml"></mapper>
         <mapper resource="mappers/IniciativaPalabraMapper.xml"></mapper>
         <mapper resource="mappers/VotoMapper.xml"></mapper>
+        <mapper resource="mappers/ComentarioMapper.xml"></mapper>
         <mapper resource="mappers/IniciativasRelacionadasMapper.xml"></mapper>
     </mappers>
 

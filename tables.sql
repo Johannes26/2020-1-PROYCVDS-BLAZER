@@ -62,7 +62,7 @@ REFERENCES INICIATIVA(num)
 );
 
 CREATE TABLE COMENTARIO(
-idComentario int,
+idComentario SERIAL,
 descripcion varchar(100) NOT NULL,
 FechaDeRegistro DATE DEFAULT now(),
 numIniciativa int NOT NULL,

@@ -8,26 +8,27 @@ public class Comentario implements Serializable{
 	int idComentario;
 	String descripcion;
 	Date FechaRegistro;
-	int numIniciativa;
-	int usuario;
+	Iniciativa ini;
+	Usuario usu;
 	
 	public Comentario() {}
 	
-	public Comentario(int idComentario, String descripcion, Date FechaRegistro, int numIniciativa, int usuario) {
+	public Comentario(int idComentario, String descripcion, Date FechaRegistro, Iniciativa ini, Usuario usu) {
 		this.idComentario = idComentario;
 		this.descripcion = descripcion;
 		this.FechaRegistro = FechaRegistro;
-		this.numIniciativa = numIniciativa;
-		this.usuario = usuario;
+		this.ini = ini;
+		this.usu = usu;
 	}
-	public int getComentario() {
+
+	public int getIdComentario() {
 		return idComentario;
 	}
 
-	public void setComentario(int Comentario) {
-		this.idComentario = Comentario;
+	public void setIdComentario(int idComentario) {
+		this.idComentario = idComentario;
 	}
-	
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -35,35 +36,37 @@ public class Comentario implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
 	public Date getFechaRegistro() {
 		return FechaRegistro;
 	}
 
-	public void setFechaRegistro(Date FechaRegistro) {
-		this.FechaRegistro = FechaRegistro;
-	}
-	
-	public int getIniciativa() {
-		return numIniciativa;
+	public void setFechaRegistro(Date fechaRegistro) {
+		FechaRegistro = fechaRegistro;
 	}
 
-	public void setIniciativa(int iniciativa) {
-		this.numIniciativa = iniciativa;
-	}
-	
-	public int getUsuario() {
-		return usuario;
+	public Iniciativa getIni() {
+		return ini;
 	}
 
-	public void setUsuario(int usuario) {
-		this.usuario = usuario;
+	public void setIni(Iniciativa ini) {
+		this.ini = ini;
+	}
+
+	public Usuario getUsu() {
+		return usu;
+	}
+
+	public void setUsu(Usuario usu) {
+		this.usu = usu;
 	}
 
 	@Override
 	public String toString() {
-		return "Comentario [Comentario=" + idComentario + ", descripcion=" + descripcion + ", FechaDeRegistro=" + FechaRegistro + ", Iniciativa=" + numIniciativa + ", Usuario=" + usuario + "]";
+		return "Comentario [idComentario=" + idComentario + ", descripcion=" + descripcion + ", FechaRegistro="
+				+ FechaRegistro + ", ini=" + ini + ", usu=" + usu + "]";
 	}
+	
 	
 	
 
