@@ -72,7 +72,11 @@
       <br/><br/>
       <br/><br/>
       <h:form>
-      <p:dataTable var="ini" value="#{iniciativaBean.iniciativas}" sortMode="multiple">
+      <p:dataTable var="ini" value="#{iniciativaBean.iniciativas}" sortMode="multiple" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,15">
         <f:facet name="header">
             INICIATIVAS REGISTRADAS
         </f:facet>
