@@ -78,7 +78,7 @@
           </h:form>
         </div>
       </nav>
-  		<h:form id="principal">
+  <h:form id="principal" onsubmit="#{votosBean.consultarVotos()}">
   		<h1 class="text-center" style="color:white">Buscar iniciativa por palabras clave</h1>
 
   		<div class="centrar">
@@ -92,7 +92,6 @@
 
 
 
-        <h:form id="form" onsubmit="#{votosBean.consultarVotos()}">
 
         <p:dataView var="iniciativa" value="#{buscarBean.iniciativasBuscadas}"
                 gridIcon="pi pi-th-large" listIcon="pi pi-bars" >
@@ -154,7 +153,6 @@
             </h:panelGrid>
         </p:dataViewListItem>
     	</p:dataView>
-        </h:form>
 
         </h:form>
 

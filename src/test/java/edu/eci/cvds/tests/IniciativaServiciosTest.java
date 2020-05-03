@@ -217,10 +217,9 @@ public class IniciativaServiciosTest {
 	    	Iniciativa ini4 = new Iniciativa("Cuarta iniciativa",g,"Publico");
 	    	servicios.registrarIniciativa(ini4,"");
 	    	Iniciativa ini4_1 = servicios.consultarIniciativa(2);
-	    	System.out.println(servicios.consultarIniciativas());
 	    	servicios.agregarComentario("fgh", ini4_1, g);
-	    	
-    		System.out.println(servicios.consultarComentarios());
+	    	assertTrue(servicios.consultarComentarios().get(0).getDescripcion()=="fgh" && 
+	    			servicios.consultarComentarios().get(0).getIdComentario()==1);
     		//assertTrue(servicios.contarVotos(1)==0);
     		//assertTrue(servicios.contarVotos(3)==2);
     	}catch(ServiciosException e) {
