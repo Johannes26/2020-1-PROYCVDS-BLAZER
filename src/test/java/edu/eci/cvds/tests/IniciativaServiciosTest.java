@@ -70,7 +70,7 @@ public class IniciativaServiciosTest {
 			u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
 	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"Administrador");
 	    	servicios.registrarIniciativa(ini,"segun");
-	    	assertTrue(servicios.consultarIniciativas().size()==2);
+	    	assertTrue(servicios.consultarIniciativas().size()==3);
 	    	
 		} catch (ServiciosException e) {
 			fail("error"+e.getMessage());
@@ -104,7 +104,7 @@ public class IniciativaServiciosTest {
     public void deberiaConsultarIniciativas() {
         try {
             List<Iniciativa> a= servicios.consultarIniciativas();
-            assertTrue(a.size()==1);
+            assertTrue(a.size()==2);
         }catch(ServiciosException e) {
             fail("error"+e.getMessage());
         }
@@ -201,28 +201,32 @@ public class IniciativaServiciosTest {
 	    	servicios.registrarIniciativa(ini,"");
 	    	servicios.insertarVoto(2158130, 3);
     		servicios.insertarVoto(2157826, 3);
+    		//System.out.println(servicios.consultarIniciativas());
     		//assertTrue(servicios.contarVotos(1)==0);
     		assertTrue(servicios.contarVotos(3)==2);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
     }
-    /**
+ 
     @Test
     public void deberiaInsertarComentario() {
-    	System.out.println(123);
     	try {
     		servicios.registrarUsuario(2155042, "Esteban", "Bernal", "guillermo.bernal@mail.escuelaing.edu.co", 6784436, "Publico", "2302");
-    		Usuario u = servicios.consultarUsuario("guillermo.bernal@mail.escuelaing.edu.co");
-	    	Iniciativa ini = new Iniciativa("Cuarta iniciativa",u,"Publico");
-	    	servicios.registrarIniciativa(ini,"");
+    		Usuario g = servicios.consultarUsuario("guillermo.bernal@mail.escuelaing.edu.co");
+	    	Iniciativa ini4 = new Iniciativa("Cuarta iniciativa",g,"Publico");
+	    	servicios.registrarIniciativa(ini4,"");
+	    	Iniciativa ini4_1 = servicios.consultarIniciativa(2);
 	    	System.out.println(servicios.consultarIniciativas());
+	    	servicios.agregarComentario("fgh", ini4_1, g);
+	    	
+    		System.out.println(servicios.consultarComentarios());
     		//assertTrue(servicios.contarVotos(1)==0);
     		//assertTrue(servicios.contarVotos(3)==2);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
-    }*/
+    }
     
   
     

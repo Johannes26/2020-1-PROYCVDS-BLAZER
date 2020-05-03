@@ -22,7 +22,7 @@ public class MyBatisComentarioDAO implements ComentarioDAO{
 	@Override
 	public void agregarComentario(String descripcion, Iniciativa i, Usuario u) throws PersistenciaException {
 		try {
-			comentarioMapper. agregarComentario(descripcion,i,u);
+			comentarioMapper.agregarComentario(descripcion,i,u);
 		}catch (PersistenceException e){
 			throw new PersistenciaException("Error al registrar un voto");
 		}

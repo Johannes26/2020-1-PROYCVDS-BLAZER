@@ -49,7 +49,6 @@ public class AdministradorBean extends BasePageBean {
     	servicios.cambiarRol(id, rol);
     	usuariobuscado = null;
     	rolNuevo = "";
-    	FacesContext.getCurrentInstance().getExternalContext().redirect("Administrador.xhtml");
     }
 
     /**

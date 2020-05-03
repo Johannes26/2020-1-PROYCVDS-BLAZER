@@ -6,8 +6,8 @@
 <mapper namespace="edu.eci.cvds.persistencia.mybatisimpl.mappers.ComentarioMapper">
 	
 	
-	<insert id="AgregarComentario" parameterType="map">
-		insert into COMENTARIO(descripcion,numIniciativa,usuario) values (#{descripcion},#{Iniciativa.num},#{usuario.id});
+	<insert id="agregarComentario" parameterType="map">
+		insert into COMENTARIO(descripcion,numIniciativa,usuario) values (#{descripcion},#{iniciativa.num},#{usuario.id});
 	</insert>
     
     <select parameterType="map" resultMap="ComentarioResult" id="consultarComentarios" >
@@ -16,8 +16,9 @@
 	        c.descripcion,
 	        c.FechaDeRegistro,
 	        i.num as i_num,
+	        i.descripcion as i_descripcion,
 	        u.nombre as u_nombre,
-	        u.apellido as u_apellido,
+	        u.apellido as u_apellido
         from COMENTARIO c
         left join INICIATIVA as i on c.numIniciativa=i.num
         left join USUARIO as u on i.usuarioProponente=u.id

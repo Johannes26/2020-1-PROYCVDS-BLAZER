@@ -90,7 +90,9 @@ public class ServiciosImpl implements Servicios {
 			String p[]=palabrasclave.split(",");	
 			List<PalabrasClave> palabras= new ArrayList<PalabrasClave>();			
 			for(String s: p) {
-				palabras.add(new PalabrasClave(s));
+				if(s != "") {
+					palabras.add(new PalabrasClave(s));
+				}
 			}
             iniciativaDAO.registrarIniciativa(i);
             registrarPalabras(palabras);
