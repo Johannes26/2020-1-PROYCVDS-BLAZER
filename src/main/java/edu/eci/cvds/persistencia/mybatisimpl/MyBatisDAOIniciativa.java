@@ -26,6 +26,15 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
             throw new PersistenciaException("Error al consultar la iniciativa");
         }
     }
+
+    public int consultarIniciativasPorArea(String area) throws PersistenciaException{
+        try {
+            int numIniciativas = IniciativaMapper.consultarIniciativasPorArea(area);
+            return numIniciativas;
+        } catch (PersistenceException e){
+            throw new PersistenciaException("No pudo contar las iniciativas");
+        }
+    }
     
     public List<Iniciativa> consultarIniciativas() throws PersistenciaException{
     	try {

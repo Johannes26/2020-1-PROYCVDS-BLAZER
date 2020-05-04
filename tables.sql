@@ -6,6 +6,7 @@ email varchar(50) NOT NULL,
 telefono int,
 tipoUsuario varchar(30) NOT NULL,
 contrasena varchar(30) NOT NULL,
+area varchar(30),
 PRIMARY KEY (id)
 );
 
@@ -76,7 +77,7 @@ REFERENCES INICIATIVA(num),
 
 
 
-insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2157826,'Johan','Guerrero','johan.Guerrero@mail.escuelaing.edu.co',314021111,'Proponente','0000');
-insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (2158130,'Johann','Bogota','johann.bogota@mail.escuelaing.edu.co',123444,'Administrador','1234');
+insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena,area) values (2157826,'Johan','Guerrero','johan.Guerrero@mail.escuelaing.edu.co',314021111,'Proponente','0000','sistemas');
+insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena,area) values (2158130,'Johann','Bogota','johann.bogota@mail.escuelaing.edu.co',123444,'Administrador','1234','sistemas');
 insert into INICIATIVA (descripcion,usuarioproponente,areaProponente) values ('descripcion iniciativa',2158130,'Administrador');
 
