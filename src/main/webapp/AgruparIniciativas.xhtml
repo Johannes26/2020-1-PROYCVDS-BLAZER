@@ -16,10 +16,10 @@
 
     <!-- Evento seguridad -->
     <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
-    
+
   </h:head>
   <body background="fondo.jpg" onload="#{agruparBean.inicializar()}">
-    
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">BlazerApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,7 @@
 
                             <p:submenu label="Iniciativas">
                                 <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
+                                <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
                                 <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
                                 <p:submenu label="Consultar">
                                   <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
@@ -58,16 +59,16 @@
           </h:form>
         </div>
       </nav>
-    
-    
+
+
 <script type="text/javascript">
     function handleDrop(event, ui) {
         var droppedCar = ui.draggable;
- 
+
         droppedCar.fadeOut('fast');
     }
 </script>
- 
+
 <h:form id="iniciativasForm" >
     <p:fieldset id="iniciativasR" legend="iniciativas Registradas">
         <p:dataGrid id="iniciativas" var="iniciativa" value="#{agruparBean.iniciativas}" columns="3">
@@ -82,9 +83,9 @@
  	<p:outputLabel value="Descripcion" style="color:#FFFFFF" />
  	<br/>
  	<p:inputText id="descripcion" required="true" type="String" binding="#{descripcion}"/>
- 	
+
  	<p:commandButton update="iniciativasForm" action="#{agruparBean.inicializar()}" id="btnAgrupar" value="Agrupar" actionListener="#{agruparBean.agruparIniciativas(descripcion.value)}"/>
-    
+
     <p:fieldset id="SeleccionIniciativas" legend="Seleccion Iniciativas" style="margin-top:20px">
         <p:outputPanel id="dropArea">
             <h:outputText value="!!!Arrastre aqui!!!" rendered="#{empty agruparBean.iniciativasArrastradas}" style="font-size:24px;" />
@@ -92,30 +93,30 @@
                 <p:column headerText="num">
                     <h:outputText value="#{ini.num}" />
                 </p:column>
- 
+
                 <p:column headerText="descripcion">
                     <h:outputText value="#{ini.descripcion}" />
                 </p:column>
- 
+
                 <p:column headerText="Usuario Proponente">
                     <h:outputText value="#{ini.usuarioproponente.nombre}" />
                 </p:column>
- 
+
                 <p:column headerText="Fecha Registro">
                     <h:outputText value="#{ini.fechaRegistro}" />
                 </p:column>
             </p:dataTable>
         </p:outputPanel>
     </p:fieldset>
- 
+
     <p:droppable for="SeleccionIniciativas" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="iniciativas" onDrop="handleDrop">
         <p:ajax listener="#{agruparBean.iniciativaArrastrada}" update="dropArea iniciativas" />
     </p:droppable>
 </h:form>
 
-     
 
-    
+
+
 
   <br></br>
   <br></br>

@@ -3,6 +3,8 @@ package edu.eci.cvds.persistencia;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import edu.eci.cvds.entidades.Iniciativa;
 
 
@@ -38,4 +40,7 @@ public interface DaoIniciativa {
 	 * @return
 	 */
 	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws PersistenciaException;
+	
+
+	public void cambiarDatosIniciativa(int num, String descripcion,String areaProponente) throws PersistenciaException;
 }

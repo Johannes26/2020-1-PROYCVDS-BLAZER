@@ -73,11 +73,20 @@
         INSERT INTO INICIATIVA (descripcion , usuarioProponente, areaProponente) VALUES (#{iniciativa.descripcion} , #{iniciativa.usuarioproponente.id} ,#{iniciativa.areaProponente});
     </insert>
 
-
+    
     <update id="cambiarEstadoIniciativa" parameterType="map">
     	UPDATE INICIATIVA
         SET estado = #{estado}
         WHERE num =  #{num};
+    </update>
+    
+    
+    
+    <update id="cambiarDatosIniciativa" parameterType="map">
+    	UPDATE INICIATIVA
+        SET descripcion = #{descripcion},
+	        areaProponente = #{areaProponente}
+        WHERE num = #{num};
     </update>
 
 

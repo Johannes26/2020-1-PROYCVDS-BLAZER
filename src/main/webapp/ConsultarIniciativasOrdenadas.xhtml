@@ -47,6 +47,7 @@
 
                             <p:submenu label="Iniciativas">
                                 <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
+                                <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
                                 <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
                                 <p:submenu label="Consultar">
                                   <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
@@ -66,12 +67,12 @@
           </h:form>
         </div>
       </nav>
-      
+
       <br/><br/>
       <br/><br/>
       <br/><br/>
       <br/><br/>
-      <h:form>
+  <h:form>
       <p:dataTable var="ini" value="#{iniciativaBean.iniciativas}" sortMode="multiple" rows="10"
                  paginator="true"
                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -83,20 +84,20 @@
         <p:column headerText="Numero" sortBy="#{ini.num}">
             <h:outputText value="#{ini.num}" />
         </p:column>
- 
+
  		<p:column headerText="Estado" sortBy="#{ini.estado}">
             <h:outputText value="#{ini.estado}" />
         </p:column>
         <p:column headerText="Usuario Proponente" sortBy="#{ini.usuarioproponente.nombre}">
             <h:outputText value="#{ini.usuarioproponente.nombre}" />
         </p:column>
- 
+
         <p:column headerText="Fecha de Registro" sortBy="#{ini.fechaRegistro}">
             <h:outputText value="#{ini.fechaRegistro}" />
         </p:column>
- 
+
     </p:dataTable>
     </h:form>
-    
+
 </body>
 </html>

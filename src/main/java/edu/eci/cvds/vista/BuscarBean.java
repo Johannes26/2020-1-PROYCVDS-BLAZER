@@ -22,8 +22,8 @@ import edu.eci.cvds.servicios.ServiciosException;
 public class BuscarBean extends BasePageBean{
 		@Inject
 	    private Servicios servicios;
-		
-		
+
+
 		private List<Iniciativa> iniciativasBuscadas=null;
 
 		public void buscar(String palabras) {
@@ -40,9 +40,9 @@ public class BuscarBean extends BasePageBean{
 		public void setIniciativasBuscadas(List<Iniciativa> iniciativasBuscadas) {
 			this.iniciativasBuscadas = iniciativasBuscadas;
 		}
-		
 
 
 
-		
+
+
 }

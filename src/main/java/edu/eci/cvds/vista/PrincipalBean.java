@@ -37,7 +37,7 @@ public class PrincipalBean extends BasePageBean {
 		ArrayList<String> usuarioAdmin = new ArrayList<String>(
 				Arrays.asList("/ConsultarUsuarios.xhtml","/CambiarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/AgruparIniciativas.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml"));
 		ArrayList<String> usuarioPropo = new ArrayList<String>(
-				Arrays.asList("/AgregarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml"));
+				Arrays.asList("/AgregarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/ModificarIniciativa.xhtml"));
 		ArrayList<String> usuarioPubli = new ArrayList<String>(
 				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml"));
 		ArrayList<String> usuarioPmo = new ArrayList<String>(
@@ -61,6 +61,11 @@ public class PrincipalBean extends BasePageBean {
 	public boolean esVisibleConsultarUsuarios() {
 			return consultarPaginas().contains("/ConsultarUsuarios.xhtml")?true:false;
 	}
+	
+	public boolean esVisibleModificarIniciativa() {
+		return consultarPaginas().contains("/ModificarIniciativa.xhtml")?true:false;
+	}
+	
 	public boolean esVisibleConsultarIniciativaXPalabra() {
 		return consultarPaginas().contains("/ConsultarIniciativaXPalabra.xhtml")?true:false;
 }

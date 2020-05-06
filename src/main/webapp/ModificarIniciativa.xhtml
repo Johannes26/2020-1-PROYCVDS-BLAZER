@@ -25,7 +25,7 @@
 
 
   </h:head>
-  <body background="fondo.jpg">
+  <body background="fondo.jpg" onload="#{iniciativaBean.inicializar()}">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">BlazerApp</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,28 +69,63 @@
 
 
     <h:form id="IniciativasVista" class="text-center" background="fondo.jpg">
+        <p:growl id="msg" showDetail="true" sticky="true" />
 
-         <h1 class="font-italic" style="color: white;">Iniciativas Relacionadas</h1>
+        <p:dataTable var="ini" value="#{adminiBean.consultarIniciativas()}" sortMode="multiple" rows="10"
+                       paginator="true"
+                       paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                       currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                       rowsPerPageTemplate="5,10,15" editable="true">
+              <p:ajax event="rowEdit" listener="#{iniciativaBean.actualizar}" update=":IniciativasVista:msg"/>
+              <p:ajax event="rowEditCancel" listener="#{iniciativaBean.cancelar}" update=":IniciativasVista:msg"/>
 
-         <p:dataTable var="ini" value="#{iniciativasrela.iniciativasRelacionadas}">
-             <f:facet name="header">
-                  Iniciativas Relacionadas
+              <f:facet name="header">
+                  INICIATIVAS
               </f:facet>
-              <p:column headerText="Descripcion Agrupacion">
-                  <h:outputText value="#{ini.numIniciativa1}" />
-              </p:column>
-              <p:column headerText="Descripcion Agrupacion">
-                  <h:outputText value="#{ini.numIniciativa2}" />
-              </p:column>
-              <p:column headerText="Fecha de Creacion">
-                  <h:outputText value="#{ini.fechaCreacion}" />
-              </p:column>
-              <p:column headerText="Descripcion Agrupacion">
-                  <h:outputText value="#{ini.descripcion}" />
-              </p:column>
-          </p:dataTable>
 
-  </h:form>
+              <p:column headerText="Numero" sortBy="#{ini.num}">
+                  <h:outputText value="#{ini.num}" />
+              </p:column>
+
+              <p:column headerText="Estado" sortBy="#{ini.estado}">
+                  <h:outputText value="#{ini.estado}" />
+              </p:column>
+
+              <p:column headerText="Descripcion" sortBy="#{ini.usuarioproponente.nombre}">
+                  <p:cellEditor>
+                      <f:facet name="output">
+                          <h:outputText value="#{ini.descripcion}" />
+                      </f:facet>
+                      <f:facet name="input">
+                          <p:ajaxStatus onstart="#{iniciativaBean.setActdescripcion(ini.descripcion)}"></p:ajaxStatus>
+                          <h:inputText value="#{iniciativaBean.actdescripcion}"/>
+                      </f:facet>
+                  </p:cellEditor>
+              </p:column>
+
+              <p:column headerText="Area Proponente" sortBy="#{ini.fechaRegistro}">
+                  <p:cellEditor>
+                      <f:facet name="output">
+                          <h:outputText value="#{ini.areaProponente}" />
+                      </f:facet>
+                      <f:facet name="input">
+                          <p:ajaxStatus onstart="#{iniciativaBean.setActarea(ini.areaProponente)}"></p:ajaxStatus>
+                          <h:inputText value="#{iniciativaBean.actarea}"/>
+                          <p:ajaxStatus onsuccess="#{iniciativaBean.inicializar()}"></p:ajaxStatus>
+                      </f:facet>
+                  </p:cellEditor>
+              </p:column>
+
+              <p:column>
+                  <p:rowEditor >
+
+                  </p:rowEditor>
+              </p:column>
+        </p:dataTable>
+
+
+
+    </h:form>
 
   <br></br>
   <br></br>
