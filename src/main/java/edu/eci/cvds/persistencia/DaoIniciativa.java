@@ -18,6 +18,13 @@ public interface DaoIniciativa {
 	public Iniciativa consultarIniciativa(int num) throws PersistenciaException;
 	
 	/**
+	 * metodo que permite contar las inciativas agrupadas por un area especifica
+	 * @param area area del propontente 
+	 * @return int
+	 */
+	public int consultarIniciativasPorArea(String area) throws PersistenciaException;
+	
+	/**
 	 * metodo que permite consultar todas las inciativas
 	 * @return lista de iniciativas
 	 */

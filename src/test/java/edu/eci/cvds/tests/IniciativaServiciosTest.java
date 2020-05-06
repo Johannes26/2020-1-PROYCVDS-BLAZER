@@ -120,6 +120,17 @@ public class IniciativaServiciosTest {
     		fail("error"+e.getMessage());
     	}
     }
+
+    @Test
+    public void deberiaContarIniciativasPorArea() {
+        try {
+            int a = servicios.consultarIniciativasPorArea("sistemas");
+            System.out.println(a);
+            assertEquals(a,1);
+        }catch(ServiciosException e) {
+            fail("error"+e.getMessage());
+        }
+    }
     
     @Test
     public void deberiaCambiarEstadoIniciativa() {

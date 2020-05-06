@@ -69,6 +69,14 @@
 	    left join INICIATIVASRELACIONADAS as r on r.numIniciativa1=i.num 
     </select>
 
+    <select parameterType="map" resultType="int" id="consultarIniciativasPorArea" >
+        select 
+        	count(i.num)
+        from INICIATIVA as i
+	    left join USUARIO as u on i.usuarioProponente=u.id
+        WHERE u.area=#{area};
+    </select>
+
     <insert id="registrarIniciativa" parameterType="map">
         INSERT INTO INICIATIVA (descripcion , usuarioProponente, areaProponente) VALUES (#{iniciativa.descripcion} , #{iniciativa.usuarioproponente.id} ,#{iniciativa.areaProponente});
     </insert>

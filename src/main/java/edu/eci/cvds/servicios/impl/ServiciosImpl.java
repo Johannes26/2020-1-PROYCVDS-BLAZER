@@ -85,6 +85,15 @@ public class ServiciosImpl implements Servicios {
 	}
 
 	@Override
+	public int consultarIniciativasPorArea(String area) throws ServiciosException {
+		try {
+            return iniciativaDAO.consultarIniciativasPorArea(area);
+        } catch (PersistenciaException e){
+            throw new ServiciosException("La iniciativa no existe");
+        }
+	}
+
+	@Override
 	public void registrarIniciativa(Iniciativa i, String palabrasclave) throws ServiciosException {
 		try {
 			String p[]=palabrasclave.split(",");	

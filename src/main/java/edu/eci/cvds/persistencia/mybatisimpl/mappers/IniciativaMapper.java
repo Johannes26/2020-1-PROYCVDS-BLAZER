@@ -16,6 +16,13 @@ public interface IniciativaMapper {
 	 * @return Iniciativa
 	 */
 	public Iniciativa consultarIniciativa(@Param("num") int identificador);
+
+	/**
+	 * metodo que permite mostrar estadisticas de las inciativas agrupadas por area
+	 * @param area identificador de area
+	 * @return Iniciativa
+	 */
+	public int consultarIniciativasPorArea(@Param("area") String area);
 	
 	/**
 	 * metodo que permite consultar todas las inciativas

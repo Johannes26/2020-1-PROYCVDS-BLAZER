@@ -20,12 +20,21 @@ public interface Servicios {
 	 * @return Usuario de acuerdo al correo
 	 */
 	public abstract  Usuario consultarUsuario(String email) throws ServiciosException;
+
 	/**
 	 * metodo que permite consultar la inciativa por medio de su identificador
 	 * @param identificador identificador de la inciativa
 	 * @return Iniciativa
 	 */
 	public abstract Iniciativa consultarIniciativa(int num) throws ServiciosException;
+
+	/**
+	 * metodo que permite contar iniciativas por area 
+	 * @param area nombre del area
+	 * @return int numero de iniciativas por area
+	 */
+	public abstract int consultarIniciativasPorArea(String area) throws ServiciosException;
+	
 	/**
 	 * metodo que permite crear una inciativa
 	 * @param i a insertar
