@@ -6,6 +6,7 @@ import edu.eci.cvds.entidades.Comentario;
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -45,14 +46,19 @@ public class ComentariosBean extends BasePageBean {
 		return "AgregarComentarios.xhtml?faces-redirect=true";
 	}
 	
-	/**public void consultarComentarios() {
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		
+	public String redireccionarAComentariosConsulta(Iniciativa ini,Usuario usu) {
+		inic=ini;
+		usua=usu;
+		return "ConsultarComentarios.xhtml?faces-redirect=true";
+	}
+	
+	public List<Comentario> consultarComentarios() throws IOException {
 		try {
-			
+			return servicios.consultarComentarios();
+		}catch(ServiciosException e) {
+			FacesContext.getCurrentInstance().getExternalContext().redirect("ConsultarIniciativas.xhtml");
+			return null;
 		}
-		catch (ServiciosException e) {
-			//
-		}
-	}**/
+	
+	}
 }

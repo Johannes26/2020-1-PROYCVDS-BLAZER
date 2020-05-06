@@ -142,6 +142,7 @@
                           <h:panelGrid columns="3" cellpadding="5">
                           			
                           		  <p:commandButton  id="boton_Comentarios" action="#{comentariosBean.redireccionarAComentarios(iniciativa,principalBean.usuario)}" value="Agregar Comentario"/>
+                          		  <p:commandButton  id="boton_Comentarios_consulta" action="#{comentariosBean.redireccionarAComentariosConsulta(iniciativa,principalBean.usuario)}" value="Consultar Comentarios"/>
                                   <p:commandLink onsuccess="location.reload();" rendered="#{votosBean.validarVoto(iniciativa.num)}"
                                   	actionListener="#{votosBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}" >
                                               <h:outputText styleClass="pi pi-star" style="margin:0 auto; font-size: 45px;" />
