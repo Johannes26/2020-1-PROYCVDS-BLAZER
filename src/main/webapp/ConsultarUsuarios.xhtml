@@ -126,6 +126,9 @@
             <h:outputLabel style="color:#2A1313" value="Telefono:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.telefono}"/>
 
+            <h:outputLabel style="color:#2A1313" value="Area:"/>
+            <h:outputLabel value="#{adminiBean.usuariobuscado.area}"/>
+
             <h:outputLabel style="color:#2A1313" value="Tipo de Usuario:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.tipoUsuario}" />
 
@@ -151,7 +154,7 @@
     </p:panel>
     <br></br>
     <br></br>
-    <p:commandButton id="iniciativas" value="Consultar Iniciativas" action="CambiarIniciativa.xhtml?faces-redirect=true"/>
+    <p:commandButton id="iniciativas" value="Cambiar Estado Iniciativa" action="CambiarIniciativa.xhtml?faces-redirect=true"/>
     </h:form>
 
     <br></br>

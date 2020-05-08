@@ -306,9 +306,9 @@ public class ServiciosImpl implements Servicios {
 
 	@Override
 	public void registrarUsuario(int id, String nombre, String apellido, String email, int telefono, String tipoUsuario,
-			String contrasena) throws ServiciosException {
+			String contrasena,String area) throws ServiciosException {
 		try {
-			usuarioDAO.registrarUsuario(id, nombre, apellido, email, telefono, tipoUsuario, contrasena);
+			usuarioDAO.registrarUsuario(id, nombre, apellido, email, telefono, tipoUsuario, contrasena,area);
 		}catch(PersistenciaException e) {
             throw new ServiciosException("Error al crear usuario");
 		}
@@ -347,6 +347,15 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error actualizar iniciativa");
 		}
 		
+	}
+
+	@Override
+	public List<String> consultarAreas() throws ServiciosException {
+		try {
+			return usuarioDAO.consultarAreas();
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al consultar areas");
+		}
 	}
 	
 	

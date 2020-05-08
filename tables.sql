@@ -22,7 +22,6 @@ descripcion varchar(100) NOT NULL,
 usuarioProponente int NOT NULL,
 fechaRegistro DATE DEFAULT now(),
 estado varchar(30) DEFAULT 'En espera de revision',
-areaProponente varchar(30) NOT NULL,
 PRIMARY KEY(num),
 FOREIGN KEY (usuarioproponente)
 REFERENCES USUARIO (id)
@@ -72,12 +71,14 @@ PRIMARY KEY (idComentario),
 FOREIGN KEY (usuario) 
 REFERENCES USUARIO(id),
 FOREIGN KEY (numIniciativa) 
-REFERENCES INICIATIVA(num),
+REFERENCES INICIATIVA(num)
 );
 
 
 
 insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena,area) values (2157826,'Johan','Guerrero','johan.Guerrero@mail.escuelaing.edu.co',314021111,'Proponente','0000','sistemas');
 insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena,area) values (2158130,'Johann','Bogota','johann.bogota@mail.escuelaing.edu.co',123444,'Administrador','1234','sistemas');
-insert into INICIATIVA (descripcion,usuarioproponente,areaProponente) values ('descripcion iniciativa',2158130,'Administrador');
+insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena,area) values (2155042,'Esteban','Bernal','guillermo.bernal@mail.escuelaing.edu.co', 6784436, 'Publico', '2302','BD');
+insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena,area) values (2155032,'Daniel','Vargas','daniel.vargas@mail.escuelaing.edu.co', 6733436, 'PMO', '0000','arquitectura'); 		
+insert into INICIATIVA (descripcion,usuarioproponente) values ('descripcion iniciativa',2158130);
 

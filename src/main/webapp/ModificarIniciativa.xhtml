@@ -103,22 +103,8 @@
                   </p:cellEditor>
               </p:column>
 
-              <p:column headerText="Area Proponente" sortBy="#{ini.fechaRegistro}">
-                  <p:cellEditor>
-                      <f:facet name="output">
-                          <h:outputText value="#{ini.areaProponente}" />
-                      </f:facet>
-                      <f:facet name="input">
-                          <p:ajaxStatus onstart="#{iniciativaBean.setActarea(ini.areaProponente)}"></p:ajaxStatus>
-                          <h:inputText value="#{iniciativaBean.actarea}"/>
-                          <p:ajaxStatus onsuccess="#{iniciativaBean.inicializar()}"></p:ajaxStatus>
-                      </f:facet>
-                  </p:cellEditor>
-              </p:column>
-
               <p:column>
                   <p:rowEditor >
-
                   </p:rowEditor>
               </p:column>
         </p:dataTable>

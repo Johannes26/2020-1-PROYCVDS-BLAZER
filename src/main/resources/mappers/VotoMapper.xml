@@ -24,7 +24,6 @@
 	        i.descripcion as i_descripcion,
 	        i.fechaRegistro as i_fechaRegistro,
 	        i.estado as i_estado,
-	        i.areaProponente as i_areaProponente,
 	        
 	        u.id as i_u_id,
 	        u.nombre as i_u_nombre,

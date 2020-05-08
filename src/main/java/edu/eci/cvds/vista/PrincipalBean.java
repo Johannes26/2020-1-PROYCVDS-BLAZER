@@ -75,6 +75,7 @@ public class PrincipalBean extends BasePageBean {
 		return consultarPaginas().contains("/ModificarIniciativa.xhtml")?true:false;
 	}
 	
+	
 	public boolean esVisibleConsultarIniciativaXPalabra() {
 		return consultarPaginas().contains("/ConsultarIniciativaXPalabra.xhtml")?true:false;
 }

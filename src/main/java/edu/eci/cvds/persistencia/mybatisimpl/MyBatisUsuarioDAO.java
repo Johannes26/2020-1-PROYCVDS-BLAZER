@@ -54,13 +54,22 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
 
 	@Override
 	public void registrarUsuario(int id, String nombre, String apellido, String email, int telefono, String tipoUsuario,
-			String contrasena) throws PersistenciaException {
+			String contrasena,String area) throws PersistenciaException {
 		try {
-    		usuarioMapper.registrarUsuario(id, nombre, apellido, email, telefono, tipoUsuario, contrasena);
+    		usuarioMapper.registrarUsuario(id, nombre, apellido, email, telefono, tipoUsuario, contrasena,area);
     	}catch(PersistenceException e) {
             throw new PersistenciaException("No se crear usuario");
     	}
 		
+	}
+
+	@Override
+	public List<String> consultarAreas() throws PersistenciaException {
+		try {
+    		return usuarioMapper.consultarAreas();
+    	}catch(PersistenceException e) {
+            throw new PersistenciaException("No es posible consultar areas ");
+    	}
 	}
 
 	

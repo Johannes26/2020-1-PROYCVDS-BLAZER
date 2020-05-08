@@ -17,7 +17,7 @@ public interface UsuarioMapper {
 	 */
     public Usuario consultarUsuario(@Param("email") String correo);
     
-    public void registrarUsuario(@Param("id") int id,@Param("nombre") String nombre,@Param("apellido")String apellido,@Param("email")String email,@Param("telefono")int telefono,@Param("tipoUsuario")String tipoUsuario,@Param("contrasena")String contrasena);
+    public void registrarUsuario(@Param("id") int id,@Param("nombre") String nombre,@Param("apellido")String apellido,@Param("email")String email,@Param("telefono")int telefono,@Param("tipoUsuario")String tipoUsuario,@Param("contrasena")String contrasena,@Param("area")String area);
     /**
      * metodo que consulta todos los usuarios en la base de datos
      * @return lista de usuarios
@@ -31,5 +31,7 @@ public interface UsuarioMapper {
     public void cambiarRol(@Param("id") int id,@Param("rol") String rol);
     
     public Usuario consultarUsuarioXId(@Param("id")int id);
+    
+    public List<String> consultarAreas();
    
 }

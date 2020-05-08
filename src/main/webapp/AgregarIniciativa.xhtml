@@ -74,8 +74,6 @@
                 <p:outputLabel for="emailProponente" value="Proponente" placeholder="Email" style="color:#FFFFFF" />
                 <p:inputText id="emailProponente" required="true" type="String" binding="#{emailProponente}"/>
 
-                <p:outputLabel for="areaProponente" value="Area Proponente" style="color:#FFFFFF"  />
-                <p:inputText id="areaProponente" required="true" type="String" binding="#{areaProponente}"/>
 
                 <p:outputLabel for="descripcion" value="Descripcion" style="color:#FFFFFF" />
                 <p:inputTextarea id="descripcion" rows="7" cols="60" counter="display" maxlength="100" counterTemplate="{0} caracteres restantes" autoResize="false" value="#{iniciativaBean.descripcion}" />
@@ -88,7 +86,7 @@
 
               </h:panelGrid>
               <p:commandButton icon="ui-icon-check" id="btonNuevaIniciativa" value="Crear Iniciativa" update="panelRegistrarIniciativa"
-                actionListener="#{iniciativaBean.registrarIniciativa(emailProponente.value,palabrasclave.value,areaProponente.value)}"/>
+                actionListener="#{iniciativaBean.registrarIniciativa(emailProponente.value,palabrasclave.value)}"/>
           </p:panel>
             <br></br>
             <br></br>

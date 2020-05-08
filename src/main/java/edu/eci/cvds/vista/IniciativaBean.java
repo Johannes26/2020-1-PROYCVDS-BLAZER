@@ -19,6 +19,7 @@ import edu.eci.cvds.servicios.ServiciosException;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.model.chart.PieChartModel;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "iniciativaBean")
@@ -31,6 +32,7 @@ public class IniciativaBean extends BasePageBean {
 	private List<Iniciativa> iniciativas;
 	private String actarea;
 	private String actdescripcion;
+	private PieChartModel pieModel;
 	
 	public void actualizar(RowEditEvent event) {
 		Iniciativa ini = (Iniciativa) event.getObject();
@@ -48,34 +50,36 @@ public class IniciativaBean extends BasePageBean {
 	}
 
 	
-	public void registrarIniciativa(String emailProponente ,String palabrasclave, String areaProponente) {
+	public void registrarIniciativa(String emailProponente ,String palabrasclave) {
 		try {
 			Usuario u = servicios.consultarUsuario(emailProponente);
-			servicios.registrarIniciativa(new Iniciativa(descripcion,u,areaProponente),palabrasclave);
+			servicios.registrarIniciativa(new Iniciativa(descripcion,u),palabrasclave);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se ha registrado la inicativa"));
 		} catch (ServiciosException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
 		}
 		
 	}
+	
 
-	public int consultarIniciativasPorArea(String area) {
-		try {
-			int iniciativasPorArea = servicios.consultarIniciativasPorArea(area);
-			String stringIniciativaPorArea = String.valueOf(iniciativasPorArea);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso", stringIniciativaPorArea));
-			return iniciativasPorArea;
-		} catch (ServiciosException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
-			return 0;
-		}
-		
-		
+	public void consultarIniciativasPorArea() {
+			pieModel = new PieChartModel();
+			try {
+				List<String> areas = servicios.consultarAreas();
+				for(String i: areas) {
+					pieModel.set(i, servicios.consultarIniciativasPorArea(i));
+				}
+			} catch (ServiciosException e) {}
+			pieModel.setTitle("Grafica de numero de inicativas por area");
+			pieModel.setLegendPosition("w");
+			pieModel.setShadow(false);
+			pieModel.setShowDataLabels(true);
 	}
 	
 	public void inicializar() {
 		try {
 			iniciativas =servicios.consultarIniciativas();
+			consultarIniciativasPorArea();
 		} catch (ServiciosException e) {
 			e.printStackTrace();
 		}
@@ -111,6 +115,14 @@ public class IniciativaBean extends BasePageBean {
 
 	public void setActdescripcion(String actdescripcion) {
 		this.actdescripcion = actdescripcion;
+	}
+
+	public PieChartModel getPieModel() {
+		return pieModel;
+	}
+
+	public void setPieModel(PieChartModel pieModel) {
+		this.pieModel = pieModel;
 	}
 	
 	

@@ -11,7 +11,6 @@
 	        i.descripcion,
 	        i.fechaRegistro,
 	        i.estado,
-	        i.areaProponente,
 	        
             u.id as u_id,
 	        u.nombre as u_nombre,
@@ -20,6 +19,7 @@
 	        u.telefono as u_telefono,
 	        u.tipoUsuario as u_tipoUsuario,
 	        u.contrasena as u_contrasena,
+	        u.area as u_area,
 	        
 	        c.id as c_id ,
 	        c.idIniciativa as c_idIniciativa,
@@ -40,7 +40,6 @@
 	        i.descripcion,
 	        i.fechaRegistro,
 	        i.estado,
-	        i.areaProponente,
 	        
             u.id as u_id,
 	        u.nombre as u_nombre,
@@ -49,6 +48,7 @@
 	        u.telefono as u_telefono,
 	        u.tipoUsuario as u_tipoUsuario,
 	        u.contrasena as u_contrasena,
+	        u.area as u_area,
 	        
 	        c.id as c_id ,
 	        c.idIniciativa as c_idIniciativa,
@@ -76,9 +76,10 @@
 	    left join USUARIO as u on i.usuarioProponente=u.id
         WHERE u.area=#{area};
     </select>
+    
 
     <insert id="registrarIniciativa" parameterType="map">
-        INSERT INTO INICIATIVA (descripcion , usuarioProponente, areaProponente) VALUES (#{iniciativa.descripcion} , #{iniciativa.usuarioproponente.id} ,#{iniciativa.areaProponente});
+        INSERT INTO INICIATIVA (descripcion , usuarioProponente) VALUES (#{iniciativa.descripcion} , #{iniciativa.usuarioproponente.id});
     </insert>
 
     
@@ -93,7 +94,6 @@
     <update id="cambiarDatosIniciativa" parameterType="map">
     	UPDATE INICIATIVA
         SET descripcion = #{descripcion},
-	        areaProponente = #{areaProponente}
         WHERE num = #{num};
     </update>
 
@@ -106,7 +106,6 @@
 	        i.descripcion,
 	        i.fechaRegistro,
 	        i.estado,
-	        i.areaProponente,
             u.id as u_id,
 	        u.nombre as u_nombre,
 	        u.apellido as u_apellido,
@@ -114,6 +113,7 @@
 	        u.telefono as u_telefono,
 	        u.tipoUsuario as u_tipoUsuario,
 	        u.contrasena as u_contrasena,
+	        u.area as u_area,
 	        
 	        c.id as c_id ,
 	        c.idIniciativa as c_idIniciativa,
@@ -133,7 +133,6 @@
         <result property='descripcion' column='descripcion'/>
         <result property='fechaRegistro' column='fechaRegistro'/>
         <result property='estado' column='estado'/>
-        <result property='areaProponente' column='areaProponente'/>
         <association property='usuarioproponente' javaType='Usuario' columnPrefix='u_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
    		<collection property='iniciativasPalabras' ofType='IniciativaPalabra' columnPrefix='c_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativaPalabraMapper.IniciativaPalabraResult'></collection>
    		<collection property='iniciativasRelacionadas' ofType='IniciativasRelacionadas'  columnPrefix='r_' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.IniciativasRelacionadasMapper.IniciativasRelacionadasResult'/>

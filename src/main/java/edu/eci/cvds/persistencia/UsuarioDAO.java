@@ -32,8 +32,9 @@ public interface UsuarioDAO {
     
     public Usuario consultarUsuarioXId(int id) throws PersistenciaException;
     
+    public List<String> consultarAreas()throws PersistenciaException;
     
-    public void registrarUsuario(int id, String nombre,String apellido,String email,int telefono,String tipoUsuario,String contrasena) throws PersistenciaException;
+    public void registrarUsuario(int id, String nombre,String apellido,String email,int telefono,String tipoUsuario,String contrasena,String area) throws PersistenciaException;
     
     
 }	

@@ -14,6 +14,7 @@
 	        u.telefono,
 	        u.tipoUsuario,
 	        u.contrasena,
+	        u.area,
 	      	
 	      	v.id as v_id,
 	        
@@ -29,7 +30,6 @@
 	        i.descripcion as v_i_descripcion,
 	        i.fechaRegistro as v_i_fechaRegistro,
 	        i.estado as v_i_estado,
-	        i.areaProponente as v_i_areaProponente,
 	        
 	        c.id as v_i_c_id ,
 	        c.idIniciativa as v_i_c_idIniciativa,
@@ -57,6 +57,7 @@
 	        u.telefono,
 	        u.tipoUsuario,
 	        u.contrasena,
+	        u.area,
 	      	
 	      	v.id as v_id,
 	        
@@ -72,7 +73,6 @@
 	        i.descripcion as v_i_descripcion,
 	        i.fechaRegistro as v_i_fechaRegistro,
 	        i.estado as v_i_estado,
-	        i.areaProponente as v_i_areaProponente,
 	        
 	        c.id as v_i_c_id ,
 	        c.idIniciativa as v_i_c_idIniciativa,
@@ -98,6 +98,7 @@
 	        u.telefono,
 	        u.tipoUsuario,
 	        u.contrasena,
+	        u.area,
 	        
 	        v.id as v_id,
 	        
@@ -113,7 +114,6 @@
 	        i.descripcion as v_i_descripcion,
 	        i.fechaRegistro as v_i_fechaRegistro,
 	        i.estado as v_i_estado,
-	        i.areaProponente as v_i_areaProponente,
 	        
 	        c.id as v_i_c_id ,
 	        c.idIniciativa as v_i_c_idIniciativa,
@@ -135,8 +135,14 @@
     	where id=#{id};
     </update>
     
+    <select parameterType="map" resultType="String" id="consultarAreas">
+        select distinct
+        	area
+        from USUARIO
+    </select>
+    
     <insert id="registrarUsuario" parameterType="map">
-        insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena) values (#{id},#{nombre},#{apellido},#{email},#{telefono},#{tipoUsuario},#{contrasena});
+        insert into USUARIO (id,nombre,apellido,email,telefono,tipoUsuario,contrasena,area) values (#{id},#{nombre},#{apellido},#{email},#{telefono},#{tipoUsuario},#{contrasena},#{area});
 	</insert>
 
 
@@ -148,6 +154,7 @@
         <result property='telefono' column='telefono'/>
         <result property='tipoUsuario' column='tipoUsuario'/>
         <result property='contrasena' column='contrasena'/>
+        <result property='area' column='area'/>
         <collection property='likes' columnPrefix='v_' ofType='Voto' resultMap='edu.eci.cvds.persistencia.mybatisimpl.mappers.VotoMapper.VotoResult' />
         
     </resultMap>

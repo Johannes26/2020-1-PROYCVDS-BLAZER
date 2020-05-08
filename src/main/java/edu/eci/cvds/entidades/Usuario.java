@@ -14,13 +14,14 @@ public class Usuario implements Serializable{
 	private int telefono;
 	private String tipoUsuario;
 	private String contrasena;
+	private String area;
 	private List<Voto> likes;
 	
 
 	public Usuario() {
 	}
 	
-	public Usuario(int id, String nombre, String apellido, String email, int telefono, String tipoUsuario, String contrasena) {
+	public Usuario(int id, String nombre, String apellido, String email, int telefono, String tipoUsuario, String contrasena,String area) {
 		this.id=id;
 		this.nombre=nombre;
 		this.apellido=apellido;
@@ -28,6 +29,7 @@ public class Usuario implements Serializable{
 		this.telefono=telefono;
 		this.tipoUsuario=tipoUsuario;
 		this.contrasena=contrasena;
+		this.area=area;
 	}
 	
 	public int getId() {
@@ -95,15 +97,21 @@ public class Usuario implements Serializable{
 		this.likes = likes;
 	}
 
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", telefono=" + telefono + ", tipoUsuario=" + tipoUsuario + ", contrasena=" + contrasena + ", likes="
-				+ likes + "]";
+				+ ", telefono=" + telefono + ", tipoUsuario=" + tipoUsuario + ", contrasena=" + contrasena + ", area="
+				+ area + ", likes=" + likes + "]";
 	}
 
-	
-	
 	
 	
 }

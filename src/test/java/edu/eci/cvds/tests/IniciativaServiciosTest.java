@@ -68,7 +68,7 @@ public class IniciativaServiciosTest {
     	Usuario u;
 		try {
 			u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
-	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u,"Administrador");
+	    	Iniciativa ini = new Iniciativa("Segunda iniciativa",u);
 	    	servicios.registrarIniciativa(ini,"segun");
 	    	assertTrue(servicios.consultarIniciativas().size()==3);
 	    	
@@ -82,7 +82,7 @@ public class IniciativaServiciosTest {
     public void deberiaConsultarUsuarios() {
     	try {
     		List<Usuario> a= servicios.consultarUsuarios();
-    		assertTrue(a.size()==2);
+    		assertTrue(a.size()==4);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
     	}
@@ -124,9 +124,17 @@ public class IniciativaServiciosTest {
     @Test
     public void deberiaContarIniciativasPorArea() {
         try {
-            int a = servicios.consultarIniciativasPorArea("sistemas");
-            System.out.println(a);
-            assertEquals(a,1);
+        	int b = servicios.consultarIniciativasPorArea("sistemas");
+            assertEquals(b,1);
+        }catch(ServiciosException e) {
+            fail("error"+e.getMessage());
+        }
+    }
+    
+    @Test
+    public void deberiaConsultarAreas() {
+        try {
+            assertEquals(servicios.consultarAreas().size(),3);
         }catch(ServiciosException e) {
             fail("error"+e.getMessage());
         }
@@ -159,7 +167,7 @@ public class IniciativaServiciosTest {
     public void deberiaConsultarIniciativaXPalabraClave() {
     	try {
     		Usuario u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
-	    	Iniciativa ini = new Iniciativa("Tercera Iniciativa",u,"Area Administrativa");
+	    	Iniciativa ini = new Iniciativa("Tercera Iniciativa",u);
 	    	servicios.registrarIniciativa(ini,"precio,elevado");
     		List<Iniciativa> i=servicios.consultarIniciativaXPalabraClave("precio,elevado");
     		assertTrue(i.size()==1);
@@ -208,7 +216,7 @@ public class IniciativaServiciosTest {
     public void deberiaContarVotosXIniciativa() {
     	try {
     		Usuario u = servicios.consultarUsuario("johan.Guerrero@mail.escuelaing.edu.co");
-	    	Iniciativa ini = new Iniciativa("Tercera iniciativa",u,"Administrador");
+	    	Iniciativa ini = new Iniciativa("Tercera iniciativa",u);
 	    	servicios.registrarIniciativa(ini,"");
 	    	servicios.insertarVoto(2158130, 3);
     		servicios.insertarVoto(2157826, 3);
@@ -223,9 +231,8 @@ public class IniciativaServiciosTest {
     @Test
     public void deberiaInsertarComentario() {
     	try {
-    		servicios.registrarUsuario(2155042, "Esteban", "Bernal", "guillermo.bernal@mail.escuelaing.edu.co", 6784436, "Publico", "2302");
     		Usuario g = servicios.consultarUsuario("guillermo.bernal@mail.escuelaing.edu.co");
-	    	Iniciativa ini4 = new Iniciativa("Cuarta iniciativa",g,"Publico");
+	    	Iniciativa ini4 = new Iniciativa("Cuarta iniciativa",g);
 	    	servicios.registrarIniciativa(ini4,"");
 	    	Iniciativa ini4_1 = servicios.consultarIniciativa(2);
 	    	servicios.agregarComentario("fgh", ini4_1, g);
