@@ -2,6 +2,7 @@ package edu.eci.cvds.servicios;
 
 import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.entidades.Voto;
+import edu.eci.cvds.persistencia.PersistenciaException;
 import edu.eci.cvds.entidades.Comentario;
 
 import java.util.List;
@@ -114,5 +115,6 @@ public interface Servicios {
 	
 	public abstract List<Comentario> consultarComentarios() throws ServiciosException;
     
+	public void cambiarDatosIniciativa(Iniciativa ini,String descripcion,String areaProponente) throws ServiciosException;
 
 }

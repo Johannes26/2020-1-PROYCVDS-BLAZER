@@ -48,4 +48,5 @@ public interface IniciativaMapper {
 	 */
 	public List<Iniciativa> consultarIniciativaXPalabraClave(@Param("descripcion") String palabra);
 
+	public void cambiarDatosIniciativa(@Param("num")int num, @Param("descripcion") String descripcion,@Param("areaProponente") String areaProponente);
 }

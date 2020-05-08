@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -7,13 +8,10 @@
 
   <h:head>
     <style>
-        .ui-datatable input {
-        box-sizing: border-box;
-        width: 100%;
-        -webkit-box-shadow: none;
-        box-shadow: none !important;
-    }
-
+      div.iniciarSesion {
+        width:600px;
+        margin: auto;
+      }
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -21,14 +19,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Evento seguridad -->
-    <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
-
-    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+	
+	<!-- Evento seguridad -->
+	<f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
   </h:head>
 
-  <body background="fondo.jpg" onload="#{iniciativaBean.inicializar()}">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <body background="fondo.jpg">
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">BlazerApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -47,14 +45,13 @@
 
                             <p:submenu label="Iniciativas">
                                 <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
-                                <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
                                 <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
                                 <p:submenu label="Consultar">
                                   <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
                                   	<p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
                                   </p:submenu>
                                   <p:menuitem value="Consultar por palabra" url="ConsultarIniciativaXPalabra.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXPalabra()}"/>
-                            	<p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
+                          		<p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
                             </p:submenu>
 
                         </p:submenu>
@@ -67,37 +64,46 @@
           </h:form>
         </div>
       </nav>
+      
+      <h:form id="VistaUsuarioConsulta" class="text-center" background="fondo.jpg">
 
-      <br/><br/>
-      <br/><br/>
-      <br/><br/>
-      <br/><br/>
-  <h:form>
-      <p:dataTable var="ini" value="#{iniciativaBean.iniciativas}" sortMode="multiple" rows="10"
-                 paginator="true"
-                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                 rowsPerPageTemplate="5,10,15">
-        <f:facet name="header">
-            INICIATIVAS REGISTRADAS
-        </f:facet>
-        <p:column headerText="Numero" sortBy="#{ini.num}">
-            <h:outputText value="#{ini.num}" />
-        </p:column>
+         <h1 class="font-italic" style="color: white;">Consultar Comentarios</h1>
+         <p:growl id="growl1" showDetail="true" sticky="true" />
+         <p:dataView var="comentario" value="#{comentariosBean.consultarComentarios()}"
+                gridIcon="pi pi-th-large" listIcon="pi pi-bars" >
+               	
 
- 		<p:column headerText="Estado" sortBy="#{ini.estado}">
-            <h:outputText value="#{ini.estado}" />
-        </p:column>
-        <p:column headerText="Usuario Proponente" sortBy="#{ini.usuarioproponente.nombre}">
-            <h:outputText value="#{ini.usuarioproponente.nombre}" />
-        </p:column>
+              <p:dataViewListItem>
+                  <h:panelGrid columns="2" style="width:100%" >
 
-        <p:column headerText="Fecha de Registro" sortBy="#{ini.fechaRegistro}">
-            <h:outputText value="#{ini.fechaRegistro}" />
-        </p:column>
+                      <p:outputPanel >
 
-    </p:dataTable>
-    </h:form>
+                          <h:panelGrid columns="2" cellpadding="5">
+                              <h:outputText value="Id:" />
+                              <h:outputText value="#{comentario.idComentario}" style="font-weight: bold"/>
 
-</body>
+                              <h:outputText value="descripcion:" />
+                              <h:outputText value="#{comentario.descripcion}" style="font-weight: bold"/>
+
+                              <h:outputText value="fecha:" />
+                              <h:outputText value="#{comentario.fechaRegistro}" style="font-weight: bold"/>
+
+                              <h:outputText value="Iniciativa:" />
+                              <h:outputText value="#{comentario.ini.num}" style="font-weight: bold"/>
+
+                              <h:outputText value="Usuario:" />
+                              <h:outputText value="#{comentario.usu.nombre}" style="font-weight: bold"/>
+
+                          </h:panelGrid>
+                    </p:outputPanel>
+                   
+
+
+                  </h:panelGrid>
+              </p:dataViewListItem>
+      </p:dataView>
+
+
+  </h:form>
+	</body>
 </html>

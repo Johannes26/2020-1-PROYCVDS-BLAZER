@@ -35,14 +35,23 @@ public class PrincipalBean extends BasePageBean {
 	public PrincipalBean() {
 		verificacion = new HashMap<String, List<String>>();
 		ArrayList<String> usuarioAdmin = new ArrayList<String>(
-				Arrays.asList("/ConsultarUsuarios.xhtml","/CambiarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/AgruparIniciativas.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml"));
-		ArrayList<String> usuarioPropo = new ArrayList<String>(
-				Arrays.asList("/AgregarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml"));
-		ArrayList<String> usuarioPubli = new ArrayList<String>(
-				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml"));
-		ArrayList<String> usuarioPmo = new ArrayList<String>(
-				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml"));
+				Arrays.asList("/ConsultarUsuarios.xhtml","/CambiarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml",
+						"/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/AgruparIniciativas.xhtml","/ConsultarIniciativasOrdenadas.xhtml",
+						"/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml"));
 		
+		ArrayList<String> usuarioPropo = new ArrayList<String>(
+				Arrays.asList("/AgregarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml",
+						"/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml",
+						"/ModificarIniciativa.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml"));
+		
+		ArrayList<String> usuarioPubli = new ArrayList<String>(
+				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml",
+						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml"));
+		
+		ArrayList<String> usuarioPmo = new ArrayList<String>(
+				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml",
+						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml"));
+																												
 		verificacion.put("Administrador", usuarioAdmin);
 		verificacion.put("Proponente", usuarioPropo);
 		verificacion.put("PMO", usuarioPmo);
@@ -61,6 +70,11 @@ public class PrincipalBean extends BasePageBean {
 	public boolean esVisibleConsultarUsuarios() {
 			return consultarPaginas().contains("/ConsultarUsuarios.xhtml")?true:false;
 	}
+	
+	public boolean esVisibleModificarIniciativa() {
+		return consultarPaginas().contains("/ModificarIniciativa.xhtml")?true:false;
+	}
+	
 	public boolean esVisibleConsultarIniciativaXPalabra() {
 		return consultarPaginas().contains("/ConsultarIniciativaXPalabra.xhtml")?true:false;
 }
@@ -84,6 +98,7 @@ public class PrincipalBean extends BasePageBean {
 	public boolean esVisibleAgruparIniciativas() {
 		return consultarPaginas().contains("/AgruparIniciativas.xhtml")?true:false;
 	}
+
 	
 
 

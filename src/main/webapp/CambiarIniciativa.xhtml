@@ -53,6 +53,7 @@
 
                           <p:submenu label="Iniciativas">
                               <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
+                              <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
                               <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
                               <p:submenu label="Consultar">
                                   <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
@@ -129,8 +130,8 @@
           <p:outputLabel style="color:#2A1313" for="@next" value="Estado a asignar:"  />
           <p:selectOneMenu id="estados" value="#{adminiBean.estadoNuevo}" style="width:125px">
               <f:selectItem itemLabel="" itemValue="" />
-              <f:selectItem itemLabel="En espera de revisión" itemValue="En espera de revisión" />
-              <f:selectItem itemLabel="En revisión" itemValue="En revisión" />
+              <f:selectItem itemLabel="En espera de revision" itemValue="En espera de revision" />
+              <f:selectItem itemLabel="En revision" itemValue="En revision" />
               <f:selectItem itemLabel="Proyecto" itemValue="Proyecto" />
               <f:selectItem itemLabel="Solucionado" itemValue="Solucionado" />
           </p:selectOneMenu>

@@ -60,6 +60,7 @@
 
                               <p:submenu label="Iniciativas">
                                   <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
+                                  <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
                                   <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
                                   <p:submenu label="Consultar">
                                   <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
@@ -129,7 +130,7 @@
                               <p:commandLink action="#{palabrasBean.consultarPalabras(iniciativa.iniciativasPalabras)}" style="margin-right:20px; font-weight:bold; color: red">
                                   <h:outputText value="Consultar" />
                               </p:commandLink>
-                              
+
                               <h:outputText value="Iniciativas Relacionadas:" />
                               <p:commandLink action="#{iniciativasrela.consultarIniciativasRelacionadas(iniciativa.iniciativasRelacionadas)}" style="margin-right:20px; font-weight:bold; color: red">
                                   <h:outputText value="Consultar" />
@@ -139,6 +140,9 @@
                     </p:outputPanel>
                     <p:outputPanel style="float:right ;margin:0px 0px 3px 0px;">
                           <h:panelGrid columns="3" cellpadding="5">
+                          			
+                          		  <p:commandButton  id="boton_Comentarios" action="#{comentariosBean.redireccionarAComentarios(iniciativa,principalBean.usuario)}" value="Agregar Comentario"/>
+                          		  <p:commandButton  id="boton_Comentarios_consulta" action="#{comentariosBean.redireccionarAComentariosConsulta(iniciativa,principalBean.usuario)}" value="Consultar Comentarios"/>
                                   <p:commandLink onsuccess="location.reload();" rendered="#{votosBean.validarVoto(iniciativa.num)}"
                                   	actionListener="#{votosBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}" >
                                               <h:outputText styleClass="pi pi-star" style="margin:0 auto; font-size: 45px;" />

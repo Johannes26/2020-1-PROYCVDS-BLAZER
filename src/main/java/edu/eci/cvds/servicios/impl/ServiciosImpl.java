@@ -332,6 +332,22 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error al consultar los comentarios");
 		}
 	}
+
+	@Override
+	public void cambiarDatosIniciativa(Iniciativa ini, String descripcion,String areaProponente) throws ServiciosException {
+		try {
+			System.out.println(ini.getEstado());
+			if(ini.getEstado().equals("En espera de revision")) {
+				iniciativaDAO.cambiarDatosIniciativa(ini.getNum(), descripcion, areaProponente);
+			}else {
+				throw new ServiciosException("Iniciativa no esta en espera de revision");
+			}
+			
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error actualizar iniciativa");
+		}
+		
+	}
 	
 	
 }
