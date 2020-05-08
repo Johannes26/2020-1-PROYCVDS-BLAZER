@@ -40,6 +40,20 @@ public class IniciativaBean extends BasePageBean {
 		}
 		
 	}
+
+	public int consultarIniciativasPorArea(String area) {
+		try {
+			int iniciativasPorArea = servicios.consultarIniciativasPorArea(area);
+			String stringIniciativaPorArea = String.valueOf(iniciativasPorArea);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso", stringIniciativaPorArea));
+			return iniciativasPorArea;
+		} catch (ServiciosException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
+			return 0;
+		}
+		
+		
+	}
 	
 	public void inicializar() {
 		try {
