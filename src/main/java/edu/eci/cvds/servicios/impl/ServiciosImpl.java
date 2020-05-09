@@ -334,17 +334,16 @@ public class ServiciosImpl implements Servicios {
 	}
 
 	@Override
-	public void cambiarDatosIniciativa(Iniciativa ini, String descripcion,String areaProponente) throws ServiciosException {
+	public void cambiarDatosIniciativa(Iniciativa ini, String descripcion) throws ServiciosException {
 		try {
-			System.out.println(ini.getEstado());
 			if(ini.getEstado().equals("En espera de revision")) {
-				iniciativaDAO.cambiarDatosIniciativa(ini.getNum(), descripcion, areaProponente);
+				iniciativaDAO.cambiarDatosIniciativa(ini.getNum(), descripcion);
 			}else {
 				throw new ServiciosException("Iniciativa no esta en espera de revision");
 			}
 			
 		}catch(PersistenciaException e) {
-            throw new ServiciosException("Error actualizar iniciativa");
+            throw new ServiciosException("Error actualizar iniciativa, puede que haya excedido el número maximo de caracteres");
 		}
 		
 	}

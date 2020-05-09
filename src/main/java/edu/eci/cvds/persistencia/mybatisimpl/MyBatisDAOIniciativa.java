@@ -71,9 +71,9 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
     }
 
 	@Override
-	public void cambiarDatosIniciativa(int num, String descripcion,String areaProponente) throws PersistenciaException{
+	public void cambiarDatosIniciativa(int num, String descripcion) throws PersistenciaException{
 		try {
-    		IniciativaMapper.cambiarDatosIniciativa(num, descripcion, areaProponente);
+    		IniciativaMapper.cambiarDatosIniciativa(num, descripcion);
     	}catch (PersistenceException e){
             throw new PersistenciaException("No se pudo actualizar");
         }

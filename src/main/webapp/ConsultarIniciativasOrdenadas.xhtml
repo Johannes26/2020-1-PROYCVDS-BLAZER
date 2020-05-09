@@ -13,6 +13,11 @@
         -webkit-box-shadow: none;
         box-shadow: none !important;
     }
+    .fixed-size {
+      width: 50%;
+     table-layout: fixed;
+     word-wrap: break-word;
+   }
 
     </style>
     <!-- Required meta tags -->
@@ -86,8 +91,9 @@
       <br/><br/>
   <h:form>
       <p:chart type="pie" model="#{iniciativaBean.pieModel}" widgetVar="chart"
-          style="opacity: 0.9;-moz-opacity: 0.9;width: 70%;margin-left: 15%;border-radius: 15px;background-color: SILVER;"/>
-      <p:commandButton type="Submit" value="Export" icon="pi pi-home" onclick="return downloadImage();" style="margin-center;"/>
+          style=";width: 70%;margin-left: 15%;border-radius: 15px;background-color: SILVER;"/>
+      <br/><br/>
+      <p:commandButton type="Submit" value="Export" icon="pi pi-home" onclick="return downloadImage();" style="margin-left: 50%"/>
 
       <br/><br/>
       <p:dataTable var="ini" value="#{iniciativaBean.iniciativas}" sortMode="multiple" rows="10"
@@ -98,8 +104,8 @@
         <f:facet name="header">
             INICIATIVAS REGISTRADAS
         </f:facet>
-        <p:column headerText="Numero" sortBy="#{ini.num}">
-            <h:outputText value="#{ini.num}" />
+        <p:column headerText="Descripción" sortBy="#{ini.descripcion}" styleClass="fixed-size">
+            <h:outputText value="#{ini.descripcion}" />
         </p:column>
 
  		     <p:column headerText="Estado" sortBy="#{ini.estado}">

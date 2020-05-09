@@ -49,5 +49,5 @@ public interface DaoIniciativa {
 	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws PersistenciaException;
 	
 
-	public void cambiarDatosIniciativa(int num, String descripcion,String areaProponente) throws PersistenciaException;
+	public void cambiarDatosIniciativa(int num, String descripcion) throws PersistenciaException;
 }

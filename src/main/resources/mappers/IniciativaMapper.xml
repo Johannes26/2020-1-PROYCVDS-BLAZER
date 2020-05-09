@@ -93,7 +93,7 @@
     
     <update id="cambiarDatosIniciativa" parameterType="map">
     	UPDATE INICIATIVA
-        SET descripcion = #{descripcion},
+        SET descripcion = #{descripcion}
         WHERE num = #{num};
     </update>
 

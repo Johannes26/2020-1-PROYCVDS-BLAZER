@@ -245,6 +245,17 @@ public class IniciativaServiciosTest {
     	}
     }
     
+
+    @Test
+    public void deberiaModificarIni() {
+    	try {
+    		Iniciativa i = servicios.consultarIniciativa(1);
+    		servicios.cambiarDatosIniciativa(i, "cambiar descripcion iniciativa");
+    		assertTrue(servicios.consultarIniciativa(1).getDescripcion()=="cambiar descripcion iniciativa");
+    	}catch(ServiciosException e) {
+    		fail("error"+e.getMessage());
+    	}
+    }
   
     
     

@@ -12,6 +12,12 @@
         margin: auto;
       }
 
+      .fixed-size {
+        width: 50%;
+       table-layout: fixed;
+       word-wrap: break-word;
+     }
+
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -70,7 +76,7 @@
 
     <h:form id="IniciativasVista" class="text-center" background="fondo.jpg">
         <p:growl id="msg" showDetail="true" sticky="true" />
-
+          <br></br>
         <p:dataTable var="ini" value="#{adminiBean.consultarIniciativas()}" sortMode="multiple" rows="10"
                        paginator="true"
                        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -83,25 +89,27 @@
                   INICIATIVAS
               </f:facet>
 
-              <p:column headerText="Numero" sortBy="#{ini.num}">
-                  <h:outputText value="#{ini.num}" />
+              <p:column headerText="Descripcion" styleClass="fixed-size" sortBy="#{ini.usuarioproponente.nombre}">
+                  <p:cellEditor >
+                      <f:facet name="output">
+                          <h:outputText value="#{ini.descripcion}" />
+                      </f:facet>
+                      <f:facet name="input" >
+                          <p:ajaxStatus onstart="#{iniciativaBean.setActdescripcion(ini.descripcion)}"></p:ajaxStatus>
+                          <h:inputTextarea value="#{iniciativaBean.actdescripcion}" style="width: 100%"/>
+                      </f:facet>
+                  </p:cellEditor>
+              </p:column>
+
+              <p:column headerText="Proponente" sortBy="#{ini.usuarioproponente.nombre}">
+                  <h:outputText value="#{ini.usuarioproponente.nombre}" />
               </p:column>
 
               <p:column headerText="Estado" sortBy="#{ini.estado}">
                   <h:outputText value="#{ini.estado}" />
               </p:column>
 
-              <p:column headerText="Descripcion" sortBy="#{ini.usuarioproponente.nombre}">
-                  <p:cellEditor>
-                      <f:facet name="output">
-                          <h:outputText value="#{ini.descripcion}" />
-                      </f:facet>
-                      <f:facet name="input">
-                          <p:ajaxStatus onstart="#{iniciativaBean.setActdescripcion(ini.descripcion)}"></p:ajaxStatus>
-                          <h:inputText value="#{iniciativaBean.actdescripcion}"/>
-                      </f:facet>
-                  </p:cellEditor>
-              </p:column>
+
 
               <p:column>
                   <p:rowEditor >
@@ -113,7 +121,6 @@
 
     </h:form>
 
-  <br></br>
   <br></br>
 
   </body>

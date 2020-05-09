@@ -30,14 +30,13 @@ public class IniciativaBean extends BasePageBean {
 	
 	private String descripcion;
 	private List<Iniciativa> iniciativas;
-	private String actarea;
 	private String actdescripcion;
 	private PieChartModel pieModel;
 	
 	public void actualizar(RowEditEvent event) {
 		Iniciativa ini = (Iniciativa) event.getObject();
 		try {
-			servicios.cambiarDatosIniciativa(ini, actdescripcion, actarea);
+			servicios.cambiarDatosIniciativa(ini, actdescripcion);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se ha modificado la iniciativa"));
 		} catch (ServiciosException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
@@ -101,13 +100,6 @@ public class IniciativaBean extends BasePageBean {
 		this.iniciativas = iniciativas;
 	}
 
-	public String getActarea() {
-		return actarea;
-	}
-
-	public void setActarea(String actarea) {
-		this.actarea = actarea;
-	}
 
 	public String getActdescripcion() {
 		return actdescripcion;

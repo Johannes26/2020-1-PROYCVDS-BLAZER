@@ -115,7 +115,7 @@ public interface Servicios {
 	
 	public abstract List<Comentario> consultarComentarios() throws ServiciosException;
     
-	public void cambiarDatosIniciativa(Iniciativa ini,String descripcion,String areaProponente) throws ServiciosException;
+	public void cambiarDatosIniciativa(Iniciativa ini,String descripcion) throws ServiciosException;
 	
 	public List<String> consultarAreas()throws ServiciosException;
 
