@@ -45,6 +45,7 @@
                             <p:submenu label="Iniciativas">
                                 <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
                                 <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
+                                <p:menuitem value="Comentarios" url="ConsultarComentarios.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
                                 <p:submenu label="Consultar">
                                   <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
                                   	<p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
