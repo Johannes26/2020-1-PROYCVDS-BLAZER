@@ -52,26 +52,22 @@
               <li class="nav-item">
                     <p:menubar >
                           <p:menuitem value="Pagina Escuela" url="#" />
-                          <p:submenu label="Consultas">
-
-                              <p:submenu label="Usuarios">
-                                  <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
-                              </p:submenu>
-
-                              <p:submenu label="Iniciativas">
-                                  <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
-                                  <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
-                                  <p:menuitem value="Comentarios" url="ConsultarComentarios.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
-                                  <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
-                                  <p:submenu label="Consultar">
+                          <p:submenu label="Usuarios">
+                                <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
+                          </p:submenu>
+                          <p:submenu label="Iniciativas">
+                                <p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
+                                <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
+                                <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
+                                <p:menuitem value="Comentarios" url="ConsultarComentarios.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
+                                <p:menuitem value="Modificar Estados" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
+                                <p:submenu label="Consultar por">
                                   <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
-                                  	<p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
+                                    <p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
                                   </p:submenu>
                                   <p:menuitem value="Consultar por palabra" url="ConsultarIniciativaXPalabra.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXPalabra()}"/>
-                              	  <p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
-                              </p:submenu>
+                        </p:submenu>
 
-                          </p:submenu>
                     </p:menubar>
               </li>
             </ul>
@@ -89,7 +85,7 @@
          <p:dataView var="iniciativa" value="#{adminiBean.consultarIniciativas()}"
                 gridIcon="pi pi-th-large" listIcon="pi pi-bars" >
               <p:dataViewGridItem>
-                  <p:panel header="#{iniciativa.num}" style="text-align:center">
+                  <p:panel header="#{iniciativa.estado}" style="text-align:center">
                         <h:panelGrid id="id2" columns="1" style="width:100%">
 
                           <h:outputText value="#{iniciativa.descripcion}"/>
@@ -115,14 +111,15 @@
                       <p:outputPanel >
 
                           <h:panelGrid columns="2" cellpadding="5">
-                              <h:outputText value="Id:" />
-                              <h:outputText value="#{iniciativa.num}" style="font-weight: bold"/>
 
                               <h:outputText value="descripcion:" />
                               <h:outputText value="#{iniciativa.descripcion}" style="font-weight: bold"/>
 
                               <h:outputText value="fecha:" />
                               <h:outputText value="#{iniciativa.fechaRegistro}" style="font-weight: bold"/>
+
+                              <h:outputText value="Estado:" />
+                              <h:outputText value="#{iniciativa.estado}" style="font-weight: bold"/>
 
                               <h:outputText value="Usuario Proponente:" />
                               <h:outputText value="#{iniciativa.usuarioproponente.nombre} #{iniciativa.usuarioproponente.apellido}" style="font-weight: bold"/>
@@ -141,7 +138,7 @@
                     </p:outputPanel>
                     <p:outputPanel style="float:right ;margin:0px 0px 3px 0px;">
                           <h:panelGrid columns="3" cellpadding="5">
-                          			
+
                           		  <p:commandButton  id="boton_Comentarios" action="#{comentariosBean.redireccionarAComentarios(iniciativa,principalBean.usuario)}" value="Agregar Comentario"/>
                                   <p:commandLink onsuccess="location.reload();" rendered="#{votosBean.validarVoto(iniciativa.num)}"
                                   	actionListener="#{votosBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}" >

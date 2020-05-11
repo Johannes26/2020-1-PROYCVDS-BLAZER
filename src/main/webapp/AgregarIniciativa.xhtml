@@ -24,70 +24,72 @@
 
   <body background="fondo.jpg">
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">BlazerApp</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">BlazerApp</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                  <p:menubar >
-                        <p:menuitem value="Pagina Escuela" url="#" />
-                        <p:submenu label="Consultas">
-
-                            <p:submenu label="Usuarios">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                    <p:menubar >
+                          <p:menuitem value="Pagina Escuela" url="#" />
+                          <p:submenu label="Usuarios">
                                 <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
-                            </p:submenu>
-
-                            <p:submenu label="Iniciativas">
+                          </p:submenu>
+                          <p:submenu label="Iniciativas">
+                                <p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
                                 <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
                                 <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
                                 <p:menuitem value="Comentarios" url="ConsultarComentarios.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
-                                <p:menuitem value="Modificar Estado" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
-                                <p:submenu label="Consultar">
+                                <p:menuitem value="Modificar Estados" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
+                                <p:submenu label="Consultar por">
                                   <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
-                                  	<p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
+                                    <p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
                                   </p:submenu>
                                   <p:menuitem value="Consultar por palabra" url="ConsultarIniciativaXPalabra.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXPalabra()}"/>
-                          		<p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
-                            </p:submenu>
-
                         </p:submenu>
-                  </p:menubar>
-            </li>
-          </ul>
-          <h:form class="form-inline my-2 my-lg-0">
-            <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
-            <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
-          </h:form>
-        </div>
-      </nav>
+
+                    </p:menubar>
+              </li>
+            </ul>
+            <h:form class="form-inline my-2 my-lg-0">
+              <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
+              <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+            </h:form>
+          </div>
+        </nav>
 
 
       <h:form id="RegistroIniciativa" >
            <h1 class="font-italic text-center" style="color: white;">Registrar Iniciativa</h1>
            <p:panel id="panelRegistrarIniciativa" header="Cambiar Rol Usuario" style="background-color: #464646;">
                 <p:messages autoUpdate="true" showDetail="true"/>
-                <h:panelGrid columns="2" id="Nuevainiciativa">
+                <h:panelGrid columns="2" id="Nuevainiciativa" style="margin-left: 10%" >
 
                 <p:outputLabel for="emailProponente" value="Proponente" placeholder="Email" style="color:#FFFFFF" />
                 <p:inputText id="emailProponente" required="true" type="String" binding="#{emailProponente}"/>
 
 
+
                 <p:outputLabel for="descripcion" value="Descripcion" style="color:#FFFFFF" />
                 <p:inputTextarea id="descripcion" rows="7" cols="60" counter="display" maxlength="100" counterTemplate="{0} caracteres restantes" autoResize="false" value="#{iniciativaBean.descripcion}" />
                 <br />
+
                 <h:outputText id="display" style="color:#FFFFFF"/>
 
                 <p:outputLabel for="palabrasclave" value="Palabras Clave" style="color:#FFFFFF"  />
+
                 <p:inputText id="palabrasclave" required="true" type="String" binding="#{palabrasclave}"/>
+                <p:outputLabel value="(Separadas por comas. Ej: Prueba1,Prueba2....)" style="color:#FFFFFF"  />
+
 
 
               </h:panelGrid>
+              <br /><br />
               <p:commandButton icon="ui-icon-check" id="btonNuevaIniciativa" value="Crear Iniciativa" update="panelRegistrarIniciativa"
-                actionListener="#{iniciativaBean.registrarIniciativa(emailProponente.value,palabrasclave.value)}"/>
+                actionListener="#{iniciativaBean.registrarIniciativa(emailProponente.value,palabrasclave.value)}" style="margin-left: 40%"/>
           </p:panel>
             <br></br>
             <br></br>

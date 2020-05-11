@@ -37,6 +37,7 @@ public class IniciativaBean extends BasePageBean {
 		Iniciativa ini = (Iniciativa) event.getObject();
 		try {
 			servicios.cambiarDatosIniciativa(ini, actdescripcion);
+			iniciativas =servicios.consultarIniciativas();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se ha modificado la iniciativa"));
 		} catch (ServiciosException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
