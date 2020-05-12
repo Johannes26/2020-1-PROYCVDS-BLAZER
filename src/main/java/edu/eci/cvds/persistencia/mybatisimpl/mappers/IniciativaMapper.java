@@ -25,6 +25,13 @@ public interface IniciativaMapper {
 	public int consultarIniciativasPorArea(@Param("area") String area);
 	
 	/**
+     * metodo que permite mostrar las iniciativas por estado
+     * @param estado identificador de estado
+     * @return Iniciativa
+     */
+    public List<Iniciativa> consultarIniciativasPorEstado(@Param("estado") String estado);
+    
+	/**
 	 * metodo que permite consultar todas las inciativas
 	 * @return lista de iniciativas
 	 */

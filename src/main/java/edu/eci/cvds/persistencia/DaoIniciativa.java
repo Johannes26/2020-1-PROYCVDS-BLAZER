@@ -25,6 +25,13 @@ public interface DaoIniciativa {
 	public int consultarIniciativasPorArea(String area) throws PersistenciaException;
 	
 	/**
+     * metodo que permite consultar las iniciativas con un estado dado
+     * @param estado estado de la iniciativa
+     * @return Lista Iniciativas
+     */
+    public List<Iniciativa> consultarIniciativasPorEstado(String estado) throws PersistenciaException;
+    
+	/**
 	 * metodo que permite consultar todas las inciativas
 	 * @return lista de iniciativas
 	 */

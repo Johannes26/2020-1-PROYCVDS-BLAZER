@@ -94,6 +94,15 @@ public class ServiciosImpl implements Servicios {
 	}
 
 	@Override
+    public List<Iniciativa> consultarIniciativasPorEstado(String estado) throws ServiciosException {
+        try {
+            return iniciativaDAO.consultarIniciativasPorEstado(estado);
+        } catch (PersistenciaException e){
+            throw new ServiciosException("La iniciativa no existe");
+        }
+    }
+
+	@Override
 	public void registrarIniciativa(Iniciativa i, String palabrasclave) throws ServiciosException {
 		try {
 			String p[]=palabrasclave.split(",");	

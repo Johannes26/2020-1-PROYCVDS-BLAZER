@@ -69,6 +69,17 @@
 	    left join INICIATIVASRELACIONADAS as r on r.numIniciativa1=i.num 
     </select>
 
+    <select parameterType="map" resultMap="IniciativaResult" id="consultarIniciativasPorEstado" >
+        select
+            i.num,
+            i.descripcion,
+            i.usuarioproponente,
+            i.fechaRegistro,
+            i.estado
+        from INICIATIVA as i
+        WHERE i.estado=#{estado};
+    </select>
+    
     <select parameterType="map" resultType="int" id="consultarIniciativasPorArea" >
         select 
         	count(i.num)

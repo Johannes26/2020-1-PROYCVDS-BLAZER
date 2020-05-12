@@ -36,6 +36,14 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
         }
     }
     
+    public List<Iniciativa> consultarIniciativasPorEstado(String estado) throws PersistenciaException{
+        try {
+            return IniciativaMapper.consultarIniciativasPorEstado(estado);
+        } catch (PersistenceException e){
+            throw new PersistenciaException("No pudo consultar las iniciativas por estado");
+        }
+    }
+    
     public List<Iniciativa> consultarIniciativas() throws PersistenciaException{
     	try {
     		return IniciativaMapper.consultarIniciativas();

@@ -257,7 +257,16 @@ public class IniciativaServiciosTest {
     	}
     }
   
-    
+    @Test
+    public void deberiaConsultarIniciativasPorEstado(){
+        try{
+
+            servicios.cambiarEstadoIniciativa(1,"En revision");
+            assertEquals(servicios.consultarIniciativasPorEstado("En revision").size(),1);
+        }catch(ServiciosException e) {
+            fail("error"+e.getMessage());
+        }
+    }
     
     
 

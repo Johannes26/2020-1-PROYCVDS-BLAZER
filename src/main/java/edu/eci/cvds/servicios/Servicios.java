@@ -36,6 +36,13 @@ public interface Servicios {
 	public abstract int consultarIniciativasPorArea(String area) throws ServiciosException;
 	
 	/**
+     * metodo que permite consultar iniciativas por estado
+     * @param esatdo estado de la iniciativa
+     * @return Iniciativas con el estado dado
+     */
+    public abstract List<Iniciativa> consultarIniciativasPorEstado(String estado) throws ServiciosException;
+    
+	/**
 	 * metodo que permite crear una inciativa
 	 * @param i a insertar
 	 */
