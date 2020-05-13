@@ -85,6 +85,14 @@ public class IniciativaBean extends BasePageBean {
 		}
 	}
 	
+	public void inicializarMisIniciativas(int id) {
+		try {
+			iniciativas =servicios.consultarIniciativaXUsuario(id);
+		} catch (ServiciosException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public String getDescripcion() {
 		return descripcion;
 	}

@@ -51,9 +51,22 @@ public interface IniciativaMapper {
 	/**
 	 * consultar una iniciativa de acuerdo a una palara clave
 	 * @param palabra palara clave a buscar
-	 * @return
+	 * @return lista de iniciativas
 	 */
 	public List<Iniciativa> consultarIniciativaXPalabraClave(@Param("descripcion") String palabra);
-
+	
+	/**
+	 * Actualiza una inciativa
+	 * @param num id de la iniciaitiva
+	 * @param descripcion nueva descripcion
+	 * 
+	 * 
+	 **/
 	public void cambiarDatosIniciativa(@Param("num")int num, @Param("descripcion") String descripcion);
+	/**
+	 * Metodo que consulta las inciativas por id del usuario
+	 * @param id identificacion del usuario
+	 * @return	lista de inciativas
+	 */
+	public List<Iniciativa> consultarIniciativaXUsuario(@Param("id")int id);
 }

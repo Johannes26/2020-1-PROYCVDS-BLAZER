@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.DragDropEvent;
 
@@ -53,18 +55,21 @@ public class AgruparBean extends BasePageBean{
 	}
 
 	public void agruparIniciativas(String descripcion)  {
-		System.out.println("22222222");
-		try {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		
 			for(int x=0;x<iniciativasArrastradas.size()-1;x++) {
 				for(int y=x+1;y<iniciativasArrastradas.size();y++) {
 					Iniciativa ini1=iniciativasArrastradas.get(x);
 					Iniciativa ini2=iniciativasArrastradas.get(y);
-						servicios.insertarIniciativaRelacionada(ini1.getNum(), ini2.getNum(), descripcion);			
+					try {
+						servicios.insertarIniciativaRelacionada(ini1.getNum(), ini2.getNum(), descripcion);	
+						facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","Se ha relacionado "+
+								ini1.getNum()+" y "+ini2.getNum()));
+					} catch (ServiciosException e) {
+						facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
+					}
 				}
 			}
-		} catch (ServiciosException e) {
-			e.printStackTrace();
-		}
 	}
  
 

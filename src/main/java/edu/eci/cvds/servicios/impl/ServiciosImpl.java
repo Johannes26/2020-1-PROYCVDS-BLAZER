@@ -291,7 +291,7 @@ public class ServiciosImpl implements Servicios {
 		try {
 			iniciativasRelacionadasDAO.insertarIniciativaRelacionada(numIniciativa1, numIniciativa2, descripcion);
 		}catch(PersistenciaException e) {
-            throw new ServiciosException("Error al insertar las iniciativas relacionadas");
+            throw new ServiciosException("Puede que la iniciativa "+numIniciativa1+" y "+numIniciativa2+" ya esten relacionadas");
 		}
 	}
 	
@@ -363,6 +363,15 @@ public class ServiciosImpl implements Servicios {
 			return usuarioDAO.consultarAreas();
 		}catch(PersistenciaException e) {
             throw new ServiciosException("Error al consultar areas");
+		}
+	}
+
+	@Override
+	public List<Iniciativa> consultarIniciativaXUsuario(int id) throws ServiciosException {
+		try {
+			return iniciativaDAO.consultarIniciativaXUsuario(id);
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al consultar inciativas");
 		}
 	}
 	

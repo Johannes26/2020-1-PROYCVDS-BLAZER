@@ -87,5 +87,15 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
         }
 	}
 
+	@Override
+	public List<Iniciativa> consultarIniciativaXUsuario(int id) throws PersistenciaException {
+		try {
+    		return IniciativaMapper.consultarIniciativaXUsuario(id);
+    	}catch (PersistenceException e){
+            throw new PersistenciaException("Error consulta inciativia X usuario");
+        }
+		
+	}
+
 
 }

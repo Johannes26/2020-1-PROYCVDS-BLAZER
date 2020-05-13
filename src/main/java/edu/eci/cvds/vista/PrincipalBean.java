@@ -42,7 +42,7 @@ public class PrincipalBean extends BasePageBean {
 		ArrayList<String> usuarioPropo = new ArrayList<String>(
 				Arrays.asList("/AgregarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml",
 						"/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml",
-						"/ModificarIniciativa.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml"));
+						"/ModificarIniciativa.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml","/ConsultarMisIniciativas.xhtml"));
 		
 		ArrayList<String> usuarioPubli = new ArrayList<String>(
 				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml",
@@ -69,6 +69,10 @@ public class PrincipalBean extends BasePageBean {
 	
 	public boolean esVisibleConsultarUsuarios() {
 			return consultarPaginas().contains("/ConsultarUsuarios.xhtml")?true:false;
+	}
+	
+	public boolean esVisibleConsultarMisIniciativas() {
+		return consultarPaginas().contains("/ConsultarMisIniciativas.xhtml")?true:false;
 	}
 	
 	public boolean esVisibleModificarIniciativa() {

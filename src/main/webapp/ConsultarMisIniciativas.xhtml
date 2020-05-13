@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+    <style>
+        .ui-datatable input {
+        box-sizing: border-box;
+        width: 100%;
+        -webkit-box-shadow: none;
+        box-shadow: none !important;
+    }
+    .fixed-size {
+      width: 50%;
+     table-layout: fixed;
+     word-wrap: break-word;
+   }
+
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Evento seguridad -->
+    <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
+
+  </h:head>
+
+  <body background="fondo.jpg" onload="#{iniciativaBean.inicializarMisIniciativas(principalBean.usuario.id)}">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="#">BlazerApp</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                    <p:menubar >
+                          <p:menuitem value="Pagina Escuela" url="#" />
+                          <p:submenu label="Usuarios">
+                                <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
+                          </p:submenu>
+                          <p:submenu label="Iniciativas">
+                                <p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
+                                <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
+                                <p:menuitem value="Comentarios" url="ConsultarComentarios.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
+                                <p:menuitem value="Modificar Estados" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
+                                <p:submenu label="Consultar por">
+                                  <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
+                                    <p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
+                                  </p:submenu>
+                                  <p:menuitem value="Consultar por palabra" url="ConsultarIniciativaXPalabra.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXPalabra()}"/>
+                        </p:submenu>
+                        <p:submenu label="Mis inciativas">
+                              <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
+                              <p:menuitem value="Consultar" url="ConsultarMisIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarMisIniciativas()}"/>
+                        </p:submenu>
+
+                    </p:menubar>
+              </li>
+            </ul>
+            <h:form class="form-inline my-2 my-lg-0">
+              <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
+              <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+            </h:form>
+          </div>
+        </nav>
+
+  <h:form>
+      <br/><br/>
+      <p:dataTable var="ini" value="#{iniciativaBean.iniciativas}" sortMode="multiple" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,15">
+        <f:facet name="header">
+            MIS INICIATIVAS
+        </f:facet>
+        <p:column headerText="Descripción" sortBy="#{ini.descripcion}" styleClass="fixed-size">
+            <h:outputText value="#{ini.descripcion}" />
+        </p:column>
+
+ 		     <p:column headerText="Estado" sortBy="#{ini.estado}">
+            <h:outputText value="#{ini.estado}" />
+        </p:column>
+
+        <p:column headerText="Fecha de Registro" sortBy="#{ini.fechaRegistro}">
+            <h:outputText value="#{ini.fechaRegistro}" />
+        </p:column>
+
+        <p:column headerText="Palabras Clave" >
+            <p:commandLink action="#{palabrasBean.consultarPalabras(ini.iniciativasPalabras)}" style="margin-right:20px; font-weight:bold; color: red">
+                <h:outputText value="Consultar Palabras" />
+            </p:commandLink>
+        </p:column>
+
+        <p:column headerText="Iniciativas Relacionadas">
+            <p:commandLink action="#{iniciativasrela.consultarIniciativasRelacionadas(ini.iniciativasRelacionadas)}" style="margin-right:20px; font-weight:bold; color: red">
+                <h:outputText value="Relaciones" />
+            </p:commandLink>
+        </p:column>
+
+    </p:dataTable>
+    </h:form>
+
+</body>
+</html>

@@ -33,6 +33,26 @@
 	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
         WHERE i.num=#{num};
     </select>
+    
+    <select parameterType="map" id="consultarIniciativaXUsuario" resultMap="IniciativaResult">
+        select
+          	i.num,
+	        i.descripcion,
+	        i.fechaRegistro,
+	        i.estado,
+	        
+	        c.id as c_id ,
+	        c.idIniciativa as c_idIniciativa,
+	      	c.idPalabraClave as c_idPalabraClave,
+	      	
+	      	d.id as c_d_id,
+	      	d.descripcion as c_d_descripcion
+        from INICIATIVA as i
+	    left join USUARIO as u on i.usuarioProponente=u.id
+	    left join INICIATIVAPALABRA as c on c.idIniciativa=i.num
+	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
+        WHERE u.id=#{id};
+    </select>
 
     <select  id="consultarIniciativas" resultMap="IniciativaResult">
         select

@@ -55,6 +55,19 @@ public interface DaoIniciativa {
 	 */
 	public List<Iniciativa> consultarIniciativaXPalabraClave(String PalabrasClave) throws PersistenciaException;
 	
-
+	/**
+	 * Actualiza una inciativa
+	 * @param num id de la iniciaitiva
+	 * @param descripcion nueva descripcion
+	 * 
+	 * 
+	 **/
 	public void cambiarDatosIniciativa(int num, String descripcion) throws PersistenciaException;
+	
+	/**
+	 * Metodo que consulta las inciativas por id del usuario
+	 * @param id identificacion del usuario
+	 * @return	lista de inciativas
+	 */
+	public List<Iniciativa> consultarIniciativaXUsuario(int id) throws PersistenciaException;
 }

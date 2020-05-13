@@ -268,6 +268,19 @@ public class IniciativaServiciosTest {
         }
     }
     
+    @Test
+    public void deberiaConsultarIniciativasXUsuario(){
+        try{
+        	List<Iniciativa> inis = servicios.consultarIniciativaXUsuario(2158130);
+        	List<Iniciativa> inis2 = servicios.consultarIniciativaXUsuario(2155042);
+        	assertEquals(inis.size(),1);
+        	assertEquals(inis2.size(),1);
+        	
+        }catch(ServiciosException e) {
+            fail("error"+e.getMessage());
+        }
+    }
+    
     
 
 }
