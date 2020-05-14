@@ -24,13 +24,27 @@ public class MyBatisComentarioDAO implements ComentarioDAO{
 		try {
 			comentarioMapper.agregarComentario(descripcion,i,u);
 		}catch (PersistenceException e){
-			throw new PersistenciaException("Error al registrar un voto");
+			throw new PersistenciaException("Error al agregar comentario");
 		}
 	}
 	
 	@Override
-	public List<Comentario> consultarComentarios() {
-		return comentarioMapper.consultarComentarios();
+	public List<Comentario> consultarComentarios() throws PersistenciaException {
+		try {
+			return comentarioMapper.consultarComentarios();
+		}catch (PersistenceException e){
+			throw new PersistenciaException("Error al consultar todos los comentarios");
+		}
+		
+	}
+
+	@Override
+	public List<Comentario> consultarComentariosXIniciativa(int idini) throws PersistenciaException {
+		try {
+			return comentarioMapper.consultarComentariosXIniciativa(idini);
+		}catch (PersistenceException e){
+			throw new PersistenciaException("Error al consultar comentarios por iniciativa");
+		}
 	}
 	
 }

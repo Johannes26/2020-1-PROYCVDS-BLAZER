@@ -180,8 +180,6 @@ public class IniciativaServiciosTest {
     @Test
     public void deberiaInsertarVoto(){
     	try {
-
-    		//System.out.println(servicios.consultarVotos());
     		servicios.insertarVoto(2158130, 1);
     		assertTrue(servicios.consultarUsuario("johann.bogota@mail.escuelaing.edu.co").getLikes().size()==1);
     	}catch(ServiciosException e) {
@@ -220,8 +218,6 @@ public class IniciativaServiciosTest {
 	    	servicios.registrarIniciativa(ini,"");
 	    	servicios.insertarVoto(2158130, 3);
     		servicios.insertarVoto(2157826, 3);
-    		//System.out.println(servicios.consultarIniciativas());
-    		//assertTrue(servicios.contarVotos(1)==0);
     		assertTrue(servicios.contarVotos(3)==2);
     	}catch(ServiciosException e) {
     		fail("error"+e.getMessage());
@@ -276,6 +272,16 @@ public class IniciativaServiciosTest {
         	assertEquals(inis.size(),1);
         	assertEquals(inis2.size(),1);
         	
+        }catch(ServiciosException e) {
+            fail("error"+e.getMessage());
+        }
+    }
+    
+    @Test
+    public void deberiaConsultarComentariosXiniciativa(){
+        try{
+        	assertEquals(servicios.consultarComentariosXIniciativa(2).get(0).getIdComentario(),1);
+        	assertEquals(servicios.consultarComentariosXIniciativa(2).get(0).getIni().getNum(),2);
         }catch(ServiciosException e) {
             fail("error"+e.getMessage());
         }

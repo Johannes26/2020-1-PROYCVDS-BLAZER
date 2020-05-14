@@ -21,7 +21,22 @@
 	        u.apellido as u_apellido
         from COMENTARIO c
         left join INICIATIVA as i on c.numIniciativa=i.num
-        left join USUARIO as u on i.usuarioProponente=u.id
+        left join USUARIO as u on c.usuario=u.id
+    </select>
+    
+    <select parameterType="map" resultMap="ComentarioResult" id="consultarComentariosXIniciativa" >
+        select
+        	c.idComentario,
+	        c.descripcion,
+	        c.FechaDeRegistro,
+	        i.num as i_num,
+	        i.descripcion as i_descripcion,
+	        u.nombre as u_nombre,
+	        u.apellido as u_apellido
+        from COMENTARIO c
+        left join INICIATIVA as i on c.numIniciativa=i.num
+        left join USUARIO as u on c.usuario=u.id
+        WHERE i.num=#{idini}
     </select>
     
 

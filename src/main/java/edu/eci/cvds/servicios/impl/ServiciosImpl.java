@@ -374,6 +374,15 @@ public class ServiciosImpl implements Servicios {
             throw new ServiciosException("Error al consultar inciativas");
 		}
 	}
+
+	@Override
+	public List<Comentario> consultarComentariosXIniciativa(int idini) throws ServiciosException {
+		try {
+			return comentarioDAO.consultarComentariosXIniciativa(idini);
+		}catch(PersistenciaException e) {
+            throw new ServiciosException("Error al consultar comentarios de la iniciativa");
+		}
+	}
 	
 	
 }

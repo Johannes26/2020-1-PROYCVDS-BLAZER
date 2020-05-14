@@ -84,7 +84,7 @@
     <h:form id="VistaUsuarioConsulta" class="text-center" background="fondo.jpg" onsubmit="#{votosBean.consultarVotos()}">
 
          <h1 class="font-italic" style="color: white;">Consultar Iniciativas</h1>
-         <p:growl id="growl1" showDetail="true" sticky="true" />
+         <p:growl id="msg" showDetail="true" sticky="true" />
          <p:dataView var="iniciativa" value="#{adminiBean.consultarIniciativas()}"
                 gridIcon="pi pi-th-large" listIcon="pi pi-bars" >
               <p:dataViewGridItem>
@@ -95,16 +95,29 @@
 
                           <h:panelGrid columns="3" cellpadding="5">
                                   <p:commandLink onsuccess="location.reload();" rendered="#{votosBean.validarVoto(iniciativa.num)}"
-                                  	actionListener="#{votosBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}" >
+                                    actionListener="#{votosBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}" >
                                               <h:outputText styleClass="pi pi-star" style="margin:0 auto; font-size: 45px;" />
                                               <p:effect type="pulsate" event="click" />
                                   </p:commandLink>
+
                                   <p:commandLink onsuccess="location.reload();" rendered="#{!votosBean.validarVoto(iniciativa.num)}"
-                                  	actionListener="#{votosBean.registrarVoto(principalBean.usuario.id,iniciativa.num)}" >
+                                    actionListener="#{votosBean.registrarVoto(principalBean.usuario.id,iniciativa.num)}" >
                                               <h:outputText styleClass="pi pi-star-o" style="margin:0 auto; font-size: 45px;" />
                                               <p:effect type="pulsate" event="click" />
                                   </p:commandLink>
+
+                                  <p:commandLink  action="#{comentariosBean.redireccionarAComentarios(iniciativa,principalBean.usuario)}">
+                                        <h:outputText styleClass="pi pi-comment" style="margin:0 auto; font-size: 45px;" />
+                                  </p:commandLink>
+
+
+                                  <p:commandLink update=":VistaUsuarioConsulta:msg" action="#{comentariosBean.consultarComentariosXid(iniciativa)}">
+                                        <h:outputText styleClass="pi pi-comments" style="margin:0 auto; font-size: 45px;" />
+                                  </p:commandLink>
+
                                   <h:outputText value="#{votosBean.consultarVotos(iniciativa.num)}" />
+                                  <h:outputText value="Comentar" />
+                                  <h:outputText value="Comentarios" />
                           </h:panelGrid>
                       </h:panelGrid>
                   </p:panel>
@@ -142,22 +155,39 @@
                           </h:panelGrid>
                     </p:outputPanel>
                     <p:outputPanel style="float:right ;margin:0px 0px 3px 0px;">
-                          <h:panelGrid columns="3" cellpadding="5">
+                          <h:panelGrid columns="2" cellpadding="5">
 
-                          		    <p:commandLink  id="boton_Comentarios" action="#{comentariosBean.redireccionarAComentarios(iniciativa,principalBean.usuario)}">
-                                        <h:outputText styleClass="pi pi-comments" style="margin:0 auto; font-size: 45px;" />
-                                  </p:commandLink>
                                   <p:commandLink onsuccess="location.reload();" rendered="#{votosBean.validarVoto(iniciativa.num)}"
-                                  	actionListener="#{votosBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}" >
+                                    actionListener="#{votosBean.quitarVoto(principalBean.usuario.id,iniciativa.num)}" >
                                               <h:outputText styleClass="pi pi-star" style="margin:0 auto; font-size: 45px;" />
                                               <p:effect type="pulsate" event="click" />
                                   </p:commandLink>
+
                                   <p:commandLink onsuccess="location.reload();" rendered="#{!votosBean.validarVoto(iniciativa.num)}"
-                                  	actionListener="#{votosBean.registrarVoto(principalBean.usuario.id,iniciativa.num)}" >
+                                    actionListener="#{votosBean.registrarVoto(principalBean.usuario.id,iniciativa.num)}" >
                                               <h:outputText styleClass="pi pi-star-o" style="margin:0 auto; font-size: 45px;" />
                                               <p:effect type="pulsate" event="click" />
                                   </p:commandLink>
+
                                   <h:outputText value="#{votosBean.consultarVotos(iniciativa.num)}" />
+
+                                  <h:outputText value="" />
+                                  <h:outputText value="" />
+                                  <h:outputText value="" />
+                                  <h:outputText value="" />
+
+                          		    <p:commandLink action="#{comentariosBean.redireccionarAComentarios(iniciativa,principalBean.usuario)}">
+                                        <h:outputText styleClass="pi pi-comment" style="margin:0 auto; font-size: 45px;" />
+                                  </p:commandLink>
+
+
+                                  <p:commandLink update=":VistaUsuarioConsulta:msg" action="#{comentariosBean.consultarComentariosXid(iniciativa)}">
+                                        <h:outputText styleClass="pi pi-comments" style="margin:0 auto; font-size: 45px;" />
+                                  </p:commandLink>
+
+                                  <h:outputText value="Comentar" />
+                                  <h:outputText value="Comentarios" />
+
                           </h:panelGrid>
                   </p:outputPanel>
 

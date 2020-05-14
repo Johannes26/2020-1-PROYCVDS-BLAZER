@@ -37,20 +37,23 @@ public class PrincipalBean extends BasePageBean {
 		ArrayList<String> usuarioAdmin = new ArrayList<String>(
 				Arrays.asList("/ConsultarUsuarios.xhtml","/CambiarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml",
 						"/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/AgruparIniciativas.xhtml","/ConsultarIniciativasOrdenadas.xhtml",
-						"/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml"));
+						"/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml","/ConsultarComentarioXId.xhtml"));
 		
 		ArrayList<String> usuarioPropo = new ArrayList<String>(
 				Arrays.asList("/AgregarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml",
 						"/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml",
-						"/ModificarIniciativa.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml","/ConsultarMisIniciativas.xhtml"));
+						"/ModificarIniciativa.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml","/ConsultarMisIniciativas.xhtml",
+						"/ConsultarComentarioXId.xhtml"));
 		
 		ArrayList<String> usuarioPubli = new ArrayList<String>(
 				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml",
-						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml"));
+						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml",
+						"/ConsultarComentarioXId.xhtml"));
 		
 		ArrayList<String> usuarioPmo = new ArrayList<String>(
 				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml",
-						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml"));
+						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml",
+						"/ConsultarComentarios.xhtml","/ConsultarComentarioXId.xhtml"));
 																												
 		verificacion.put("Administrador", usuarioAdmin);
 		verificacion.put("Proponente", usuarioPropo);

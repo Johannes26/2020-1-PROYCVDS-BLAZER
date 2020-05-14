@@ -22,4 +22,10 @@ public interface ComentarioMapper {
 	 * @param u usuario que hace el comentario
 	 **/
 	public void agregarComentario(@Param("descripcion")String descripcion, @Param("iniciativa") Iniciativa i, @Param("usuario") Usuario u);
+	/**
+	 * metodo que consulta los comentarios por una iniciativa
+	 * @param idini identificador de la inicativa
+	 * @return
+	 */
+	public List<Comentario> consultarComentariosXIniciativa(@Param("idini") int idini);
 }

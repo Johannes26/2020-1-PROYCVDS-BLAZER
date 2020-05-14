@@ -3,7 +3,6 @@ package edu.eci.cvds.persistencia;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.entidades.Iniciativa;
 

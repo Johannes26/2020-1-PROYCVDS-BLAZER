@@ -13,7 +13,6 @@ import edu.eci.cvds.entidades.PalabrasClave;
 
 public interface Servicios {
 
-	//public abstract void createUser(Usuario user) throws ServiciosException;
 	/**
 	 * metodo que permite consultar el usuario en la base de datos
 	 * @param email correo de un Usuario
@@ -211,5 +210,12 @@ public interface Servicios {
 	 * @throws ServiciosException
 	 */
 	public List<Iniciativa> consultarIniciativaXUsuario(int id) throws ServiciosException;
+	/**
+	 * metodo que consulta los comentarios de una inciativa
+	 * @param idini identifiacion de la iniciativa
+	 * @return
+	 * @throws ServiciosException
+	 */
+	public List<Comentario> consultarComentariosXIniciativa(int idini) throws ServiciosException;
 
 }

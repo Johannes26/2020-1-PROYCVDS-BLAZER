@@ -19,5 +19,11 @@ public interface ComentarioDAO {
 	 * @param u usuario que hace el comentario
 	 **/
 	public void agregarComentario(String descripcion, Iniciativa i, Usuario u) throws PersistenciaException;
-
+	
+	/**
+	 * metodo que consulta los comentarios por una iniciativa
+	 * @param idini identificador de la inicativa
+	 * @return
+	 */
+	public List<Comentario> consultarComentariosXIniciativa(int idini) throws PersistenciaException;
 }

@@ -25,6 +25,7 @@ public class ComentariosBean extends BasePageBean {
     private Servicios servicios;
 	private Iniciativa inic;
 	private Usuario usua;
+	private List<Comentario> comentariosIni;
 	
 	public void agregarComentario(String descripcion) {
 		try {
@@ -34,6 +35,22 @@ public class ComentariosBean extends BasePageBean {
 		 catch (ServiciosException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
 		}
+	}
+	
+	public String consultarComentariosXid(Iniciativa ini) {
+		this.inic=ini;
+		String direc = "";
+		try {
+			comentariosIni=servicios.consultarComentariosXIniciativa(inic.getNum());
+			if(comentariosIni.size()==0) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso","La iniciativa no tiene comentarios"));
+			}else {
+				direc = "ConsultarComentarioXId.xhtml?faces-redirect=true";
+			}
+		} catch (ServiciosException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
+		}
+		return direc;
 	}
 	
 	public String redireccionarAComentarios(Iniciativa ini,Usuario usu) {
@@ -72,6 +89,14 @@ public class ComentariosBean extends BasePageBean {
 
 	public void setUsua(Usuario usua) {
 		this.usua = usua;
+	}
+
+	public List<Comentario> getComentariosIni() {
+		return comentariosIni;
+	}
+
+	public void setComentariosIni(List<Comentario> comentariosIni) {
+		this.comentariosIni = comentariosIni;
 	}
 	
 	
