@@ -27,10 +27,6 @@ public class ComentariosBean extends BasePageBean {
 	private Usuario usua;
 	
 	public void agregarComentario(String descripcion) {
-		System.out.println("Hola");
-		System.out.println(descripcion);
-		System.out.println(inic);
-		System.out.println(usua);
 		try {
 			servicios.agregarComentario(descripcion, inic, usua);
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Aviso","El usuario "+ usua.getNombre() + " ha agregado un comentario a la iniciativa "+inic.getNum()));
@@ -61,4 +57,22 @@ public class ComentariosBean extends BasePageBean {
 		}
 	
 	}
+
+	public Iniciativa getInic() {
+		return inic;
+	}
+
+	public void setInic(Iniciativa inic) {
+		this.inic = inic;
+	}
+
+	public Usuario getUsua() {
+		return usua;
+	}
+
+	public void setUsua(Usuario usua) {
+		this.usua = usua;
+	}
+	
+	
 }

@@ -11,6 +11,11 @@
         width:600px;
         margin: auto;
       }
+
+      .contenido1 {
+              display: inline-block;
+              text-align: middle; /* requerido para volver a alinear texto izquierda */
+      }
     </style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -64,18 +69,25 @@
             </h:form>
           </div>
         </nav>
-      <h:form id="AgregoComentario">
+  <h:form id="AgregoComentario">
       	<h1 class="font-italic text-center" style="color: white;">Agregar Comentario</h1>
       	<p:panel id="panelAgregarComentario" header="Agrega acá tu comentario" style="background-color: #464646;">
-                <p:messages autoUpdate="true" showDetail="true"/>
-                <h:panelGrid columns="2" id="AgregoComentario">
+            <p:messages autoUpdate="true" showDetail="true"/>
+            <h:panelGrid   class="contenido1"  style="color:#FFFFFF"  columns="2" layout="flex"  columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"  contentStyleClass="ui-fluid">
 
-                <p:outputLabel for="descripcion" value="Descripcion" style="color:#FFFFFF" />
+                <h:outputText value="Usuario:" style="color:#2A1313;font-weight: bold"/>
+                <h:outputText value="#{comentariosBean.usua.nombre} #{comentariosBean.usua.apellido}" />
+
+                <h:outputText value="Iniciativa:" style="color:#2A1313;font-weight: bold" />
+                <h:outputText value="#{comentariosBean.inic.descripcion}" style="font-weight: bold"/>
+
+                <p:outputLabel for="descripcion" value="Descripcion" style="color:#2A1313;font-weight: bold"/>
                 <p:inputText id="descripcion" required="true" type="String" rows="7" cols="60" maxlength="100" counterTemplate="{0} caracteres restantes" autoResize="false" binding="#{descripcion}"/>
 
 
 
               </h:panelGrid>
+              <br></br>
               <p:commandButton id="btonNuevoComentario" value="Guardar Comentario" update="AgregoComentario"
                 actionListener="#{comentariosBean.agregarComentario(descripcion.value)}"/>
           </p:panel>

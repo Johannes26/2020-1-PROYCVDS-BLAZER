@@ -111,25 +111,25 @@
     <p:panel id="panelRol" header="Cambiar Rol Usuario" style="background-color: #464646;" rendered="#{adminiBean.usuariobuscado!=null}" >
 
         <h:panelGrid   class="contenido1"  style="color:#FFFFFF"  columns="4" layout="flex"  columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4"  contentStyleClass="ui-fluid">
-            <h:outputLabel style="color:#2A1313" value="Id:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Id:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.id}"/>
 
-            <h:outputLabel style="color:#2A1313" value="Nombre:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Nombre:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.nombre}" />
 
-            <h:outputLabel style="color:#2A1313"  value="Apellido:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold"  value="Apellido:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.apellido}" />
 
-            <h:outputLabel style="color:#2A1313"  value="Email:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold"  value="Email:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.email}" />
 
-            <h:outputLabel style="color:#2A1313" value="Telefono:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Telefono:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.telefono}"/>
 
-            <h:outputLabel style="color:#2A1313" value="Area:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Area:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.area}"/>
 
-            <h:outputLabel style="color:#2A1313" value="Tipo de Usuario:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Tipo de Usuario:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.tipoUsuario}" />
 
         </h:panelGrid>
