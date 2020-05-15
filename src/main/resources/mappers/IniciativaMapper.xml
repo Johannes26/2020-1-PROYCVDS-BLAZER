@@ -93,12 +93,20 @@
         select
             i.num,
             i.descripcion,
-            i.usuarioproponente,
+            u.id as u_id,
+	        u.nombre as u_nombre,
+	        u.apellido as u_apellido,
+	        u.email as u_email,
+	        u.telefono as u_telefono,
+	        u.tipoUsuario as u_tipoUsuario,
+	        u.contrasena as u_contrasena,
+	        u.area as u_area,
             i.fechaRegistro,
             i.estado
         from INICIATIVA as i
-        WHERE i.estado=#{estado};
-    </select>
+        left join USUARIO as u on i.usuarioProponente=u.id
+        WHERE i.estado LIKE '%'||#{estado}||'%' ;
+	</select>
     
     <select parameterType="map" resultType="int" id="consultarIniciativasPorArea" >
         select 

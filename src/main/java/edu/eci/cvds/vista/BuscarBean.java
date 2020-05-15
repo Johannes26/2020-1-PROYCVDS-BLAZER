@@ -32,6 +32,13 @@ public class BuscarBean extends BasePageBean{
 			}catch(ServiciosException e) {
 			}
 		}
+		
+		public void buscarXEstado(String estado) {
+			try {
+				iniciativasBuscadas=servicios.consultarIniciativasPorEstado(estado);
+			}catch(ServiciosException e) {
+			}
+		}
 
 		public List<Iniciativa> getIniciativasBuscadas() {
 			return iniciativasBuscadas;

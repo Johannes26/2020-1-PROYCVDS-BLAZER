@@ -37,23 +37,23 @@ public class PrincipalBean extends BasePageBean {
 		ArrayList<String> usuarioAdmin = new ArrayList<String>(
 				Arrays.asList("/ConsultarUsuarios.xhtml","/CambiarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml",
 						"/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml","/AgruparIniciativas.xhtml","/ConsultarIniciativasOrdenadas.xhtml",
-						"/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml","/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml"));
+						"/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml","/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml","/ConsultarIniciativaXEstado.xhtml"));
 		
 		ArrayList<String> usuarioPropo = new ArrayList<String>(
 				Arrays.asList("/AgregarIniciativa.xhtml","/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml",
 						"/PalabrasClaveXIniciativa.xhtml","/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml",
 						"/ModificarIniciativa.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml","/ConsultarMisIniciativas.xhtml",
-						"/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml"));
+						"/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml","/ConsultarIniciativaXEstado.xhtml"));
 		
 		ArrayList<String> usuarioPubli = new ArrayList<String>(
 				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml",
 						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml","/ConsultarComentarios.xhtml",
-						"/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml"));
+						"/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml","/ConsultarIniciativaXEstado.xhtml"));
 		
 		ArrayList<String> usuarioPmo = new ArrayList<String>(
 				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml",
 						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml",
-						"/ConsultarComentarios.xhtml","/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml"));
+						"/ConsultarComentarios.xhtml","/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml","/ConsultarIniciativaXEstado.xhtml"));
 																												
 		verificacion.put("Administrador", usuarioAdmin);
 		verificacion.put("Proponente", usuarioPropo);
@@ -105,6 +105,10 @@ public class PrincipalBean extends BasePageBean {
 	
 	public boolean esVisibleAgruparIniciativas() {
 		return consultarPaginas().contains("/AgruparIniciativas.xhtml")?true:false;
+	}
+	
+	public boolean esVisibleConsultarIniciativaXEstado() {
+		return consultarPaginas().contains("/ConsultarIniciativaXEstado.xhtml")?true:false;
 	}
 
 	

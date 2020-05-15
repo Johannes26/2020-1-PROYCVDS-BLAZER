@@ -7,17 +7,21 @@
 
   <h:head>
     <style>
-      .centrar {
-        text-align:center;
-        margin-top: 10%;
+      div.iniciarSesion {
+        width:600px;
+        margin: auto;
       }
+
       .ui-dataview-list .ui-dataview-row {
         border-bottom: 1px solid #A8A8A8;
         padding: 25px 10px;
         /* with the exported variables from Nova and Luna Themes*/
         border-bottom-color: var(--input-border-color, #A8A8A8);
     }
-
+	.centrar {
+        text-align:center;
+        margin-top: 10%;
+     }
     .logo {
         width: 5%;
     }
@@ -31,14 +35,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Evento seguridad -->
-    <f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
-
     <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
-  </h:head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
+    <!-- Evento seguridad -->
+	<f:event type="preRenderView" listener="#{principalBean.verificarSesion()}" />
+  </h:head>
   <body background="fondo.jpg">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">BlazerApp</a>
@@ -49,29 +53,31 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <p:menubar >
-                      <p:menuitem value="Pagina Escuela" url="#" />
-                      <p:submenu label="Usuarios">
-                            <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
-                      </p:submenu>
-                      <p:submenu label="Iniciativas">
-                            <p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
-                            <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
-                            <p:menuitem value="Comentarios" url="ConsultarComentarios.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
-                            <p:menuitem value="Modificar Estados" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
-                            <p:submenu label="Consultar por">
-                              <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
-                                <p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
-                              </p:submenu>
-                              <p:menuitem value="Consultar por palabra" url="ConsultarIniciativaXPalabra.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXPalabra()}"/>
-                              <p:menuitem value="Consultar por Estado" url="ConsultarIniciativaXEstado.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXEstado()}"/>
-                    </p:submenu>
-                    <p:submenu label="Mis inciativas">
+                    <p:menubar >
+                          <p:menuitem value="Pagina Escuela" url="#" />
+                          <p:submenu label="Usuarios">
+                                <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
+                          </p:submenu>
+                          <p:submenu label="Iniciativas">
+                                <p:menuitem value="Agrupar Iniciativas" url="AgruparIniciativas.xhtml" rendered="#{principalBean.esVisibleAgruparIniciativas()}"/>
+                                <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
+                                <p:menuitem value="Modificar" url="ModificarIniciativa.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
+                                <p:menuitem value="Comentarios" url="ConsultarComentarios.xhtml" rendered="#{principalBean.esVisibleModificarIniciativa()}"/>
+                                <p:menuitem value="Modificar Estados" url="CambiarIniciativa.xhtml" rendered="#{principalBean.esVisibleCambiarIniciativa()}"/>
+                                <p:submenu label="Consultar por">
+                                  <p:menuitem value="Lista" url="ConsultarIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativas()}"/>
+                                    <p:menuitem value="Tabla" url="ConsultarIniciativasOrdenadas.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativasOrdenadas()}"/>
+                                  </p:submenu>
+                                  <p:menuitem value="Consultar por palabra" url="ConsultarIniciativaXPalabra.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXPalabra()}"/>
+                                  <p:menuitem value="Consultar por Estado" url="ConsultarIniciativaXEstado.xhtml" rendered="#{principalBean.esVisibleConsultarIniciativaXEstado()}"/>
+                                 
+                        </p:submenu>
+                        <p:submenu label="Mis inciativas">
                           <p:menuitem value="Agregar" url="AgregarIniciativa.xhtml" rendered="#{principalBean.esVisibleAgregarIniciativas()}"/>
                           <p:menuitem value="Consultar" url="ConsultarMisIniciativas.xhtml" rendered="#{principalBean.esVisibleConsultarMisIniciativas()}"/>
-                    </p:submenu>
+                    	</p:submenu>
 
-                </p:menubar>
+                    </p:menubar>
               </li>
             </ul>
             <h:form class="form-inline my-2 my-lg-0">
@@ -80,15 +86,17 @@
             </h:form>
           </div>
         </nav>
-  <h:form id="principal" onsubmit="#{votosBean.consultarVotos()}">
-  		<h1 class="text-center" style="color:white">Buscar iniciativa por palabras clave</h1>
+        
+        
+<h:form id="principal" onsubmit="#{votosBean.consultarVotos()}">
+  		<h1 class="text-center" style="color:white">Buscar iniciativa por estado</h1>
 
   		<div class="centrar">
-  		<h:outputText class="h3 mb-3 font-weight-normal" style="color:white" value="Palabras Clave " />
+  		<h:outputText class="h3 mb-3 font-weight-normal" style="color:white" value="Estado " />
   		<br />
-        <p:inputText id="palabras" required="true" type="String" binding="#{palabras}"/>
-        <br />
-        <p:commandButton update="principal" id="boton_buscar" actionListener="#{buscarBean.buscar(palabras.value)}" value="Buscar"/>
+       	<p:inputText id="estado" required="true" type="String" binding="#{estado}"/>
+       	<br />
+       	<p:commandButton update="principal" id="boton_buscar" actionListener="#{buscarBean.buscarXEstado(estado.value)}" value="Buscar"/>
         </div>
 
 
@@ -155,13 +163,5 @@
     	</p:dataView>
 
         </h:form>
-
-
-
-
-
-
-
-
-  </body>
+	</body>
 </html>
