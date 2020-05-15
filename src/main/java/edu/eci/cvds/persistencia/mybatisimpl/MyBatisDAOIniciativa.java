@@ -97,5 +97,23 @@ public class MyBatisDAOIniciativa implements DaoIniciativa {
 		
 	}
 
+	@Override
+	public int consultarCantidadIniciativasPorEstado(String estado) throws PersistenciaException {
+		try {
+    		return IniciativaMapper.consultarCantidadIniciativasPorEstado(estado);
+    	}catch (PersistenceException e){
+            throw new PersistenciaException("Error consultar cantidad de iniciativas por estado");
+        }
+	}
+
+	@Override
+	public List<String> consultarEstadosIniciativas() throws PersistenciaException {
+		try {
+    		return IniciativaMapper.consultarEstadosIniciativas();
+    	}catch (PersistenceException e){
+            throw new PersistenciaException("Error consultar cantidad de iniciativas por estado");
+        }
+	}
+
 
 }

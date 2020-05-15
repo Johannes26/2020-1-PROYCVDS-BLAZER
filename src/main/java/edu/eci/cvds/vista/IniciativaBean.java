@@ -1,6 +1,7 @@
 package edu.eci.cvds.vista;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -18,7 +19,12 @@ import edu.eci.cvds.servicios.ServiciosException;
 
 import javax.faces.context.FacesContext;
 
+import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.PieChartModel;
 
 @SuppressWarnings("deprecation")
@@ -32,6 +38,7 @@ public class IniciativaBean extends BasePageBean {
 	private List<Iniciativa> iniciativas;
 	private String actdescripcion;
 	private PieChartModel pieModel;
+	
 	
 	public void actualizar(RowEditEvent event) {
 		Iniciativa ini = (Iniciativa) event.getObject();
@@ -75,6 +82,60 @@ public class IniciativaBean extends BasePageBean {
 			pieModel.setShadow(false);
 			pieModel.setShowDataLabels(true);
 	}
+	
+	public PieChartModel estaditicasIniciativasPorEstado() {
+		PieChartModel graficaEstado = new PieChartModel();
+		try {
+			List<Iniciativa> iniciativas = servicios.consultarIniciativas();
+			for(Iniciativa i: iniciativas) {
+				graficaEstado.set(i.getEstado(), servicios.consultarCantidadIniciativasPorEstado(i.getEstado()));
+			}
+		} catch (ServiciosException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
+		}
+		graficaEstado.setTitle("Grafica porcentaje de inicativas por estado");
+		graficaEstado.setLegendPosition("e");
+		graficaEstado.setShadow(false);
+		graficaEstado.setShowDataLabels(true);
+		return  graficaEstado;
+	}
+	
+
+	public BarChartModel estaditicasIniciativasPorEstado2() {
+		BarChartModel model = new BarChartModel();
+        try {
+        	List<ChartSeries> estados =new ArrayList<>();
+			List<String> iniciativas = servicios.consultarEstadosIniciativas();
+			for(String i: iniciativas) {
+				ChartSeries a= new ChartSeries();
+				a.setLabel(i);
+				
+				a.set(i, servicios.consultarCantidadIniciativasPorEstado(i));
+				estados.add(a);
+				
+			}
+			for(ChartSeries e: estados) {
+				model.addSeries(e);
+			}
+			model.setTitle("Grafica cantidad de iniciativas por estado");
+			model.setLegendPosition("ne");
+			model.setShadow(false);
+			model.setShowPointLabels(true);
+			model.setShowDatatip(true);
+			
+			
+	        Axis xAxis = model.getAxis(AxisType.X);
+	        xAxis.setLabel("Estado");
+	 
+	        Axis yAxis = model.getAxis(AxisType.Y);
+	        yAxis.setLabel("Cantidad Iniciativas");
+	        yAxis.setMin(0);
+	        yAxis.setMax(servicios.consultarIniciativas().size());
+		} catch (ServiciosException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
+		}
+		return model;
+    }
 	
 	public void inicializar() {
 		try {
@@ -125,6 +186,14 @@ public class IniciativaBean extends BasePageBean {
 	public void setPieModel(PieChartModel pieModel) {
 		this.pieModel = pieModel;
 	}
+
+	public DataTable tablaIniciativasPorEstado() {
+		
+		return null;
+		
+	}
+	
+	
 	
 	
 	

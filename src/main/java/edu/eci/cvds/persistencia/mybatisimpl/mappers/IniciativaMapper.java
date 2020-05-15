@@ -69,4 +69,10 @@ public interface IniciativaMapper {
 	 * @return	lista de inciativas
 	 */
 	public List<Iniciativa> consultarIniciativaXUsuario(@Param("id")int id);
+	
+	
+	public int consultarCantidadIniciativasPorEstado(@Param("estado")String estado);
+	
+	public List<String> consultarEstadosIniciativas();
+
 }

@@ -218,4 +218,8 @@ public interface Servicios {
 	 */
 	public List<Comentario> consultarComentariosXIniciativa(int idini) throws ServiciosException;
 
+	public int consultarCantidadIniciativasPorEstado(String estado) throws ServiciosException;
+	
+	public List<String> consultarEstadosIniciativas() throws ServiciosException;
+
 }

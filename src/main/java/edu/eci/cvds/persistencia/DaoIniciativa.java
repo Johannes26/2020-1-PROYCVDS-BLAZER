@@ -69,4 +69,8 @@ public interface DaoIniciativa {
 	 * @return	lista de inciativas
 	 */
 	public List<Iniciativa> consultarIniciativaXUsuario(int id) throws PersistenciaException;
+	
+	public int consultarCantidadIniciativasPorEstado(String estado) throws PersistenciaException;
+	
+	public List<String> consultarEstadosIniciativas() throws PersistenciaException;
 }

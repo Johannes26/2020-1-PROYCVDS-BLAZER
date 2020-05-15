@@ -352,7 +352,7 @@ public class ServiciosImpl implements Servicios {
 			}
 			
 		}catch(PersistenciaException e) {
-            throw new ServiciosException("Error actualizar iniciativa, puede que haya excedido el número maximo de caracteres");
+            throw new ServiciosException("Error actualizar iniciativa, puede que haya excedido el nï¿½mero maximo de caracteres");
 		}
 		
 	}
@@ -384,5 +384,22 @@ public class ServiciosImpl implements Servicios {
 		}
 	}
 	
+	@Override
+	public int consultarCantidadIniciativasPorEstado(String estado) throws ServiciosException {
 	
+		try {
+			return iniciativaDAO.consultarCantidadIniciativasPorEstado(estado);
+		}catch(PersistenciaException e) {
+	        throw new ServiciosException("Error al consultar comentarios de la iniciativa");
+		}
+	}
+	
+	@Override
+	public List<String> consultarEstadosIniciativas() throws ServiciosException{
+		try {
+			return iniciativaDAO.consultarEstadosIniciativas();
+		}catch(PersistenciaException e) {
+	        throw new ServiciosException("Error al consultar comentarios de la iniciativa");
+		}
+	}
 }

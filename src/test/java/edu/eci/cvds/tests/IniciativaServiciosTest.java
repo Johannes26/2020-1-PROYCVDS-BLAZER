@@ -287,6 +287,14 @@ public class IniciativaServiciosTest {
         }
     }
     
-    
+    @Test
+    public void deberiaContarLaCantidadDeIniciativasPorEstado() {
+    	
+        try{
+        	assertEquals(servicios.consultarCantidadIniciativasPorEstado("En espera de revision"),2);
+        }catch(ServiciosException e) {
+            fail("error"+e.getMessage());
+        }
+    }
 
 }

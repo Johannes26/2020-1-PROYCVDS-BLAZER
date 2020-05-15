@@ -158,6 +158,20 @@
 	    left join PALABRASCLAVE as d on d.id=c.idPalabraClave
         WHERE d.descripcion LIKE '%'||#{descripcion}||'%' ;
     </select>
+    
+    <select parameterType="map" resultType="int" id="consultarCantidadIniciativasPorEstado" >
+    	select 
+        	count(i.num)
+        from INICIATIVA as i
+        where i.estado=#{estado};
+    </select>
+    
+        <select parameterType="map" resultType="String" id="consultarEstadosIniciativas" >
+    	select distinct
+        	estado
+        from INICIATIVA
+    </select>
+	
 
     <resultMap type='Iniciativa' id='IniciativaResult'>
         <id property='num' column='num'/>
