@@ -98,7 +98,7 @@ public class IniciativaBean extends BasePageBean {
 		graficaEstado.setTitle("Grafica porcentaje de inicativas por estado");
 		graficaEstado.setLegendPosition("e");
 		graficaEstado.setShadow(false);
-		graficaEstado.setShowDataLabels(true);
+		graficaEstado.setShowDataLabels(false);
 		return  graficaEstado;
 	}
 	

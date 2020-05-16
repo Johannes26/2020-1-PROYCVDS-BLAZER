@@ -5,7 +5,5 @@ target/
 .project
 .settings
 .DS_Store
-<<<<<<< HEAD
 *.log
-=======
->>>>>>> d54747726ee53ab8e68034e56ac3c9fed01954a9
+
