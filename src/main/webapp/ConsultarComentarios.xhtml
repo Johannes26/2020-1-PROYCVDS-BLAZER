@@ -42,7 +42,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <p:menubar >
-                      <p:menuitem value="Pagina Escuela" url="#" />
+                      <p:menuitem value="Página Escuela" url="https://www.escuelaing.edu.co/es/" />
                       <p:submenu label="Usuarios">
                             <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
                       </p:submenu>
@@ -68,7 +68,7 @@
             </ul>
             <h:form class="form-inline my-2 my-lg-0">
               <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
-              <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+              <p:commandButton value="Cerrar Sesión" action="#{principalBean.cerrarSesion()}"/>
             </h:form>
           </div>
         </nav>
@@ -88,10 +88,10 @@
 
                           <h:panelGrid columns="2" cellpadding="5">
 
-                              <h:outputText value="descripcion comentario:" />
+                              <h:outputText value="Descripción comentario:" />
                               <h:outputText value="#{comentario.descripcion}" style="font-weight: bold"/>
 
-                              <h:outputText value="fecha:" />
+                              <h:outputText value="Fecha:" />
                               <h:outputText value="#{comentario.fechaRegistro}" style="font-weight: bold"/>
 
                               <h:outputText value="Iniciativa:" />

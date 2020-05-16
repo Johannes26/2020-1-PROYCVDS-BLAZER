@@ -51,7 +51,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <p:menubar >
-                      <p:menuitem value="Pagina Escuela" url="#" />
+                      <p:menuitem value="Página Escuela" url="https://www.escuelaing.edu.co/es/" />
                       <p:submenu label="Usuarios">
                             <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
                       </p:submenu>
@@ -77,7 +77,7 @@
             </ul>
             <h:form class="form-inline my-2 my-lg-0">
               <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
-              <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+              <p:commandButton value="Cerrar Sesión" action="#{principalBean.cerrarSesion()}"/>
             </h:form>
           </div>
         </nav>
@@ -124,10 +124,10 @@
             <h:outputLabel style="color:#2A1313;font-weight: bold"  value="Email:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.email}" />
 
-            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Telefono:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Teléfono:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.telefono}"/>
 
-            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Area:"/>
+            <h:outputLabel style="color:#2A1313;font-weight: bold" value="Área:"/>
             <h:outputLabel value="#{adminiBean.usuariobuscado.area}"/>
 
             <h:outputLabel style="color:#2A1313;font-weight: bold" value="Tipo de Usuario:"/>

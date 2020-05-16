@@ -50,7 +50,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <p:menubar >
-                      <p:menuitem value="Pagina Escuela" url="#" />
+                      <p:menuitem value="Página Escuela" url="https://www.escuelaing.edu.co/es/" />
                       <p:submenu label="Usuarios">
                             <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
                       </p:submenu>
@@ -76,7 +76,7 @@
             </ul>
             <h:form class="form-inline my-2 my-lg-0">
               <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
-              <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+              <p:commandButton value="Cerrar Sesión" action="#{principalBean.cerrarSesion()}"/>
             </h:form>
           </div>
         </nav>
@@ -90,7 +90,7 @@
               <f:facet name="header">
                   Iniciativas
               </f:facet>
-              <p:column headerText="Descripcion" styleClass="fixed-size">
+              <p:column headerText="Descripción" styleClass="fixed-size">
                   <h:outputText value="#{iniciativa.descripcion}" />
               </p:column>
               <p:column headerText="Estado" >
@@ -115,7 +115,7 @@
           <h:outputLabel style="color:#2A1313" value="Numero:"/>
           <h:outputLabel value="#{adminiBean.iniciativabuscada.num}"/>
 
-          <h:outputLabel style="color:#2A1313" value="Descripcion:"/>
+          <h:outputLabel style="color:#2A1313" value="Descripción:"/>
           <h:outputLabel value="#{adminiBean.iniciativabuscada.descripcion}" />
 
           <h:outputLabel style="color:#2A1313"  value="Fecha de Registro:"/>

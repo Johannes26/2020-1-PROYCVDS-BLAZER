@@ -30,7 +30,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <p:menubar >
-                      <p:menuitem value="Pagina Escuela" url="#" />
+                      <p:menuitem value="Página Escuela" url="https://www.escuelaing.edu.co/es/" />
                       <p:submenu label="Usuarios">
                             <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
                       </p:submenu>
@@ -56,7 +56,7 @@
             </ul>
             <h:form class="form-inline my-2 my-lg-0">
               <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
-              <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+              <p:commandButton value="Cerrar Sesión" action="#{principalBean.cerrarSesion()}"/>
             </h:form>
           </div>
         </nav>
@@ -88,7 +88,7 @@
 
  	<p:commandButton update="iniciativasForm" action="#{agruparBean.inicializar()}" id="btnAgrupar" value="Agrupar" actionListener="#{agruparBean.agruparIniciativas(descripcion.value)}"/>
 
-    <p:fieldset id="SeleccionIniciativas" legend="Seleccion Iniciativas" style="margin-top:20px">
+    <p:fieldset id="SeleccionIniciativas" legend="Selección Iniciativas" style="margin-top:20px">
         <p:outputPanel id="dropArea">
             <h:outputText value="!!!Arrastre aqui!!!" rendered="#{empty agruparBean.iniciativasArrastradas}" style="font-size:24px;" />
             <p:dataTable id="IniciativasSeleccionadas" var="ini" value="#{agruparBean.iniciativasArrastradas}" rendered="#{not empty agruparBean.iniciativasArrastradas}">
@@ -96,7 +96,7 @@
                     <h:outputText value="#{ini.num}" />
                 </p:column>
 
-                <p:column headerText="descripcion">
+                <p:column headerText="Descripción">
                     <h:outputText value="#{ini.descripcion}" />
                 </p:column>
 

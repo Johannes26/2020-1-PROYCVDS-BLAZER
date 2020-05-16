@@ -36,7 +36,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <p:menubar >
-                      <p:menuitem value="Pagina Escuela" url="#" />
+                      <p:menuitem value="Página Escuela" url="https://www.escuelaing.edu.co/es/" />
                       <p:submenu label="Usuarios">
                             <p:menuitem value="Modificar Rol" url="ConsultarUsuarios.xhtml" rendered="#{principalBean.esVisibleConsultarUsuarios()}"/>
                       </p:submenu>
@@ -62,7 +62,7 @@
             </ul>
             <h:form class="form-inline my-2 my-lg-0">
               <p:outputLabel class="navbar-brand" value="#{principalBean.usuario.nombre}"></p:outputLabel>
-              <p:commandButton value="Cerrar Sesion" action="#{principalBean.cerrarSesion()}"/>
+              <p:commandButton value="Cerrar Sesión" action="#{principalBean.cerrarSesion()}"/>
             </h:form>
           </div>
         </nav>
@@ -77,10 +77,10 @@
              <f:facet name="header">
                   Iniciativas Relacionadas
               </f:facet>
-              <p:column headerText="Descripcion Agrupacion">
+              <p:column headerText="Descripción Agrupacion">
                   <h:outputText value="#{ini.numIniciativa1}" />
               </p:column>
-              <p:column headerText="Descripcion Agrupacion">
+              <p:column headerText="Descripción Agrupacion">
                   <h:outputText value="#{ini.numIniciativa2}" />
               </p:column>
               <p:column headerText="Fecha de Creacion">
