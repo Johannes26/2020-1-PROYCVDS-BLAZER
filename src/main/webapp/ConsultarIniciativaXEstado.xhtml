@@ -94,9 +94,10 @@
   		<div class="centrar">
   		<h:outputText class="h3 mb-3 font-weight-normal" style="color:white" value="Estado " />
   		<br />
-       	<p:inputText id="estado" required="true" type="String" binding="#{estado}"/>
+       	<p:inputText id="estado"  type="String" binding="#{estado}"/>
        	<br />
        	<p:commandButton update="principal" id="boton_buscar" actionListener="#{buscarBean.buscarXEstado(estado.value)}" value="Buscar"/>
+       	<p:commandButton  id="boton_estadisticas" action="EstadisticasPorEstado.xhtml?faces-redirect=true" value="Estadisticas"/>
         </div>
 
 

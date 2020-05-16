@@ -18,8 +18,10 @@
      table-layout: fixed;
      word-wrap: break-word;
    }
-
-    </style>
+       .ui-paginator a {
+        margin-right: 5px;
+    }
+	</style>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -74,18 +76,46 @@
         </nav>
 
       
-  <h:form>
+  <h:form class="text-center">
+  
+  
+  		<h1 class="font-italic" style="color: white;">Estadisticas De Estado</h1>
+  		<br/><br/>
+  	  <p:panelGrid columns="2" style=";width:100%">
       <p:chart type="pie" model="#{iniciativaBean.estaditicasIniciativasPorEstado()}" widgetVar="chart"
-          style=";width: 70%;margin-left: 15%;border-radius: 15px;background-color: SILVER;"/>
-      <br/><br/>
+          style=";width: 100%;border-radius: 15px;background-color: SILVER;"/>
       
-      <p:chart type="bar" model="#{iniciativaBean.estaditicasIniciativasPorEstado2()}" style=";height:300px ;width: 70%;margin-left: 15%;border-radius: 15px;background-color: SILVER;"/>
-      
-	  <br /><br />
-      <p:commandButton type="Submit" value="Export" icon="pi pi-home" onclick="return downloadImage();" style=";width: 70%;margin-left: 15%;border-radius: 15px;background-color: SILVER;"/>
+      <p:chart type="bar" model="#{iniciativaBean.estaditicasIniciativasPorEstado2()}" style=";width:100%;border-radius: 15px;background-color: SILVER;"/>
+      </p:panelGrid >
+	  
+	    <h:commandLink >
+        <h:outputText styleClass="pi pi-paperclip" style="margin:0 auto; font-size: 45px;color:white;font-weight:bold;" />
+        <p:outputLabel class="navbar-brand;" style="color:white;" value="Exportar"></p:outputLabel>
+        <p:dataExporter type="xls" target="tbl" fileName="Estadisticas-Iniciativas-Estado" pageOnly="true"/>
+    	</h:commandLink>
+    	
+	  <p:dataTable id="tbl" var="ini" value="#{iniciativaBean.estadisticas}" sortMode="multiple" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,15">
 
-      
-    </h:form>
+        <p:column headerText="Estado" sortBy="#{ini.descripcion}" styleClass="fixed-size">
+            <h:outputText value="#{ini.descripcion}" />
+        </p:column>
 
+ 		     <p:column headerText="Cantidad" sortBy="#{ini.cantidad}">
+            <h:outputText value="#{ini.cantidad}" />
+        </p:column>
+        </p:dataTable>
+        
+
+
+
+
+    
+
+ 
+   </h:form>
 </body>
 </html>

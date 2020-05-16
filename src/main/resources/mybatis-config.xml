@@ -17,6 +17,7 @@
         <typeAlias type='edu.eci.cvds.entidades.Voto' alias='Voto'/>
         <typeAlias type='edu.eci.cvds.entidades.Comentario' alias='Comentario'/>
         <typeAlias type='edu.eci.cvds.entidades.IniciativasRelacionadas' alias='IniciativasRelacionadas'/>
+        <typeAlias type='edu.eci.cvds.entidades.Estadisticas' alias='Estadisticas'/>
     </typeAliases>
 
     <environments default="development">

@@ -90,11 +90,15 @@
        </script>
 
       <br/><br/>
-  <h:form>
+  <h:form class="text-center">
       <p:chart type="pie" model="#{iniciativaBean.pieModel}" widgetVar="chart"
           style=";width: 70%;margin-left: 15%;border-radius: 15px;background-color: SILVER;"/>
       <br/><br/>
-      <p:commandButton type="Submit" value="Export" icon="pi pi-home" onclick="return downloadImage();" style="margin-left: 50%"/>
+      <h:commandLink>
+        <h:outputText styleClass="pi pi-paperclip" style="margin:0 auto; font-size: 45px;color:white;font-weight:bold;" />
+        <p:outputLabel class="navbar-brand;" style="color:white;" value="Exportar"></p:outputLabel>
+        <p:dataExporter type="xls" target="form:tbl" fileName="Estadisticas-Ini-Area" pageOnly="true"/>
+    	</h:commandLink>
 
       <br/><br/>
       <p:dataTable var="ini" value="#{iniciativaBean.iniciativas}" sortMode="multiple" rows="10"
@@ -124,9 +128,34 @@
         <p:column headerText="Fecha de Registro" sortBy="#{ini.fechaRegistro}">
             <h:outputText value="#{ini.fechaRegistro}" />
         </p:column>
-
+		
     </p:dataTable>
+    
     </h:form>
+    
+      <h:form id="form" class="text-center" rendered="false">
+  
+
+  
+	  
+	  <p:dataTable id="tbl" var="ini" value="#{iniciativaBean.estadisticasArea}" sortMode="multiple" rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,15">
+
+        <p:column headerText="Estado" sortBy="#{ini.descripcion}" styleClass="fixed-size">
+            <h:outputText value="#{ini.descripcion}" />
+        </p:column>
+
+ 		     <p:column headerText="Cantidad" sortBy="#{ini.cantidad}">
+            <h:outputText value="#{ini.cantidad}" />
+        </p:column>
+        </p:dataTable>
+        
+
+ 
+   </h:form>
     <br/><br/>
 </body>
 </html>

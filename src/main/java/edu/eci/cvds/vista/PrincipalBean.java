@@ -53,7 +53,7 @@ public class PrincipalBean extends BasePageBean {
 		ArrayList<String> usuarioPmo = new ArrayList<String>(
 				Arrays.asList("/ConsultarIniciativaXPalabra.xhtml","/ConsultarIniciativas.xhtml","/PalabrasClaveXIniciativa.xhtml",
 						"/ConsultarIniciativasOrdenadas.xhtml","/IniciativasRelacionadas.xhtml","/AgregarComentarios.xhtml",
-						"/ConsultarComentarios.xhtml","/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml","/ConsultarIniciativaXEstado.xhtml"));
+						"/ConsultarComentarios.xhtml","/ConsultarComentarioXId.xhtml","/EstadisticasPorEstado.xhtml","/ConsultarIniciativaXEstado.xhtml","/CambiarIniciativa.xhtml"));
 																												
 		verificacion.put("Administrador", usuarioAdmin);
 		verificacion.put("Proponente", usuarioPropo);

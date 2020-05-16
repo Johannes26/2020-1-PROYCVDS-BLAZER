@@ -7,19 +7,18 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 
 import com.google.inject.Inject;
 
+import edu.eci.cvds.entidades.Estadisticas;
 import edu.eci.cvds.entidades.Iniciativa;
-import edu.eci.cvds.entidades.IniciativaPalabra;
-import edu.eci.cvds.entidades.IniciativasRelacionadas;
 import edu.eci.cvds.entidades.Usuario;
 import edu.eci.cvds.servicios.Servicios;
 import edu.eci.cvds.servicios.ServiciosException;
 
 import javax.faces.context.FacesContext;
 
-import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
@@ -38,6 +37,8 @@ public class IniciativaBean extends BasePageBean {
 	private List<Iniciativa> iniciativas;
 	private String actdescripcion;
 	private PieChartModel pieModel;
+	private List<Estadisticas> estadisticas,estadisticasArea;
+
 	
 	
 	public void actualizar(RowEditEvent event) {
@@ -86,9 +87,10 @@ public class IniciativaBean extends BasePageBean {
 	public PieChartModel estaditicasIniciativasPorEstado() {
 		PieChartModel graficaEstado = new PieChartModel();
 		try {
-			List<Iniciativa> iniciativas = servicios.consultarIniciativas();
-			for(Iniciativa i: iniciativas) {
-				graficaEstado.set(i.getEstado(), servicios.consultarCantidadIniciativasPorEstado(i.getEstado()));
+			List<String> estados = servicios.consultarEstadosIniciativas();
+			for(String i: estados) {
+				int cantidad=servicios.consultarCantidadIniciativasPorEstado(i);
+				graficaEstado.set(i,cantidad );
 			}
 		} catch (ServiciosException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL,"Aviso",e.getMessage()));
@@ -104,24 +106,20 @@ public class IniciativaBean extends BasePageBean {
 	public BarChartModel estaditicasIniciativasPorEstado2() {
 		BarChartModel model = new BarChartModel();
         try {
+        	
         	List<ChartSeries> estados =new ArrayList<>();
 			List<String> iniciativas = servicios.consultarEstadosIniciativas();
 			for(String i: iniciativas) {
 				ChartSeries a= new ChartSeries();
-				a.setLabel(i);
-				
 				a.set(i, servicios.consultarCantidadIniciativasPorEstado(i));
-				estados.add(a);
+
+				model.addSeries(a);
 				
-			}
-			for(ChartSeries e: estados) {
-				model.addSeries(e);
+				
 			}
 			model.setTitle("Grafica cantidad de iniciativas por estado");
 			model.setLegendPosition("ne");
-			model.setShadow(false);
-			model.setShowPointLabels(true);
-			model.setShowDatatip(true);
+
 			
 			
 	        Axis xAxis = model.getAxis(AxisType.X);
@@ -137,10 +135,41 @@ public class IniciativaBean extends BasePageBean {
 		return model;
     }
 	
+	public void inicializarEstadisticas() {
+		estadisticas=new ArrayList<>();
+		try {
+			
+			List<String> estados= servicios.consultarEstadosIniciativas();
+			for(String e: estados) {
+				int cantidad=servicios.consultarCantidadIniciativasPorEstado(e);
+				estadisticas.add(new Estadisticas(e,cantidad));
+			}
+		} catch (ServiciosException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void inicializarEstadisticas2() {
+		estadisticasArea=new ArrayList<>();
+		try {
+			
+			List<String> areas= servicios.consultarAreas();
+			for(String e: areas) {
+				int cantidad=servicios.consultarIniciativasPorArea(e);
+				estadisticasArea.add(new Estadisticas(e,cantidad));
+			}
+		} catch (ServiciosException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void inicializar() {
 		try {
 			iniciativas =servicios.consultarIniciativas();
 			consultarIniciativasPorArea();
+			inicializarEstadisticas();
+			inicializarEstadisticas2();
 		} catch (ServiciosException e) {
 			e.printStackTrace();
 		}
@@ -187,11 +216,25 @@ public class IniciativaBean extends BasePageBean {
 		this.pieModel = pieModel;
 	}
 
-	public DataTable tablaIniciativasPorEstado() {
-		
-		return null;
-		
+	public List<Estadisticas> getEstadisticas() {
+		return estadisticas;
 	}
+
+	public void setEstadisticas(List<Estadisticas> estadisticas) {
+		this.estadisticas = estadisticas;
+	}
+
+	public List<Estadisticas> getEstadisticasArea() {
+		return estadisticasArea;
+	}
+
+	public void setEstadisticasArea(List<Estadisticas> estadisticasArea) {
+		this.estadisticasArea = estadisticasArea;
+	}
+
+	
+	
+
 	
 	
 	
