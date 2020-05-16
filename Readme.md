@@ -12,7 +12,7 @@
 1. Julian Velasco (Product Owner) 
 2. Oscar Ospina (Product Owner)
 
-# Despcripción del producto
+# Descripción del producto
 
 1. Descripción General:
 
@@ -62,7 +62,7 @@ En este caso, estos usuarios tendran el acceso a modificar los estados de las in
 
 ![Cambiar estado a las iniciativas](https://user-images.githubusercontent.com/54051399/82111393-98f6ce00-970a-11ea-82f7-02b0782c2aa1.PNG)
 
-### Para Administrador:
+### Para usuario Administrador:
 
 El administrador puede consultar los usuarios registrados en nuestra base de datos y definir los roles de cada uno.
 
@@ -74,7 +74,7 @@ Por otro lado podra agrupar iniciativas que tengan cierta relación.
 
 ![Agrupar Iniciativas](https://user-images.githubusercontent.com/54051399/82111735-ccd2f300-970c-11ea-95da-c1d0bfdfa379.PNG)
 
-### Para Proponente:
+### Para usuario Proponente:
 
 El usuario proponente podra insertar iniciativas de cualquier tema que el desee, igualmente podra agregar las palabaras clave relacionadas a esta separadas por comas, igualmente podra consultar y estar al pendiente de todo lo que ocurra con sus iniciativas registradas.
 
@@ -124,7 +124,7 @@ La metodología que se utilizo para este proyecto fue SCRUM, que se basa en trab
 
 ### Enlace a taiga 
 
-[Taiga](https://tree.taiga.io/project/johann99-plataforma-banco-de-iniciativas-de-proyectos/backlog)
+[Enlace a Taiga](https://tree.taiga.io/project/johann99-plataforma-banco-de-iniciativas-de-proyectos/backlog)
 
 ### Sprint 1
 
