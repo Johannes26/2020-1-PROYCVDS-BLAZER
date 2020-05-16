@@ -149,3 +149,10 @@ El avance fue mayor, semana a semana se tuvo un progreso de manera concisa y cad
 Se finalizo el proyecto despues tiempo despues de la finalización del sprint, pero se muestra completo y funcionando a la perfección gracias al trabajo de todos los integrantes.
 
 [Sprint3 Burndown chart](https://tree.taiga.io/project/johann99-plataforma-banco-de-iniciativas-de-proyectos/taskboard/sprint-3-6249)
+
+# Implementacion Jacoco
+![jacoco1](https://user-images.githubusercontent.com/54114955/82125564-6978ad80-976c-11ea-9ff3-cc08ee82cf44.PNG)
+
+![jacoco2](https://user-images.githubusercontent.com/54114955/82125576-7e554100-976c-11ea-9d73-b9223cedc57d.PNG)
+
+![jacoco3](https://user-images.githubusercontent.com/54114955/82125583-89a86c80-976c-11ea-9751-fa5bfbe4b6bd.PNG)
